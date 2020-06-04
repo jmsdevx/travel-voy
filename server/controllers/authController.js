@@ -1,55 +1,38 @@
-require("dotenv").config();
-const passport = require("passport");
-const AuthStrategy = require("passport-auth0");
+const bcrypt = require("bcryptjs");
 
-module.exports = (app) => {
-  app.use(passport.initialize());
-  app.use(passport.session());
-  console.log("env", process.env.DOMAIN);
+module.exports = {
+  register: async (req, res) => {
+    const { email, password } = req.body;
+    const db = req.app.get("db");
+    const result = await db.get_user([email]);
+    const existingUser = result[0];
+    if (existingUser) {
+      return res.status(409).send("Username taken");
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    const registeredUser = await db.register_user([email, hash]);
+    const user = registeredUser[0];
+    req.session.user = { email: user.email, id: user.id };
+    return res.status(201).send(req.session.user);
+  },
 
-  passport.use(
-    new AuthStrategy(
-      {
-        domain: process.env.DOMAIN,
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: "/login",
-        scope: "openid email profile",
-      },
-      (authToken, refreshToken, extraParams, profile, done) =>
-        done(null, profile)
-    )
-  );
-
-  passport.serializeUser((profile, done) => {
-    console.log(profile._json);
-    const db = app.get("db");
-    db.get_authid(profile.id).then((user) => {
-      if (!user[0]) {
-        db.add_authid([
-          profile.id,
-          profile.name.givenName,
-          profile.name.familyName,
-          profile._json.email,
-        ])
-          .then((response) => {
-            console.log(response);
-            return done(null, response[0]);
-          })
-          .catch((err) => console.log(err));
-      } else {
-        return done(null, user[0]);
-      }
-    });
-  });
-
-  passport.deserializeUser((profile, done) => done(null, profile));
-
-  app.get(
-    "/login",
-    passport.authenticate("auth0", {
-      successRedirect: `${process.env.REACT_APP_CLIENT}/profile`,
-      failureRedirect: "/",
-    })
-  );
+  login: async (req, res) => {
+    const { email, password } = req.body;
+    const foundUser = await req.app.get("db").get_user([email]);
+    const user = foundUser[0];
+    if (!user) {
+      return res
+        .status(401)
+        .send(
+          "User not found. Please register as a new user before logging in."
+        );
+    }
+    const isAuthenticated = bcrypt.compareSync(password, user.hash);
+    if (!isAuthenticated) {
+      return res.status(403).send("Incorrect password");
+    }
+    req.session.user = { id: user.id, email: user.email };
+    return res.send(req.session.user);
+  },
 };

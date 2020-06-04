@@ -1,9 +1,14 @@
 import React from "react";
+import Header from "../header/Header";
+import StartQuiz from "./StartQuiz";
+import ReturningUser from "./ReturningUser";
 
 function Splash() {
   return (
     <div>
-      <a href={`${process.env.REACT_APP_SERVER}/login`}>Login</a>
+      <Header />
+      <StartQuiz />
+      <ReturningUser />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./components/ducks/store";
 import routes from "./routes/routes";
+import "./App.scss";
 
 function App() {
   return (

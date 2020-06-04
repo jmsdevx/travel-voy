@@ -9,6 +9,8 @@ const cors = require("cors");
 const port = 3001;
 const authController = require("./controllers/authController");
 
+const { SESSION_SECRET, STRING } = process.env;
+
 //setup
 app.use(json());
 app.use(cors());
@@ -25,10 +27,15 @@ app.use(
   })
 );
 
+//database
+massive(STRING).then((db) => {
+  app.set("db", db);
+  console.log("db connected");
+});
+
 //auth
-app.use(passport.initialize());
-app.use(passport.session());
-authController(app);
+app.post("/auth/register", authController.register);
+app.post("/auth/login", authController.login);
 
 //db
 
