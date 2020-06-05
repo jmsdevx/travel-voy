@@ -20,6 +20,31 @@ $orange: #ffd6ba;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: $light-green;
+  color: $grey;
+  font-family: raisonne;
+
+  .heading {
+    margin-top: 5rem;
+  }
+
+  .input {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: $white;
+  }
+
+  .log-button {
+    margin-top: 10vh;
+    background-color: $orange;
+    height: 8vh;
+    width: 30vw;
+    border: 1px solid $white;
+    border-radius: 15px;
+    color: $grey;
+    font-family: raisonne;
+  }
 }
 
 .start-quiz {
@@ -113,4 +138,13 @@ $orange: #ffd6ba;
     color: $grey;
     font-family: raisonne;
   }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-green;
+  color: $grey;
+  height: 100vh;
 }
