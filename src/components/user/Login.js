@@ -7,12 +7,14 @@ function Login() {
   return (
     <div className="login">
       <Header />
-      <h1 className="heading">Login</h1>
-      <input type="text" className="input" placeholder="username" />
-      <input type="password" className="input" placeholder="password" />
-      <Link to="/profile">
-        <Button title="Login" onClick={null} className="log-button" />
-      </Link>
+      <div className="input-container">
+        <h1 className="heading">Login</h1>
+        <input type="text" className="input" placeholder="username" />
+        <input type="password" className="input" placeholder="password" />
+        <Link to="/profile">
+          <Button title="Login" onClick={null} className="log-button" />
+        </Link>
+      </div>
     </div>
   );
 }

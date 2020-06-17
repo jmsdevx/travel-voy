@@ -1,49 +1,57 @@
 $grey: #555b6e;
-$dark-green: #89b0ae;
-$light-green: #bee3db;
+$dark-blue: #89b0ae;
+$light-blue: #bee3db;
 $white: #faf9f9;
 $orange: #ffd6ba;
 
-.header {
-  padding: 0.5rem;
-  background-color: $grey;
-  height: 6vh;
-  width: 100%;
-  font-family: raisonne;
-  font-size: 2rem;
-  color: $light-green;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$bp-tablet}) and (max-width: #{$bp-desktop - 1px}) {
+    @content;
+  }
 }
 
-.login {
-  height: 100vh;
+@mixin desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+body {
+  background-color: $light-blue;
+}
+
+.header {
+  height: 6vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $light-green;
-  color: $grey;
+  padding: 1vh;
+
+  background-color: $grey;
+  text-align: center;
+  color: $white;
+  font-size: 2rem;
   font-family: raisonne;
 
-  .heading {
-    margin-top: 5rem;
-  }
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 
-  .input {
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 15px;
-    border: $white;
-  }
-
-  .log-button {
-    margin-top: 10vh;
-    background-color: $orange;
-    height: 8vh;
-    width: 30vw;
-    border: 1px solid $white;
-    border-radius: 15px;
-    color: $grey;
-    font-family: raisonne;
+  .home {
+    text-decoration: none;
+    color: white;
   }
 }
 
@@ -51,100 +59,220 @@ $orange: #ffd6ba;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $light-green;
-  color: $grey;
-  padding-top: 15vh;
-  font-family: raisonne;
-  font-size: 2rem;
-  height: 40vh;
+
+  background-image: url("./assets/hero-large.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  height: 45vh;
   width: 100%;
 
+  color: $grey;
+  font-family: raisonne;
+  font-size: 2rem;
+
+  @include tablet {
+    background-image: url("./assets/hero-large.jpg");
+  }
+
+  @include desktop {
+    background-image: url("./assets/hero-large.jpg");
+  }
+
+  .new-title {
+    padding-top: 52vh;
+    color: $grey;
+    z-index: -1;
+  }
+
   .start-button {
-    margin-top: 10vh;
-    background-color: $orange;
     height: 8vh;
     width: 30vw;
+
+    margin-top: 8vh;
+
+    background-color: $orange;
+
     border: 1px solid $white;
     border-radius: 15px;
+
     color: $grey;
     font-family: raisonne;
   }
 }
 
 .returning {
-  height: 40vh;
-  background-color: $dark-green;
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: raisonne;
-  color: $grey;
+  flex-direction: row;
+  justify-content: space-evenly;
+
   padding-top: 10vh;
+  margin-top: 25vh;
+  height: 12vh;
+  width: 100%;
+
+  background-color: $dark-blue;
+
+  color: $grey;
   font-size: 1.3rem;
+  font-family: raisonne;
 
   .returning-button {
     background-color: transparent;
+
     border: none;
-    margin-top: 5vh;
+
     font-family: raisonne;
-    color: $white;
     font-size: 1.3rem;
+    color: $white;
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 50vh;
+  width: 100%;
+
+  background-image: url("./assets/hero-small.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  color: $grey;
+  font-family: raisonne;
+
+  .input-container {
+    position: fixed;
+    z-index: 1;
+    top: 45vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    .input {
+      margin: 1vh;
+      padding: 2vh;
+
+      border-radius: 15px;
+      border: $white;
+    }
+
+    .log-button {
+      height: 8vh;
+      width: 30vw;
+
+      margin-top: 5vh;
+
+      background-color: $orange;
+
+      border: 1px solid $white;
+      border-radius: 15px;
+
+      color: $grey;
+      font-family: raisonne;
+    }
   }
 }
 
 .quiz {
-  font-family: raisonne;
-  color: $grey;
-  height: 100vh;
-  background-color: $light-green;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  height: 100vh;
+
+  background-color: $light-blue;
+
+  font-family: raisonne;
+  color: $grey;
+
   .quiz-underline {
     height: 0;
     width: 80%;
+
+    margin-bottom: 2vh;
+
     border: 1px solid $grey;
-    margin-bottom: 5vh;
   }
 
   .quiz-header {
-    padding: 1rem;
+    padding: 1vh;
   }
 
-  .answer-box {
+  .question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    .answer-box {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      width: 80%;
+
+      .sample-box {
+        height: 20vh;
+        width: 35vw;
+
+        margin: 1vh;
+
+        background-color: transparent;
+        border: 1px solid $grey;
+      }
+    }
+  }
+
+  .nav {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    width: 80%;
+    justify-content: space-around;
 
-    .sample-box {
-      height: 20vh;
-      width: 35vw;
-      background-color: transparent;
-      border: 1px solid $grey;
-      margin: 0.5rem;
+    margin-top: 2vh;
+
+    width: 35vw;
+
+    font-size: 2rem;
+
+    p {
+      margin: 0;
     }
   }
 
   .get-results-button {
-    margin-top: 3vh;
-    background-color: $orange;
     height: 8vh;
     width: 30vw;
+
+    margin-top: 3vh;
+
+    background-color: $orange;
+
     border: 1px solid $white;
     border-radius: 15px;
+
     color: $grey;
     font-family: raisonne;
   }
 }
 
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $light-green;
-  color: $grey;
-  height: 100vh;
-}
+// .profile {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: $light-blue;
+//   color: $grey;
+//   height: 100vh;
+// }

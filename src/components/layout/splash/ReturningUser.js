@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function ReturningUser() {
   return (
     <div className="returning">
-      <span>Returning User?</span>
+      <span>Returning?</span>
       <Link to="/login">
         <Button title="Login" onClick={null} className="returning-button" />
       </Link>

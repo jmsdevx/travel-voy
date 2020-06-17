@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="header">
-      <span>Travel Voy</span>
+      <Link to="/" className="home">
+        <span>Travel Voy</span>
+      </Link>
     </div>
   );
 }
