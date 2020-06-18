@@ -37,7 +37,7 @@ body {
 .header {
   height: 6vh;
   width: 100%;
-  padding: 1vh;
+  padding-bottom: 1vh;
 
   background-color: $grey;
   text-align: center;
@@ -48,6 +48,10 @@ body {
   -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+
+  .logo {
+    height: 8vh;
+  }
 
   .home {
     text-decoration: none;
@@ -109,7 +113,7 @@ body {
 
   padding-top: 10vh;
   margin-top: 25vh;
-  height: 12vh;
+  height: 13vh;
   width: 100%;
 
   background-color: $dark-blue;
@@ -268,11 +272,92 @@ body {
   }
 }
 
-// .profile {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   background-color: $light-blue;
-//   color: $grey;
-//   height: 100vh;
-// }
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: $grey;
+  font-family: raisonne;
+
+  .pictures {
+    position: fixed;
+
+    .info {
+      position: fixed;
+      z-index: 2;
+      color: white;
+      padding: 1vw;
+      font-family: raisonne;
+    }
+
+    .edit {
+      position: fixed;
+      float: right;
+      z-index: 2;
+      left: 75%;
+
+      button {
+        background-color: transparent;
+        color: $white;
+        font-family: raisonne;
+        border: 2px solid $white;
+        border-radius: 15px;
+        margin-top: 2vh;
+      }
+    }
+
+    .background {
+      position: relative;
+      height: 30vh;
+      width: 100vw;
+      filter: brightness(75%);
+    }
+
+    .selfie {
+      height: 20vh;
+      width: 40vw;
+      border-radius: 50%;
+      position: relative;
+      transform: translate(30vw, -10vh);
+      border: 5px solid $light-blue;
+    }
+  }
+
+  .content {
+    width: 100vw;
+    padding-left: 5vw;
+    margin-top: 43vh;
+
+    .new {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 30vw;
+    }
+
+    .upcoming {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 50vw;
+
+      .up-inner {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    .past {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 50vw;
+
+      .past-inner {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
