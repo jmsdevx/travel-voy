@@ -6,11 +6,11 @@ import Trips from "../trips/Trips";
 function Profile() {
   return (
     <div>
-      <Header />
       <div className="profile">
         <Pictures />
         <Trips />
       </div>
+      <Header />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../general/Button";
 import Question from "./Question";
 import Navigation from "./Navigation";
+import arch from "../../assets/white_arch.svg";
 
 function Quiz() {
   const [qNumber, setQNumber] = useState(1);
@@ -29,22 +30,27 @@ function Quiz() {
   };
 
   return (
-    <div className="quiz">
-      <Header />
-      <h2 className="quiz-header">What kind of traveler are you?</h2>
-      <div className="quiz-underline" />
-      <Question />
-      <Navigation current={qNumber} total={qTotal} navigate={navigate} />
-      {qComplete && (
-        <Link to="/profile">
-          <Button
-            title="Get Results"
-            onClick={null}
-            className="get-results-button"
-          />
-        </Link>
-      )}
-    </div>
+    <>
+      <img src={arch} />
+      <div className="quiz">
+        <h2 className="quiz-header">Travel preferences?</h2>
+        <div className="quiz-underline" />
+        <Question />
+        {!qComplete && (
+          <Navigation current={qNumber} total={qTotal} navigate={navigate} />
+        )}
+        {qComplete && (
+          <Link to="/profile">
+            <Button
+              title="Get Results"
+              onClick={null}
+              className="get-results-button"
+            />
+          </Link>
+        )}
+        <Header />
+      </div>
+    </>
   );
 }
 

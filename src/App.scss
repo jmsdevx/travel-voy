@@ -3,7 +3,6 @@ $dark-blue: #89b0ae;
 $light-blue: #bee3db;
 $white: #faf9f9;
 $orange: #ffd6ba;
-
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
 
@@ -31,35 +30,59 @@ $bp-desktop: 1024px;
 }
 
 body {
-  background-color: $light-blue;
+  background-color: $orange;
 }
 
 .header {
+  position: fixed;
+  bottom: 0;
+
   height: 6vh;
   width: 100%;
   padding-bottom: 1vh;
 
-  background-color: $grey;
+  background-color: $light-blue;
   text-align: center;
   color: $white;
   font-size: 2rem;
   font-family: raisonne;
 
-  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  border: 1px solid white;
 
   .logo {
-    height: 8vh;
+    height: 100%;
+    color: $grey;
   }
 
   .home {
     text-decoration: none;
     color: white;
+    height: 15vw;
+    width: 15vw;
+    border-radius: 50%;
+    background: $orange;
+    border: 1vw solid $light-blue;
+    position: absolute;
+    z-index: 10001;
+    bottom: 0;
+    left: 42vw;
+  }
+  .logo-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 1vh;
+
+    .material-icons {
+      font-size: 36px;
+      color: $grey;
+    }
   }
 }
 
-.start-quiz {
+.background {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,44 +106,96 @@ body {
   @include desktop {
     background-image: url("./assets/hero-large.jpg");
   }
+}
 
-  .new-title {
-    padding-top: 52vh;
-    color: $grey;
-    z-index: -1;
+.title {
+  font-family: raisonne;
+  font-size: 2em;
+  color: $grey;
+  text-align: center;
+  padding-top: 5vh;
+  background-color: $light-blue;
+  height: 25vh;
+  position: relative;
+
+  .quiz-link {
+    background-color: $orange;
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 30vw;
+    height: 5vh;
+    padding-bottom: 1vh;
+
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+
+    .spacer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      text-decoration: none;
+      padding-top: 1vh;
+    }
+
+    .material-icons {
+      color: $grey;
+    }
+
+    .start-button {
+      border: none;
+      background-color: transparent;
+      margin-bottom: 2vh;
+
+      font-family: raisonne;
+      font-size: 1.3rem;
+      color: $grey;
+      position: relative;
+    }
   }
 
-  .start-button {
-    height: 8vh;
-    width: 30vw;
+  .text-carousel {
+    background: transparent;
+    font-size: 0.5em;
+    padding-top: 1vh;
+  }
 
-    margin-top: 8vh;
-
-    background-color: $orange;
-
-    border: 1px solid $white;
-    border-radius: 15px;
-
-    color: $grey;
-    font-family: raisonne;
+  .carousel-nav {
+    font-size: 0.5em;
+    transform: translateY(-1vh);
   }
 }
 
 .returning {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
-  padding-top: 10vh;
-  margin-top: 25vh;
-  height: 13vh;
-  width: 100%;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
 
-  background-color: $dark-blue;
+  a {
+    color: $grey;
+    text-decoration: none;
+  }
 
-  color: $grey;
+  width: 60%;
+  left: 10vw;
+  position: relative;
+
+  background-color: $light-blue;
+
+  color: $white;
   font-size: 1.3rem;
   font-family: raisonne;
+
+  .material-icons {
+    color: $grey;
+    position: relative;
+    top: 1vh;
+  }
 
   .returning-button {
     background-color: transparent;
@@ -129,7 +204,8 @@ body {
 
     font-family: raisonne;
     font-size: 1.3rem;
-    color: $white;
+    color: $grey;
+    height: 6vh;
   }
 }
 
@@ -143,7 +219,6 @@ body {
 
   background-image: url("./assets/hero-small.jpg");
   background-repeat: no-repeat;
-  background-position: center;
   background-size: contain;
 
   color: $grey;
@@ -152,7 +227,7 @@ body {
   .input-container {
     position: fixed;
     z-index: 1;
-    top: 45vh;
+    top: 40vh;
 
     display: flex;
     flex-direction: column;
@@ -160,12 +235,20 @@ body {
 
     text-align: center;
 
+    border: 10px solid $light-blue;
+    border-radius: 10px;
+    padding: 5vw;
+
     .input {
       margin: 1vh;
       padding: 2vh;
 
       border-radius: 15px;
-      border: $white;
+      border: white;
+    }
+
+    .heading {
+      margin-top: 0;
     }
 
     .log-button {
@@ -174,7 +257,7 @@ body {
 
       margin-top: 5vh;
 
-      background-color: $orange;
+      background-color: $light-blue;
 
       border: 1px solid $white;
       border-radius: 15px;
@@ -189,10 +272,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 
-  height: 100vh;
+  height: 68vh;
+  margin: 0 5vw 0 5vw;
+  border: 10px solid $light-blue;
+  border-radius: 10px;
 
-  background-color: $light-blue;
+  background-color: $orange;
 
   font-family: raisonne;
   color: $grey;
@@ -201,9 +288,9 @@ body {
     height: 0;
     width: 80%;
 
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
 
-    border: 1px solid $grey;
+    border: 1px solid $white;
   }
 
   .quiz-header {
@@ -225,17 +312,18 @@ body {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: center;
 
-      width: 80%;
+      width: 100%;
 
       .sample-box {
-        height: 20vh;
-        width: 35vw;
+        height: 25vw;
+        width: 25vw;
 
         margin: 1vh;
 
         background-color: transparent;
-        border: 1px solid $grey;
+        border: 5px solid $white;
       }
     }
   }
@@ -257,12 +345,12 @@ body {
   }
 
   .get-results-button {
-    height: 8vh;
+    height: 6vh;
     width: 30vw;
 
-    margin-top: 3vh;
+    margin-top: 2vh;
 
-    background-color: $orange;
+    background-color: $light-blue;
 
     border: 1px solid $white;
     border-radius: 15px;
@@ -275,7 +363,6 @@ body {
 .profile {
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   color: $grey;
   font-family: raisonne;
@@ -307,20 +394,28 @@ body {
       }
     }
 
-    .background {
-      position: relative;
-      height: 30vh;
-      width: 100vw;
-      filter: brightness(75%);
+    .hero {
+      // filter: brightness(75%);
+      // max-height: 50vh;
+      // max-width: 100%;
+      // overflow: hidden;
+
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
+    hero:before {
+      // content: "";
+      // display: block;
+      // padding-bottom: 50%;
+    }
     .selfie {
-      height: 20vh;
-      width: 40vw;
-      border-radius: 50%;
-      position: relative;
-      transform: translate(30vw, -10vh);
-      border: 5px solid $light-blue;
+      // height: 20vh;
+      // width: 40vw;
+      // border-radius: 50%;
+      // position: relative;
+      // transform: translate(30vw, -10vh);
+      // border: 5px solid $light-blue;
     }
   }
 

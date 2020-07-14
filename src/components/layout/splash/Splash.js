@@ -1,14 +1,16 @@
 import React from "react";
 import Header from "../header/Header";
-import StartQuiz from "./StartQuiz";
+import Background from "./Background";
+import Title from "./Title";
 import ReturningUser from "./ReturningUser";
 
 function Splash() {
   return (
-    <div>
-      <Header />
-      <StartQuiz />
+    <div className="page">
+      <Background />
+      <Title />
       <ReturningUser />
+      <Header />
     </div>
   );
 }

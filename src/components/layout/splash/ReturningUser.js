@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 function ReturningUser() {
   return (
     <div className="returning">
-      <span>Returning?</span>
+      <i class="material-icons">flight_land</i>
       <Link to="/login">
+        <span>Returning?</span>
         <Button title="Login" onClick={null} className="returning-button" />
       </Link>
     </div>
