@@ -31,7 +31,7 @@ function Quiz() {
 
   return (
     <>
-      <img src={arch} />
+      <img src={arch} alt="arch" />
       <div className="quiz">
         <h2 className="quiz-header">Travel preferences?</h2>
         <div className="quiz-underline" />

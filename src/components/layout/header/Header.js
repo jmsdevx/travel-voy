@@ -9,11 +9,13 @@ function Header() {
         <img src={Logo} alt="logo" className="logo" />
       </Link>
       <div className="logo-nav">
-        <i class="material-icons">question_answer</i>
-        <i class="material-icons">preview</i>
-        <i class="material-icons">flight_takeoff</i>
-        <i class="material-icons">face</i>
-        <i class="material-icons">card_travel</i>
+        <i className="material-icons">question_answer</i>
+        <i className="material-icons">calendar_today</i>
+        <i className="material-icons">flight_takeoff</i>
+        <Link to="/profile">
+          <i className="material-icons">face</i>
+        </Link>
+        <i className="material-icons">card_travel</i>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ function Trips() {
   return (
     <div className="trips">
       <New />
+      <div className="white-underline" />
       <Upcoming />
       <Past />
     </div>
