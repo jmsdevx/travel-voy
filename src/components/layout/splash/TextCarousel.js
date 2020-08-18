@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function TextCarousel() {
   const itemsList = [
-    "Where do you want to go?",
-    "What do you want to do?",
-    "Who do you want to be with?",
+    "Where are you going?",
+    "What are you doing?",
+    "Who are you with?",
     "Travel Voy",
   ];
   const [items, updateItems] = useState(itemsList);
-
   const [current, updateCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (current < 3) {
+        updateCurrent(current + 1)
+      } else if (current === 3) {
+        updateCurrent(0);
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  })
 
   const plusOne = (num) => {
     console.log("c", current);
@@ -40,7 +50,7 @@ function TextCarousel() {
 
   return (
     <div className="text-carousel">
-      <p>{items[current]}</p>
+      <p className={ 'selected'}>{items[current]}</p>
       <div className="dots">
         {
           <i
