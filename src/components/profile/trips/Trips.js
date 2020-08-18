@@ -6,8 +6,8 @@ import Past from "./Past";
 function Trips() {
   return (
     <div className="trips">
-      <New />
       <div className="white-underline" />
+      <New />
       <Upcoming />
       <Past />
     </div>

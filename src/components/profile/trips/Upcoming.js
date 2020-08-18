@@ -8,7 +8,7 @@ function Upcoming() {
   const imageObject = {
     Nashville: nashville,
     Napa: napa,
-    "New York": newyork,
+    "New York City": newyork,
     Lisbon: lisbon,
   };
 

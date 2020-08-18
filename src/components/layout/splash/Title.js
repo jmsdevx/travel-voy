@@ -13,7 +13,7 @@ function Title() {
             onClick={null}
             className="start-button"
           />
-          <i className="material-icons">flight_takeoff</i>
+          <i className="material-icons">school</i>
         </Link>
       </span>
     </div>

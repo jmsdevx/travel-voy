@@ -32,9 +32,9 @@ function TextCarousel() {
   const dotsMap = () =>
     items.map((e, index) => {
       if (current === index) {
-        return <i className="material-icons">favorite</i>;
+        return <i className="material-icons">flight_takeoff</i>;
       } else {
-        return <i className="material-icons">favorite_border</i>;
+        return <i className="material-icons">flight_land</i>;
       }
     });
 
