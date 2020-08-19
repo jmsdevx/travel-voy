@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../layout/header/Header";
 import Button from "../general/Button";
 import { Link } from "react-router-dom";
+import SignUp from './SignUp';
+import Overlay from '../general/Overlay';
 
 function Login() {
+  const [signUp, setSignUp] = useState(false);
+
+  const signUpHandler = () => {
+    setSignUp(!signUp)
+  }
+
   return (
     <div className="login">
-      <Header />
       <div className="input-container">
         <h1 className="heading">Welcome Back</h1>
         <input type="text" className="input" placeholder="username" />
@@ -17,9 +24,16 @@ function Login() {
         </Link>
         <div className="new-user">
           <p>New User?</p>
-          <button>Sign up</button>
+          <button onClick={signUpHandler}>Sign up</button>
         </div>
       </div>
+      { signUp &&
+        <>
+          <Overlay onClick={signUpHandler} />
+          <SignUp />
+        </>
+      }
+      <Header />
     </div>
   );
 }

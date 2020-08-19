@@ -22,11 +22,11 @@ function ReturningUser() {
       {
         showText &&
         <>
-      <i className="material-icons">login</i>
       <Link to="/login">
         <span>Returning?</span>
         <Button title="Login" onClick={null} className="returning-button" />
       </Link>
+      <i className="material-icons">login</i>
       </>
       }
     </div>

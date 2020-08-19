@@ -5,11 +5,14 @@ import Button from "../general/Button";
 import Question from "./Question";
 import Navigation from "./Navigation";
 import arch from "../../assets/white_arch.svg";
+import Overlay from '../general/Overlay';
+import SignUp from '../user/SignUp';
 
 function Quiz() {
   const [qNumber, setQNumber] = useState(1);
   const [qTotal, setQTotal] = useState(10);
   const [qComplete, setQComplete] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   useEffect(() => {
     if (qNumber === qTotal) {
@@ -29,6 +32,10 @@ function Quiz() {
     setQNumber(next);
   };
 
+  const signUpHandler = () => {
+    setSignUp(!signUp);
+  }
+
   return (
     <>
       <img src={arch} alt="arch" />
@@ -40,14 +47,19 @@ function Quiz() {
           <Navigation current={qNumber} total={qTotal} navigate={navigate} />
         )}
         {qComplete && (
-          <Link to="/profile">
             <Button
               title="Get Results"
-              onClick={null}
+              onClick={setSignUp}
               className="get-results-button"
             />
-          </Link>
         )}
+        {
+          signUp &&
+            <>
+              <SignUp />
+              <Overlay onClick={signUpHandler}/>
+            </>
+        }
         <Header />
       </div>
     </>

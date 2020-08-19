@@ -22,19 +22,19 @@ function Title() {
   return (
     <div className="title">
       <img src={Logo} alt="" className={`big-logo ${animate && 'an-big-logo'}`} />
-      <h1 className="new-title">New To Travel Voy?</h1>
+      <h1 className="new-title">Welcome</h1>
       <div className={`overlay-top ${animate && 'animate'}`} />
       <div className={`overlay-bottom ${animate && 'animate'}`} />
       <span className={`quiz-link ${animate && 'animate-button'}`} >
       { showText &&
         <>
         <Link to="/quiz" className="spacer">
+          <i className="material-icons">school</i>
           <Button
             title="Take The Quiz!"
             onClick={null}
             className="start-button"
           />
-          <i className="material-icons">school</i>
         </Link>
         </>
       }
