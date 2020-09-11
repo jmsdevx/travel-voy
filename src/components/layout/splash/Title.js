@@ -15,13 +15,12 @@ function Title() {
         setShowText(true)
       }, 200);
       return () => clearTimeout(textTimer)
-    }, 500);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="title">
-      <img src={Logo} alt="" className={`big-logo ${animate && 'an-big-logo'}`} />
       <h1 className="new-title">Welcome</h1>
       <div className={`overlay-top ${animate && 'animate'}`} />
       <div className={`overlay-bottom ${animate && 'animate'}`} />

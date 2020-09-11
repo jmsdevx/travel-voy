@@ -13,7 +13,7 @@ function ReturningUser() {
         setShowText(true)
       }, 200);
       return () => clearTimeout(textTimer)
-    }, 500);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 

@@ -1,0 +1,103 @@
+$grey: #555b6e;
+$dark-blue: #89b0ae;
+$light-blue: #bee3db;
+$white: #faf9f9;
+$orange: #ffd6ba;
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 544px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+      @content;
+  }
+}
+
+@mixin rwd($screen) {
+  @media (min-width: $screen+'px') {
+      @content;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+.home-container {
+  font-family: raisonne;
+
+  .hero {
+    padding: 0;
+    height: 50vh;
+    background: $light-blue;
+
+    .login {
+      height: 0vh;
+    }
+
+    .logo {
+      height: 8vh;
+
+      @include sm {
+        height: 10vh;
+      }
+
+      @include lg {
+        height: 12vh;
+      }
+    }
+
+    .display-1 {
+      @include lg {
+        font-size: 8rem;
+      }
+
+      @include xl {
+        font-size: 10rem;
+      }
+    }
+
+  }
+
+  .photos {
+    height: 50vh;
+    background: $dark-blue;
+  }
+}
