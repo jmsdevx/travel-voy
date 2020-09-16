@@ -1,0 +1,37 @@
+$grey: #555b6e;
+$dark-blue: #89b0ae;
+$light-blue: #bee3db;
+$white: #faf9f9;
+$orange: #ffd6ba;
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+
+      font-family: raisonne;
+
+      .info-pair {
+        display: flex;
+        flex-direction: row;
+
+
+        h4 {
+          font-size: 3rem;
+        }
+      }
+
+      .edit {
+
+
+        button {
+
+        }
+
+        .material-icons {
+          font-size: 3rem;
+        }
+      }
+    }

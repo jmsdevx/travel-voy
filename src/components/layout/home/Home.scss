@@ -62,42 +62,181 @@ $screen-xl-min: 1200px;
 
 .home-container {
   font-family: raisonne;
+  color: $grey;
 
   .hero {
     padding: 0;
-    height: 50vh;
+    height: 60vh;
     background: $light-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .login {
       height: 0vh;
+      font-size: 1.5rem;
     }
 
     .logo {
       height: 8vh;
 
-      @include sm {
-        height: 10vh;
-      }
-
       @include lg {
-        height: 12vh;
+        height: 15vh;
       }
     }
 
     .display-1 {
-      @include lg {
+
+      @include sm {
         font-size: 8rem;
       }
 
-      @include xl {
+
+      @include md {
         font-size: 10rem;
       }
+
+      @include lg {
+        font-size: 12rem;
+      }
+
+      @include xl {
+        font-size: 15rem;
+      }
+
     }
 
+    .quiz-button {
+      background: $orange;
+      border-radius: 0px;
+      border: 0px;
+      width: 100%;
+      color: $grey;
+      height: 8vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      font-size: 2vw;
+      align-items: center;
+
+      color: .15s ease-in-out;
+      background-color: .15s ease-in-out;
+      border-color: .15s ease-in-out;
+      box-shadow: .15s ease-in-out;
+      box-shadow: none;
+
+      p {
+        margin-top: 2vh;
+      }
+      .material-icons {
+        font-size: 3vw;
+      }
+
+    }
+
+    .quiz-button:hover {
+      background-color: $grey;
+      color: white;
+      border-color: white;
+      box-shadow: none;
+    }
+
+    .quiz-button:active {
+      background-color: $grey;
+      color: white;
+      border-color: white;
+      box-shadow: none;
+    }
   }
 
   .photos {
-    height: 50vh;
+    height: 90vh;
     background: $dark-blue;
+
+    .sign-button {
+      background: $light-blue;
+      border-radius: 0px;
+      border: 0px;
+      width: 100%;
+      color: $grey;
+      height: 8vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      font-size: 2vw;
+      align-items: center;
+
+      color: .15s ease-in-out;
+      background-color: .15s ease-in-out;
+      border-color: .15s ease-in-out;
+      box-shadow: .15s ease-in-out;
+      box-shadow: none;
+
+      p {
+        margin-top: 2vh;
+      }
+      .material-icons {
+        font-size: 3vw;
+      }
+    }
+
+    .sign-button:hover {
+      background-color: $grey;
+      color: white;
+      border-color: white;
+      box-shadow: none;
+    }
+
+    .sign-button:focus {
+      background-color: $grey;
+      color: white;
+      border-color: white;
+      box-shadow: none;
+    }
+
+    .photo-container {
+      background: $orange;
+      height: 60vh;
+      margin-top: 5vh;
+      box-shadow: inset 0 0 0.5vw $grey;
+
+      img {
+        height: 40vh;
+        width: 35vw;
+        margin-left: 2vw;
+        margin-top: 5vh;
+        box-shadow: inset 0 0 0  $grey;
+      }
+
+      img:hover {
+        box-shadow: inset 0 0 1.6vw $grey;
+      }
+    }
+
+    .photo-labels {
+      height: 0px;
+      margin-top: -3.75vh;
+      text-align: center;
+
+      h2 {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .discover {
+    background-color: $orange;
+    height: 80vh;
+    text-align: center;
+
+    @include md {
+      height: 120vh;
+    }
+
+    .vid-container {
+      background-color: $dark-blue;
+      height: 50vw;
+      padding-top: 3vh;
+    }
   }
 }

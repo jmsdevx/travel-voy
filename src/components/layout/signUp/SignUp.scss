@@ -1,0 +1,48 @@
+$grey: #555b6e;
+$dark-blue: #89b0ae;
+$light-blue: #bee3db;
+$white: #faf9f9;
+$orange: #ffd6ba;
+
+.signup-container {
+  text-align: center;
+  background-color: $light-blue;
+  height: 50vh;
+  font-family: raisonne;
+  color: $grey;
+
+  .signup-box {
+    border-right: 5px solid $grey;
+    height: 40vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sign-form {
+    width: 60%;
+  }
+
+  .info-box {
+    border-right: 5px solid $grey;
+    height: 40vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+      .info-container {
+
+        width: 100%;
+
+        .info-box {
+          border: 5px solid $grey;
+          height: 20vh;
+        }
+      }
+  }
+
+}
