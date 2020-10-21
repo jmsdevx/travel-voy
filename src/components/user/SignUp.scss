@@ -1,0 +1,40 @@
+$grey: #555b6e;
+$dark-blue: #89b0ae;
+$light-blue: #bee3db;
+$white: #faf9f9;
+$orange: #ffd6ba;
+
+.sign-up {
+    padding: 0;
+    background: $dark-blue;
+    border: 10px solid $light-blue;
+    height: 100%;
+    width: 100%;
+    color: $white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      margin-top: 5vh;
+    }
+
+    .input {
+      margin: 1vh;
+      padding: 1vh;
+      border-radius: 15px;
+      border: white;
+    }
+
+    .sign-up-button {
+      height: 6vh;
+      width: 10vw;
+      margin-top: 3vh;
+      background: $grey;
+      color: $white;
+      border: 3px solid $white;
+      border-radius: 15px;
+      font-family: raisonne;
+    }
+  }

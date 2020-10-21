@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Header from "../layout/header/Header";
-import { Link } from "react-router-dom";
 import Button from "../general/Button";
 import Question from "./Question";
 import Navigation from "./Navigation";

@@ -1,9 +1,11 @@
 import React from "react";
 import './Info.scss';
+import { Button } from 'react-bootstrap';
 
 function Info() {
   return (
     <>
+    <div className="info-container">
       <div className="info">
         <div className="info-pair">
           <i className="material-icons">face</i>
@@ -17,13 +19,14 @@ function Info() {
           <i className="material-icons">home</i>
           <h4 className="info-blurb">Home City</h4>
         </div>
+      </div>
         <div className="edit">
-          <button>
+          <Button className="edit-button">
             <i className="material-icons">edit</i>
             <p>Edit</p>
-          </button>
+          </Button>
         </div>
-      </div>
+    </div>
     </>
   );
 }

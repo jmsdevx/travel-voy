@@ -7,8 +7,16 @@ const { json } = require("body-parser");
 const massive = require("massive");
 const cors = require("cors");
 const port = 3001;
+const mysql = require('mysql');
+const { Client } = require('pg');
 const authController = require("./controllers/authController");
-
+const {
+  testMethod,
+  getUser,
+  createUser,
+  deleteUser,
+  updateUser,
+ } = require('../db/db');
 const { SESSION_SECRET, STRING } = process.env;
 
 //setup
@@ -27,11 +35,28 @@ app.use(
   })
 );
 
-//database
-massive(STRING).then((db) => {
-  app.set("db", db);
-  console.log("db connected");
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
+client.connect();
+const userData = {
+  firstname: 'test',
+  lastname: 'tester',
+  email: 'test@gmail.com',
+  password: 'testpass',
+  id: 12,
+}
+// testMethod(client);
+// getUser(client, 'jmsdevx@gmail.com');
+// createUser(client, userData);
+// deleteUser(client, userData.email);
+// updateUser(client, userData, userData.id)
 
 //auth
 app.post("/auth/register", authController.register);

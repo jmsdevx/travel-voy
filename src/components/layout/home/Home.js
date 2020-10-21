@@ -1,9 +1,10 @@
 import React from 'react';
 import './Home.scss';
 import { Container, Row, Col, Button, ResponsiveEmbed } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Logo from '../../../assets/logo_grey.svg';
-import heroLarge from '../../../assets/hero-large.jpg';
-import heroSmall from '../../../assets/hero-small.jpg';
+import heroLarge from '../../../assets/video/trips.png';
+import heroSmall from '../../../assets/video/calendar.png';
 import SideNav from '../sideNav/SideNav';
 import SignUp from '../signUp/SignUp';
 
@@ -14,10 +15,12 @@ function Home() {
       <SideNav />
       <Container fluid className="hero">
         <Row>
-          <Col md={11} className="text-right login">
-            <p>
-              Login
-            </p>
+          <Col md={11} className="text-right login-home">
+            <Link to="/login">
+              <button>
+                Login
+              </button>
+            </Link>
           </Col>
         </Row>
         <Row>
@@ -33,8 +36,10 @@ function Home() {
         <Row>
           <Col md={{span: 3, offset: 5}} className="text-center align-bottom">
             <Button variant="primary" className="quiz-button" size="lg">
-              <i className="material-icons">school</i>
-              <p>Take The Quiz</p>
+              <Link to="/quiz">
+                <i className="material-icons">school</i>
+                <p>Take The Quiz</p>
+              </Link>
             </Button>
           </Col>
         </Row>
@@ -43,8 +48,10 @@ function Home() {
         <Row>
           <Col md={{span: 3, offset: 4}}>
             <Button variant="primary" className="sign-button" size="lg">
-              Sign Up
-            <i className="material-icons">login</i>
+              <Link to="/login">
+                Sign Up
+                <i className="material-icons">login</i>
+              </Link>
             </Button>
           </Col>
         </Row>
@@ -62,10 +69,10 @@ function Home() {
         </Row>
         <Row className="photo-labels">
           <Col md={{span: 5, offset: 1}}>
-            <h2>Stuff</h2>
+            <h2>Save Trips</h2>
           </Col>
           <Col md={{span: 5, offset: 1}}>
-            <h2>Things</h2>
+            <h2>Plan Ahead</h2>
           </Col>
         </Row>
       </Container>
@@ -78,7 +85,7 @@ function Home() {
         <Row>
           <Col md={{span: 10, offset: 1}} className="vid-container">
             <ResponsiveEmbed aspectRatio='16by9'>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/H9NTn9B_fBg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" title="marketing video" src="https://www.youtube.com/embed/H9NTn9B_fBg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </ResponsiveEmbed>
           </Col>
         </Row>

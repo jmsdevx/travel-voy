@@ -4,34 +4,52 @@ $light-blue: #bee3db;
 $white: #faf9f9;
 $orange: #ffd6ba;
 
-.info {
+.info-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
+  border-right: 5px solid $grey;
 
-      font-family: raisonne;
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    color: $grey;
 
-      .info-pair {
-        display: flex;
-        flex-direction: row;
+        font-family: raisonne;
+
+        .info-pair {
+          display: flex;
+          flex-direction: row;
+
+          .material-icons {
+            font-size: 3vw;
+          }
 
 
-        h4 {
-          font-size: 3rem;
+          h4 {
+            font-size: 3vw;
+          }
         }
+
       }
+          .edit {
 
-      .edit {
+            .edit-button {
+              background-color: $light-blue;
+              font-family: raisonne;
+              height: 8vh;
+              color: $grey;
+              border: none;
+            }
 
 
-        button {
+            .material-icons {
+              font-size: 2rem;
+            }
+          }
+}
 
-        }
-
-        .material-icons {
-          font-size: 3rem;
-        }
-      }
-    }

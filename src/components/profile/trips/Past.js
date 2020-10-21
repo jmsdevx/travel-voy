@@ -27,7 +27,7 @@ function Past() {
       };
       return (
         <div className="pics" key={i}>
-          <img style={imageStyle} />
+          <img style={imageStyle} alt="past trip" />
           <p>{e}</p>
         </div>
       );

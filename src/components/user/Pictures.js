@@ -24,9 +24,9 @@ function Pictures() {
 
   return (
     <div className="pictures">
-      <img className="hero" style={coverStyle} />
+      <img className="hero" style={coverStyle} alt="hero"/>
       <Info />
-      <img className="selfie" style={selfieStyle} />
+      <img className="selfie" style={selfieStyle} alt="profile pic" />
     </div>
   );
 }

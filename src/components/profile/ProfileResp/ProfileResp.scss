@@ -46,6 +46,14 @@ $screen-xl-min: 1200px;
 .profile-container {
   padding: 0 !important;
   text-align: center;
+  font-family: raisonne;
+  color: $grey;
+
+  .border-bottom {
+    border-bottom: 5px solid $grey !important;
+    margin-bottom: 3vh;
+    height: 30vh;
+  }
 
   .hero-image {
     height: 30vh;
@@ -65,6 +73,62 @@ $screen-xl-min: 1200px;
   }
 
   .profile-pic {
+    margin-top: -30vh;
+
+    .selfie {
+      height: 30vw;
+      width: 30vw;
+      border: 5px solid $white;
+
+    }
+
+  }
+
+  .new-trip {
+    display: flex;
+    flex-direction: row;
+    height: 15vh;
+
+    .material-icons {
+      font-size: 4vw;
+      margin-left: 1vw;
+    }
+  }
+
+
+  .upcoming-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+
+        .pic-container {
+          position: relative;
+          height: 20vw;
+          width: 20vw;
+
+      .upcoming-pic {
+        height: 20vw;
+        width: 20vw;
+        margin-top: 2vh;
+      }
+
+      .pic-text {
+        position: absolute;
+        font-size: 2vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(0, 0, 0, 0.6);
+        color: $white;
+        padding: 0.25vw;
+        border-radius: 5px;
+      }
+
+    }
+  }
+
+
+  .past-trips {
 
   }
 }

@@ -28,7 +28,7 @@ function Upcoming() {
       };
       return (
         <div className="pics" key={i}>
-          <img style={imageStyle} />
+          <img style={imageStyle} alt="upcoming trip" />
           <p>{e}</p>
         </div>
       );

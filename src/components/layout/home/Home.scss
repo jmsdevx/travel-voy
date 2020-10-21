@@ -72,17 +72,31 @@ $screen-xl-min: 1200px;
     flex-direction: column;
     justify-content: space-between;
 
-    .login {
+    .login-home {
       height: 0vh;
       font-size: 1.5rem;
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: $grey;
+        z-index: 10;
+        position: absolute;
+      }
     }
 
     .logo {
       height: 8vh;
 
+      @include md {
+        height: 12vh;
+      }
+
       @include lg {
         height: 15vh;
       }
+
+      padding: 0;
     }
 
     .display-1 {
@@ -125,6 +139,16 @@ $screen-xl-min: 1200px;
       box-shadow: .15s ease-in-out;
       box-shadow: none;
 
+      a {
+        color: inherit;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 2vw;
+        align-items: center;
+      }
+
       p {
         margin-top: 2vh;
       }
@@ -160,17 +184,23 @@ $screen-xl-min: 1200px;
       width: 100%;
       color: $grey;
       height: 8vh;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      font-size: 2vw;
-      align-items: center;
+
 
       color: .15s ease-in-out;
       background-color: .15s ease-in-out;
       border-color: .15s ease-in-out;
       box-shadow: .15s ease-in-out;
       box-shadow: none;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 2vw;
+        align-items: center;
+      }
 
       p {
         margin-top: 2vh;

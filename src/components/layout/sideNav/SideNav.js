@@ -1,8 +1,6 @@
 import React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
 import './SideNav.scss';
 import { Link } from "react-router-dom";
-import Logo from '../../../assets/voylogo.svg';
 
 function SideNav(){
   return(
