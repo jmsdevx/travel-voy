@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 import arch from "../../assets/white_arch.svg";
 import Overlay from '../general/Overlay';
 import SignUp from '../user/SignUp';
+import './Quiz.scss';
 
 function Quiz() {
   const [qNumber, setQNumber] = useState(1);
