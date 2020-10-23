@@ -25,11 +25,6 @@ function Home() {
         </Row>
         <Row>
           <Col md={12} className="text-center">
-            <img src={Logo} alt="Travel Voy Logo" className="logo"/>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="text-center">
             <h1 className="display-1">WELCOME</h1>
           </Col>
         </Row>

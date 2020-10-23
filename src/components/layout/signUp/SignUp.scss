@@ -27,7 +27,7 @@ $orange: #ffd6ba;
 
   .info-box {
     border-right: 5px solid $grey;
-    height: 40vh;
+    height: 60vh;
     margin-top: 5vh;
     margin-bottom: 5vh;
     display: flex;
@@ -35,12 +35,19 @@ $orange: #ffd6ba;
     align-items: center;
 
       .info-container {
+        background-color: $grey;
+        height: 30vh;
+        border-radius: 9999rem;
+        border: 5px solid $white;
 
         width: 100%;
 
-        .info-box {
-          border: 5px solid $grey;
+        .preview {
           height: 20vh;
+
+          img {
+            height: 20vh;
+          }
         }
       }
   }

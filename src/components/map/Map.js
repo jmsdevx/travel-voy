@@ -2,17 +2,18 @@ import React from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '100%',
+  height: '100%'
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: -30,
+  lng: -90
 };
 
 function MyComponent() {
   const [map, setMap] = React.useState(null)
+  console.log(process.env.REACT_APP_GOOGLE_KEY)
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -26,7 +27,7 @@ function MyComponent() {
 
   return (
     <LoadScript
-      googleMapsApiKey="YOUR_API_KEY"
+      googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY}
     >
       <GoogleMap
         mapContainerStyle={containerStyle}

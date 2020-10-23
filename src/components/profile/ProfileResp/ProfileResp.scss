@@ -47,12 +47,13 @@ $screen-xl-min: 1200px;
   padding: 0 !important;
   text-align: center;
   font-family: raisonne;
-  color: $grey;
+  color: $white;
+  background: $grey;
 
   .border-bottom {
-    border-bottom: 5px solid $grey !important;
+    border-bottom: 5px solid $white !important;
     margin-bottom: 3vh;
-    height: 30vh;
+    height: 20vh;
   }
 
   .hero-image {
@@ -74,6 +75,7 @@ $screen-xl-min: 1200px;
 
   .profile-pic {
     margin-top: -30vh;
+    height: 45vh;
 
     .selfie {
       height: 30vw;
@@ -84,14 +86,28 @@ $screen-xl-min: 1200px;
 
   }
 
+  .map-outside {
+    border: 5px solid $dark-blue;
+    height: 40vh;
+    width: 50vw;
+  }
+
   .new-trip {
     display: flex;
     flex-direction: row;
-    height: 15vh;
+    height: 9vh;
+    border: 5px solid $light-blue;
+    margin-top: 15vh;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
 
     .material-icons {
       font-size: 4vw;
       margin-left: 1vw;
+      margin-top: 1vh;
     }
   }
 
@@ -99,12 +115,13 @@ $screen-xl-min: 1200px;
   .upcoming-container {
     display: flex;
     flex-direction: column;
-    margin-top: 5vh;
+    margin-bottom: 5vh;
 
         .pic-container {
           position: relative;
           height: 20vw;
           width: 20vw;
+          border: 5px solid white;
 
       .upcoming-pic {
         height: 20vw;
@@ -122,6 +139,12 @@ $screen-xl-min: 1200px;
         color: $white;
         padding: 0.25vw;
         border-radius: 5px;
+      }
+
+      img {
+        &:hover {
+          transform: scale(1.05)
+        }
       }
 
     }

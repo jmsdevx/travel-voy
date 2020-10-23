@@ -8,4 +8,26 @@ $orange: #ffd6ba;
   font-family: raisonne;
   color: $grey;
   text-align: center;
+  background-color: $grey;
+  text-shadow: -3px 3px 0px #bee3db, -5px 5px 0px #89b0ae;
+
+
+  .quiz-title {
+    color: $grey;
+    background-color: $light-blue;
+    height: 15vh;
+    box-shadow: 0 10px 10px $light-blue;
+  }
+
+  .embed-container {
+    height: 65vh;
+    border-radius: 10px;
+    border: 20px solid $orange;
+    padding-top: 5vh;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    box-shadow: inset 3px 3px 20px #ffd6ba;
+  }
 }

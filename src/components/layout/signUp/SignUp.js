@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import './SignUp.scss';
+import pic1 from '../../../assets/video/cost.png';
+import pic2 from '../../../assets/video/notifications.png';
 
 function SignUp(){
   return (
@@ -26,9 +28,13 @@ function SignUp(){
         <Col md={6} className="info-box">
           <h5 className="display-4">Coming Soon</h5>
           <Row className="info-container">
-            <Col md={{span: 4, offset: 1}} className="info-box">
+            <Col md={{span: 4, offset: 0}} className="preview">
+              <img src={pic1} alt="" />
+            <h4>Cost Splitting</h4>
             </Col>
-            <Col md={{span: 4, offset: 2}} className="info-box">
+            <Col md={{span: 4, offset: 0}} className="preview">
+            <img src={pic2} alt="" />
+            <h4>Notifications</h4>
             </Col>
           </Row>
         </Col>

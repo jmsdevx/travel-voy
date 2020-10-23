@@ -63,6 +63,7 @@ $screen-xl-min: 1200px;
 .home-container {
   font-family: raisonne;
   color: $grey;
+  text-shadow: -3px 3px 0px $light-blue, -5px 5px 0px $dark-blue;
 
   .hero {
     padding: 0;
@@ -78,7 +79,10 @@ $screen-xl-min: 1200px;
 
       button {
         background-color: transparent;
-        border: none;
+        border: 3px solid $dark-blue;
+        border-radius: 9999em;
+        margin-top: 1vh;
+        padding: 0vw 1vw;
         color: $grey;
         z-index: 10;
         position: absolute;
@@ -121,11 +125,10 @@ $screen-xl-min: 1200px;
     }
 
     .quiz-button {
-      background: $orange;
       border-radius: 0px;
       border: 0px;
       width: 100%;
-      color: $grey;
+      color: white;
       height: 8vh;
       display: flex;
       flex-direction: row;
@@ -133,20 +136,32 @@ $screen-xl-min: 1200px;
       font-size: 2vw;
       align-items: center;
 
+      &:hover {
+        transform: scale(1.02)
+      }
+
+
+      background-color: $grey;
+      color: white;
+      text-shadow: -2px 2px 0px $dark-blue;
+      border-top: 3px solid $white;
+      border-left: 3px solid $white;
+      border-right: 3px solid $white;
+
       color: .15s ease-in-out;
       background-color: .15s ease-in-out;
       border-color: .15s ease-in-out;
       box-shadow: .15s ease-in-out;
-      box-shadow: none;
 
       a {
         color: inherit;
         text-decoration: none;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-between;
         font-size: 2vw;
         align-items: center;
+        width: 80%;
       }
 
       p {
@@ -158,12 +173,15 @@ $screen-xl-min: 1200px;
 
     }
 
-    .quiz-button:hover {
-      background-color: $grey;
-      color: white;
-      border-color: white;
-      box-shadow: none;
-    }
+    // .quiz-button:hover {
+    //   background: $orange;
+    //   color: $grey;
+    //   text-shadow: -2px 2px 0px $light-blue;
+    //   border-top: 3px solid $grey;
+    //   border-left: 3px solid $grey;
+    //   border-right: 3px solid $grey;
+
+    // }
 
     .quiz-button:active {
       background-color: $grey;
@@ -175,21 +193,31 @@ $screen-xl-min: 1200px;
 
   .photos {
     height: 90vh;
-    background: $dark-blue;
+    background: $grey;
 
     .sign-button {
-      background: $light-blue;
       border-radius: 0px;
       border: 0px;
       width: 100%;
-      color: $grey;
       height: 8vh;
+      background-color: $dark-blue;
+      color: white;
+      text-shadow: -2px 2px 0px $grey;
+      border-bottom: 3px solid $white;
+      border-left: 3px solid $white;
+      border-right: 3px solid $white;
+
+      &:hover {
+        transform: scale(1.02)
+      }
+
 
 
       color: .15s ease-in-out;
       background-color: .15s ease-in-out;
       border-color: .15s ease-in-out;
       box-shadow: .15s ease-in-out;
+      text-shadow: .15s ease-in-out;
       box-shadow: none;
 
       a {
@@ -210,12 +238,16 @@ $screen-xl-min: 1200px;
       }
     }
 
-    .sign-button:hover {
-      background-color: $grey;
-      color: white;
-      border-color: white;
-      box-shadow: none;
-    }
+    // .sign-button:hover {
+    //   background: $light-blue;
+    //   color: $grey;
+    //   text-shadow: -2px 2px 0px $white;
+
+    //   border-color: white;
+    //   border-bottom: 3px solid $grey;
+    //   border-left: 3px solid $grey;
+    //   border-right: 3px solid $grey;
+    // }
 
     .sign-button:focus {
       background-color: $grey;
@@ -225,21 +257,16 @@ $screen-xl-min: 1200px;
     }
 
     .photo-container {
-      background: $orange;
+      background: $dark-blue;
       height: 60vh;
       margin-top: 5vh;
-      box-shadow: inset 0 0 0.5vw $grey;
-
+      // box-shadow: inset 5px -50px 30px #555b6e;
+      box-shadow: inset 5px 5px 50px #555b6e;
       img {
         height: 40vh;
         width: 35vw;
         margin-left: 2vw;
         margin-top: 5vh;
-        box-shadow: inset 0 0 0  $grey;
-      }
-
-      img:hover {
-        box-shadow: inset 0 0 1.6vw $grey;
       }
     }
 
@@ -250,6 +277,8 @@ $screen-xl-min: 1200px;
 
       h2 {
         font-size: 3rem;
+        color: $orange;
+        text-shadow: -2px 2px 0px $dark-blue, -2px 2px 0px $light-blue;
       }
     }
   }
@@ -260,6 +289,14 @@ $screen-xl-min: 1200px;
     text-align: center;
 
     @include md {
+      height: 70vh;
+    }
+
+    @include lg {
+      height: 80vh;
+    }
+
+    @include xl {
       height: 120vh;
     }
 
@@ -267,6 +304,10 @@ $screen-xl-min: 1200px;
       background-color: $dark-blue;
       height: 50vw;
       padding-top: 3vh;
+      margin-top: 5vh;
+      -moz-box-shadow:    inset 3px 3px 15px $grey;
+   -webkit-box-shadow: inset 3px 3px 15px $grey;
+   box-shadow:         inset 3px 3px 15px $grey;
     }
   }
 }

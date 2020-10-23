@@ -13,11 +13,16 @@ import amsterdam from '../../../assets/Amsterdam.jpg';
 import dubai from '../../../assets/Dubai.jpg';
 import morocco from '../../../assets/Morocco.jpg';
 import gothenburg from '../../../assets/Gothenburg.jpg';
+import Map from '../../map/Map';
+import silo from '../../../assets/silo.jpeg';
+import back from '../../../assets/back.jpeg';
+import beach from '../../../assets/beach.jpg';
+import mystery from '../../../assets/mystery.jpg';
 
 
 function ProfileResp() {
   const heroStyle = {
-    backgroundImage: `url(${hero})`,
+    backgroundImage: `url(${beach})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
   }
@@ -31,17 +36,20 @@ function ProfileResp() {
           <Info />
         </Col>
         <Col md={5} className="profile-pic">
-          <Image src={selfie} roundedCircle className="selfie" />
+          <Image src={mystery} roundedCircle className="selfie" />
         </Col>
       </Row>
       <Row>
-        <Col md={{span: 5, offset: 1 }} className="new-trip">
+        <Col md={{span: 3, offset: 2 }} className="new-trip">
           <h2 className="display-4">New Trip</h2>
           <i className="material-icons">add_circle_outline</i>
         </Col>
+        <Col md={{span: 5, offset: 1}} className="map-outside p-0">
+          <Map />
+        </Col>
       </Row>
       <Row className="upcoming-container">
-        <Col md={{span: 3, offset: 1}} className="upcoming-title">
+        <Col md={{span: 4, offset: 1}} className="upcoming-title">
           <h2 className="display-4">Upcoming Trips</h2>
         </Col>
         <Row>
@@ -72,7 +80,7 @@ function ProfileResp() {
         </Row>
       </Row>
       <Row className="upcoming-container">
-      <Col md={{span: 2, offset: 1}} className="upcoming-title">
+      <Col md={{span: 3, offset: 1}} className="upcoming-title">
           <h2 className="display-4">Past Trips</h2>
         </Col>
         <Row>
