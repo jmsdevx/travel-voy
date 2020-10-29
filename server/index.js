@@ -58,9 +58,24 @@ const userData = {
 // deleteUser(client, userData.email);
 // updateUser(client, userData, userData.id)
 
-//auth
-app.post("/auth/register", authController.register);
-app.post("/auth/login", authController.login);
+//************AUTH & USER CONTROLS************//
+
+//GET SESSION
+app.get("/api/session", (req, res) => {
+  if (req.session.user){
+    res.status(200).send(req.session.user)
+  } else {
+    res.status(403).send('User is not logged in.')
+  }
+})
+
+//REGISTER
+app.post("/api/register", (req, res) => {
+  createUser(client, req.body, req, res);
+  getUser(client, req.body.email, req, res);
+} );
+//LOGIN
+app.post("/api/login", authController.login);
 
 //db
 

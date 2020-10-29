@@ -8,17 +8,15 @@ module.exports = {
       client.end();
     })
   },
-  createUser: (client, userData) => {
-    const { firstname, lastname, email, password } = userData;
+  createUser: (client, userData, req, res) => {
+    const { firstName, lastName, email, password } = userData;
     const query = `
     INSERT INTO user_table(firstname, lastname, user_email, user_password)
-    VALUES('${firstname}', '${lastname}', '${email}', '${password}')
+    VALUES('${firstName}', '${lastName}', '${email}', '${password}')
     `
     console.log(query);
-    // (${firstname}, ${lastname}, ${email}, ${password})
     client.query(query)
     .then(response => {
-      console.log(response);
       return response.command;
     })
     .catch(err => {
@@ -26,23 +24,32 @@ module.exports = {
       return(err);
     })
   },
-  getUser: (client, email) => {
+  getUser: (client, email, req, res) => {
     const query = `SELECT * FROM user_table WHERE user_email = '${email}'`
     client.query(query)
     .then(response => {
-      console.log(response.rows[0]);
-      return response.rows[0];
+      const { firstname, lastname, user_email, id } = response.rows[0];
+      const userData = {
+        firstName: firstname,
+        lastName: lastname,
+        email: user_email,
+        id: id
+      }
+      console.log('SESSION')
+      console.log(req.session);
+      req.session.user = userData;
+      console.log(req.session);
+      res.status(200).send(userData);
     })
     .catch(err => {
       console.log(err);
       return (err);
     })
   },
-  deleteUser: (client, email) => {
+  deleteUser: (client, email, req, res) => {
     const query = `DELETE FROM user_table WHERE user_email = '${email}'`
     client.query(query)
     .then(response => {
-      console.log(response);
       return response.command;
     })
     .catch(err => {
@@ -50,7 +57,7 @@ module.exports = {
       return (err);
     })
   },
-  updateUser: (client, userData, id) => {
+  updateUser: (client, userData, id, req, res) => {
     const { firstname, lastname, email, password } = userData;
 
     const query = `
@@ -58,7 +65,6 @@ module.exports = {
     `;
     client.query(query)
     .then(response => {
-      console.log(response);
       return response.command;
     })
     .catch(err => {

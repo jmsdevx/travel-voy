@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Container, Row, Col, ResponsiveEmbed } from 'react-bootstrap';
 import Button from '../general/Button';
 import SideNav from '../layout/sideNav/SideNav';
@@ -10,13 +11,25 @@ import Overlay from '../general/Overlay';
 import './Login.scss';
 
 function Login() {
-  const [signUp, setSignUp] = useState(false);
+  //get session
+  const defaultUserObject = {firstName: '', lastName: '', email: '', id: ''}
+  const [userData, setUserData] = useState({defaultUserObject})
+  const [gotSession, setSession] = useState(false);
+  useEffect(() => {
+    axios.get('/api/session')
+    .then(response => {
+      console.log('got session');
+      console.log(response.data);
+      setUserData(response.data);
+      setSession(true);
+    })
+  }, [gotSession]);
 
+  //show sign up state
+  const [signUp, setSignUp] = useState(false);
   const signUpHandler = () => {
     setSignUp(!signUp)
   }
-
-
 
   return(
     <Container fluid className="login-container p-0">
