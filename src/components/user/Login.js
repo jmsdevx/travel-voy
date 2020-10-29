@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import { Container, Row, Col, ResponsiveEmbed } from 'react-bootstrap';
 import Button from '../general/Button';
 import SideNav from '../layout/sideNav/SideNav';
@@ -31,6 +32,38 @@ function Login() {
     setSignUp(!signUp)
   }
 
+  //login text handler
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const changeHandler = (e) => {
+    if (e.target.id === 'email') {
+      setEmail(e.target.value)
+    }
+    if (e.target.id === 'password') {
+      setPassword(e.target.value)
+    }
+  }
+
+  const [redirect, setRedirect] = useState(false);
+  const submitLogin = () => {
+    axios.post('/api/login', {email, password})
+    .then(response => {
+      console.log('success')
+      console.log(response.data);
+      if (typeof response.data === 'string') {
+        if (response.data.includes('password')) {
+          window.alert(response.data)
+        } else if (response.data.includes('email')) {
+          window.alert(response.data)
+        }
+      } else {
+        setUserData(response.data);
+        setSession(true);
+        setRedirect(true);
+      }
+    })
+  }
+
   return(
     <Container fluid className="login-container p-0">
       <SideNav />
@@ -39,13 +72,10 @@ function Login() {
         <Col md={6} className="login-right p-0">
           <div className="input-container">
             <h1 className="heading">Welcome Back</h1>
-            <input type="text" className="input" placeholder="email" />
-            <input type="password" className="input" placeholder="password" />
+            <input type="text" className="input" placeholder="email" id="email" onChange={changeHandler} />
+            <input type="password" className="input" placeholder="password" id="password" onChange={changeHandler} />
             <p className="forgot">Forgot Password?</p>
-            <Link to="/profile">
-              <Button title="Login" onClick={null} className="log-button" />
-            </Link>
-
+            <Button title="Login" onClick={null} className="log-button" onClick={submitLogin} />
           </div>
         </Col>
       </Row>
@@ -65,6 +95,17 @@ function Login() {
         </Col>
         <Col md={6} className="hero-right" />
       </Row>
+      {
+        redirect &&
+        <Redirect
+          push
+          to={{
+            pathname: "/profile",
+            search: `${userData.email}`,
+            state: { userData }
+          }}
+        />
+      }
     </Container>
   );
 }

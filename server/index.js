@@ -14,6 +14,7 @@ const {
   testMethod,
   getUser,
   createUser,
+  getLogin,
   deleteUser,
   updateUser,
  } = require('../db/db');
@@ -75,7 +76,9 @@ app.post("/api/register", (req, res) => {
   getUser(client, req.body.email, req, res);
 } );
 //LOGIN
-app.post("/api/login", authController.login);
+app.post("/api/login", (req, res) => {
+  getLogin(client, req.body.email, req.body.password, req, res);
+});
 
 //db
 

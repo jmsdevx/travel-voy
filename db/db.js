@@ -21,7 +21,7 @@ module.exports = {
     })
     .catch(err => {
       console.log(err);
-      return(err);
+      res.status(500).send(err);
     })
   },
   getUser: (client, email, req, res) => {
@@ -43,7 +43,36 @@ module.exports = {
     })
     .catch(err => {
       console.log(err);
-      return (err);
+      res.status(500).send(err);
+    })
+  },
+  getLogin: (client, email, password, req, res) => {
+    const query = `SELECT * FROM user_table WHERE user_email = '${email}'`
+    client.query(query)
+    .then(response => {
+      console.log(response);
+      console.log(response.rows.length);
+      if (response.rows.length === 0){
+        res.status(200).send('Cannot find this email address.  Please try another.')
+      } else {
+        const { firstname, lastname, user_email, user_password, id } = response.rows[0];
+        const userData = {
+          firstName: firstname,
+          lastName: lastname,
+          email: user_email,
+          id: id
+        }
+        if (password !== user_password){
+          res.status(200).send('Incorrect password.  Please try again.')
+        } else {
+          req.session.user = userData;
+          res.status(200).send(userData);
+        }
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err)
     })
   },
   deleteUser: (client, email, req, res) => {

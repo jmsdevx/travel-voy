@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import './SignUp.scss';
 import pic1 from '../../../assets/video/cost.png';
 import pic2 from '../../../assets/video/notifications.png';
@@ -13,8 +14,6 @@ function SignUp(){
   useEffect(() => {
     axios.get('/api/session')
     .then(response => {
-      console.log('got session');
-      console.log(response.data);
       setUserData(response.data);
       setSession(true)
     })
@@ -43,10 +42,12 @@ function SignUp(){
   }
 
   //submit to register
+  const [redirect, setRedirect] = useState(false);
   const submitHandler = () => {
     axios.post('/api/register', {firstName, lastName, email, password})
     .then(response => {
-      console.log(response)
+      setUserData(response.data);
+      setRedirect(true);
     })
     .catch(err => console.log(err))
   }
@@ -89,6 +90,17 @@ function SignUp(){
           </Row>
         </Col>
       </Row>
+      {
+        redirect &&
+        <Redirect
+          push
+          to={{
+            pathname: "/profile",
+            search: `${userData.email}`,
+            state: { userData }
+          }}
+        />
+      }
     </Container>
   )
 }
