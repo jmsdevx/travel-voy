@@ -19,37 +19,37 @@ $orange: #ffd6ba;
     align-items: center;
     height: 100%;
 
-        font-family: raisonne;
+    font-family: raisonne;
 
-        .info-pair {
-          display: flex;
-          flex-direction: row;
+    .info-pair {
+      display: flex;
+      flex-direction: row;
 
-          .material-icons {
-            font-size: 3vw;
-          }
-
-
-          h4 {
-            font-size: 3vw;
-          }
-        }
-
+      .material-icons {
+        font-size: 3vw;
       }
-          .edit {
-
-            .edit-button {
-              background-color: $light-blue;
-              font-family: raisonne;
-              height: 8vh;
-              color: $grey;
-              border: none;
-            }
 
 
-            .material-icons {
-              font-size: 2rem;
-            }
-          }
+      h4 {
+        font-size: 3vw;
+      }
+    }
+
+  }
+
+  .edit {
+
+    .edit-button {
+      background-color: $light-blue;
+      font-family: raisonne;
+      height: 8vh;
+      color: $grey;
+      border: none;
+    }
+
+
+    .material-icons {
+      font-size: 2rem;
+    }
+  }
 }
-

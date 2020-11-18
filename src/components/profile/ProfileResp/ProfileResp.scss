@@ -18,28 +18,28 @@ $screen-xl-min: 1200px;
 // Small devices
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {
-      @content;
+    @content;
   }
 }
 
 // Medium devices
 @mixin md {
   @media (min-width: #{$screen-md-min}) {
-      @content;
+    @content;
   }
 }
 
 // Large devices
 @mixin lg {
   @media (min-width: #{$screen-lg-min}) {
-      @content;
+    @content;
   }
 }
 
 // Extra large devices
 @mixin xl {
   @media (min-width: #{$screen-xl-min}) {
-      @content;
+    @content;
   }
 }
 
@@ -54,6 +54,21 @@ $screen-xl-min: 1200px;
     border-bottom: 5px solid $white !important;
     margin-bottom: 3vh;
     height: 20vh;
+  }
+
+  .logout-button {
+    background-color: $light-blue;
+    border-color: $light-blue;
+    color: $grey;
+  }
+
+  .logout-button:hover,
+  .logout-button:active,
+  .logout-button:focus,
+  .logout-button {
+    background-color: $light-blue !important;
+    border-color: $light-blue !important;
+    color: $grey !important;
   }
 
   .hero-image {
@@ -117,11 +132,11 @@ $screen-xl-min: 1200px;
     flex-direction: column;
     margin-bottom: 5vh;
 
-        .pic-container {
-          position: relative;
-          height: 20vw;
-          width: 20vw;
-          border: 5px solid white;
+    .pic-container {
+      position: relative;
+      height: 20vw;
+      width: 20vw;
+      border: 5px solid white;
 
       .upcoming-pic {
         height: 20vw;
@@ -151,7 +166,5 @@ $screen-xl-min: 1200px;
   }
 
 
-  .past-trips {
-
-  }
+  .past-trips {}
 }
