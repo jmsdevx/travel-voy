@@ -1,5 +1,7 @@
 const db = require('./index');
 
+// Do not use transactions with the pool.query method.
+
 module.exports = {
   createUser: async (userData) => {
     try {
@@ -21,6 +23,7 @@ module.exports = {
       throw (err);
     }
   },
+
   getUser: async (email) => {
 
     try {

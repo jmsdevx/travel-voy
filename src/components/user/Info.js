@@ -5,10 +5,10 @@ import EditProfile from '../profile/ProfileResp/EditProfile';
 import * as actions from '../ducks/profile/actions';
 import { connect } from 'react-redux';
 
-function Info({ profileData, getProfile }) {
+function Info({ profileData, getProfile, userId }) {
 
   useEffect(() => {
-    getProfile();
+    getProfile(userId);
   }, []);
 
   const [showModal, setShowModal] = useState(false);
@@ -47,7 +47,8 @@ function Info({ profileData, getProfile }) {
 
 const mapStateToProps = state => {
   return {
-    profileData: state.profile.data
+    profileData: state.profile.data,
+    userId: state.auth.user.id
   }
 }
 

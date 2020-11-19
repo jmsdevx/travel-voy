@@ -6,6 +6,10 @@ const {
   createUser
 } = require('../db/user');
 
+const {
+  addProfile
+} = require('../db/profile');
+
 // local
 passport.use('local', new localStrategy({
   usernameField: 'email'
@@ -46,10 +50,11 @@ passport.use('sign-up', new localStrategy({
 
   try {
     const existingUser = await getUser(email);
+    console.log('existingUser');
     if (existingUser) {
-      return done(true, false, {
+      return done({
         "message": "User already exists"
-      })
+      }, false)
     }
 
     const salt = bcrypt.genSaltSync(10);
@@ -62,18 +67,25 @@ passport.use('sign-up', new localStrategy({
       password: hashedPassword
     });
 
-    console.log(res);
+    console.log('res', res);
 
     const user = await getUser(email);
     delete user.password;
+
+    const profileRes = await addProfile({
+      homeCity: 'Madagascar',
+      travelerType: 'Secret Traveler'
+    }, user.id);
+
+    console.log('profileRes', profileRes);
 
     return done(null, user);
 
   } catch (err) {
     console.log(err);
-    return done(true, false, {
+    return done({
       "message": "Server error"
-    })
+    }, false)
   }
 }));
 

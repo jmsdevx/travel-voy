@@ -23,7 +23,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../ducks/auth/actions';
 
 
-function ProfileResp({ logout }) {
+function ProfileResp({ logout, profilePicture }) {
   const heroStyle = {
     backgroundImage: `url(${beach})`,
     backgroundSize: "cover",
@@ -39,7 +39,7 @@ function ProfileResp({ logout }) {
             <Info />
           </Col>
           <Col md={5} className="profile-pic">
-            <Image src={mystery} roundedCircle className="selfie" />
+            <Image src={profilePicture ? profilePicture : mystery} roundedCircle className="selfie" />
           </Col>
           <Col>
             <Button className="logout-button" onClick={logout}>Logout</Button>
@@ -122,6 +122,11 @@ function ProfileResp({ logout }) {
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    profilePicture: state.profile.data.profilePicture
+  }
+}
 
 
-export default connect(null, actions)(ProfileResp);
+export default connect(mapStateToProps, actions)(ProfileResp);

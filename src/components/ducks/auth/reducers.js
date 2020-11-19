@@ -1,8 +1,7 @@
 import {
   SIGN_UP_FULFILLED,
   SIGN_UP_REJECTED,
-  SET_AUTH,
-  RESET_AUTH,
+  GET_AUTH_SUCCESS,
   LOGIN_FULFILLED,
   LOGIN_CHANGE,
   LOGIN_FORM_RESET,
@@ -20,6 +19,15 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    case GET_AUTH_SUCCESS:
+
+      console.log('GET_AUTH_SUCCESS')
+      return {
+        ...state,
+        isAuth: true,
+        user: action.payload,
+      };
 
     case SIGN_UP_FULFILLED:
       return {

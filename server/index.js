@@ -87,8 +87,10 @@ app.use((req, res, next) => {
 });
 
 const authRoute = require('./routes/auth');
+const profileRoute = require('./routes/profile');
 
 app.use('/api/auth', authRoute);
+app.use('/api/profile', profileRoute);
 
 app.use((req, res, next) => {
   const error = new Error('route not found.');
@@ -99,9 +101,9 @@ app.use((req, res, next) => {
 // error handling
 app.use((err, req, res, next) => {
   if (err) {
-    console.log('Error catched...');
-    if (err.statusCode !== 500) {
-      console.log(err.message);
+    console.log('Error catched...', err.statusCode);
+    if (err.statusCode && err.statusCode !== 500) {
+      console.log(err);
       return res.status(err.statusCode).json({
         message: err.message
       });

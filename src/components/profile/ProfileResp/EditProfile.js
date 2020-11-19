@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import './EditProfile.scss';
 import { connect } from 'react-redux';
 import * as actions from '../../ducks/profile/actions';
+import mystery from '../../../assets/mystery.jpg';
 
-function EditProfile({ showModal, setShowModal, profileFormData, profileChange, profileUpdate }) {
+function EditProfile({
+  showModal,
+  setShowModal,
+  profileFormData,
+  profileChange,
+  profileUpdate,
+  updateProfilePicture,
+  profilePicture
+}) {
 
   const changeHandler = (e) => {
     profileChange({
@@ -14,6 +23,19 @@ function EditProfile({ showModal, setShowModal, profileFormData, profileChange, 
 
   const submitLogin = () => {
     profileUpdate();
+  }
+
+  const inputFileRef = useRef(null);
+
+  const onFileChange = (e) => {
+    console.log(e.target.files);
+
+    updateProfilePicture(e.target.files[0]);
+
+  }
+
+  const handleBtnClick = () => {
+    inputFileRef.current.click();
   }
 
   return (
@@ -35,9 +57,19 @@ function EditProfile({ showModal, setShowModal, profileFormData, profileChange, 
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-5 edit-profile-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU" />
+                  <img alt="" className="rounded-circle mt-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
                   <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span>
+                  <button class="btn btn-primary image-upload-btn mt-2" type="button" onClick={handleBtnClick}>
+                    <input
+                      type="file"
+                      ref={inputFileRef}
+                      onChange={onFileChange}
+                      className="d-none"
+                    />
+                    <i className="material-icons">camera</i>&nbsp;
+                    <span>Change Photo</span>
+                  </button>
                 </div>
               </div>
               <div className="col-md-8 border-right">
@@ -88,7 +120,8 @@ function EditProfile({ showModal, setShowModal, profileFormData, profileChange, 
 
 const mapStateToProps = state => {
   return {
-    profileFormData: state.profile.profileFormData
+    profileFormData: state.profile.profileFormData,
+    profilePicture: state.profile.data.profilePicture
   }
 }
 

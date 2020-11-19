@@ -4,16 +4,16 @@ exports.register = async (req, res, next) => {
 
   passport.authenticate('sign-up', (err, user, info) => {
     if (err) {
-      console.log(err);
+      console.log('err', err);
       return res.status(422).json({
         "message": err.message
       })
     }
 
     if (!user) {
-      console.log(info);
+      console.log(err);
       return res.status(422).json({
-        "message": info.message
+        "message": err.message
       })
     }
 
@@ -41,7 +41,10 @@ exports.login = async (req, res, next) => {
           return next(err);
         }
 
-        return res.json(req.user);
+        return res.json({
+          'message': 'success',
+          data: req.user
+        });
       });
     }
 
@@ -54,7 +57,10 @@ exports.login = async (req, res, next) => {
 exports.session = (req, res, next) => {
   console.log('session ', req.session);
   if (req.session.passport.user) {
-    res.status(200).send(req.session.passport.user);
+    res.json({
+      'message': 'success',
+      data: req.session.passport.user
+    });
   } else {
     res.status(403).send('User is not logged in.');
   }

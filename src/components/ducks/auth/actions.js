@@ -5,7 +5,7 @@ import {
   SIGN_UP_FULFILLED,
   SIGN_UP_REJECTED,
   SET_AUTH,
-  RESET_AUTH,
+  GET_AUTH_SUCCESS,
   LOGIN_FULFILLED,
   LOGIN_PENDING,
   LOGIN_REJECTED,
@@ -19,13 +19,18 @@ export const getAuth = () => {
     console.log(1);
 
     try {
-      const response = await axios.get('/api/auth/session');
-      console.log(response);
+      axios.get('/api/auth/session')
+        .then(response => {
+          console.log(response);
+          dispatch({
+            type: GET_AUTH_SUCCESS,
+            payload: response.data.data
+          });
+        })
+        .catch(err => {
+          throw err;
+        });
 
-      dispatch({
-        type: SIGN_UP_FULFILLED,
-        payload: response.data
-      });
     } catch (err) {
       console.log(err);
     }
@@ -33,7 +38,6 @@ export const getAuth = () => {
     // handleError({}, 'Not found error');
   }
 }
-
 
 export const signupUser = (data) => {
   return async (dispatch, getState) => {
@@ -60,14 +64,13 @@ export const signupUser = (data) => {
 
         dispatch({
           type: SIGN_UP_FULFILLED,
-          payload: response.data
+          payload: response.data.data
         });
         // dispatch(signupReset());
         dispatch(push('/profile'));
       })
       .catch(err => console.log(err));
     // toast(response.message, { type: 'success' });
-
   }
 }
 
@@ -94,11 +97,10 @@ export const loginUser = () => {
 
         dispatch({
           type: LOGIN_FULFILLED,
-          payload: response.data
+          payload: response.data.data
         });
         dispatch(loginReset());
         dispatch(push('/profile'));
-
       });
   }
 }

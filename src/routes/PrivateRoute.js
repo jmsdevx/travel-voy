@@ -6,7 +6,6 @@ import { Route, Redirect } from 'react-router';
 
 function PrivateRoute({ isAuth, component: Component, ...rest }) {
   // console.log(props);
-
   return (
 
     <Route {...rest} render={(props) => isAuth ?
