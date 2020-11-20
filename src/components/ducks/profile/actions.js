@@ -6,7 +6,9 @@ import {
   PROFILE_UPDATED,
   PROFILE_FORM_RESET,
   GET_PROFILE_SUCCESS,
-  PROFILE_PICTURE_UPDATED
+  PROFILE_PICTURE_UPDATED,
+  BACKGROUND_PICTURE_UPDATED,
+  BACKGROUND_PICTURE_UPDATE_PENDING
 } from './types';
 
 export const getProfile = (id) => {
@@ -49,12 +51,11 @@ export const profileUpdate = () => {
     const {
       firstName,
       lastName,
-      email,
       homeCity,
       travelerType
     } = data;
 
-    axios.put('/api/profile', { id: userId, firstName, lastName, email, homeCity, travelerType })
+    axios.put('/api/profile', { id: userId, firstName, lastName, homeCity, travelerType })
       .then(response => {
         console.log(response);
 
@@ -97,6 +98,35 @@ export const updateProfilePicture = (file) => {
 
     dispatch({
       type: PROFILE_PICTURE_UPDATED,
+      payload: response.data.data
+    });
+
+  }
+}
+
+export const updateBackgroundPicture = (file) => {
+  return async (dispatch, getState) => {
+
+    const userId = getState().profile.data.id;
+
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('id', userId);
+
+    dispatch({
+      type: BACKGROUND_PICTURE_UPDATE_PENDING,
+    });
+
+    const response = await axios.put('/api/profile/background-picture', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    });
+
+    console.log('success', response);
+
+    dispatch({
+      type: BACKGROUND_PICTURE_UPDATED,
       payload: response.data.data
     });
 

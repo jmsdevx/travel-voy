@@ -165,6 +165,14 @@ $screen-xl-min: 1200px;
     }
   }
 
+  .show-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    height: 65%;
+  }
+
 
   .past-trips {}
 }

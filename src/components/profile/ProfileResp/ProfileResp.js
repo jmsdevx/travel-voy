@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container, Row, Col, Jumbotron, Image, Button } from 'react-bootstrap';
 import SideNav from '../../layout/sideNav/SideNav';
 import hero from '../../../assets/Amsterdam.jpg';
@@ -18,22 +18,78 @@ import silo from '../../../assets/silo.jpeg';
 import back from '../../../assets/back.jpeg';
 import beach from '../../../assets/beach.jpg';
 import mystery from '../../../assets/mystery.jpg';
+import {
+  Dropdown,
+  Spinner
+} from 'react-bootstrap';
 
 import { connect } from 'react-redux';
 import * as actions from '../../ducks/auth/actions';
+import * as profileActions from '../../ducks/profile/actions';
 
-
-function ProfileResp({ logout, profilePicture }) {
+function ProfileResp({
+  logout,
+  profilePicture,
+  backgroundPicture,
+  updateBackgroundPicture,
+  bgImgageLoading
+}) {
   const heroStyle = {
-    backgroundImage: `url(${beach})`,
+    backgroundImage: `url(${backgroundPicture ? backgroundPicture : beach})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    opacity: bgImgageLoading ? "0.5" : 1
   }
+
+  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    <a
+      ref={ref}
+      onClick={e => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      <span style={{ 'cursor': 'pointer', width: '2rem', height: '2rem' }} class="material-icons">more_horiz</span>
+      {children}
+    </a>
+  ));
+
+  const inputFileRef = useRef(null);
+
+  const onFileChange = (e) => {
+    console.log(e.target.files);
+
+    updateBackgroundPicture(e.target.files[0]);
+  }
+
+  const handleBtnClick = () => {
+    inputFileRef.current.click();
+  }
+
   return (
     <>
       <SideNav />
       <Container fluid className="profile-container">
-        <Jumbotron fluid style={heroStyle} className="hero-image" />
+        <Jumbotron fluid style={heroStyle} className="hero-image p-0 text-right pr-4 pt-2">
+          <Dropdown>
+            <Dropdown.Toggle as={CustomToggle}>
+            </Dropdown.Toggle>
+            <Dropdown.Menu size="sm" title="">
+              {/* <Dropdown.Header>Options</Dropdown.Header> */}
+              <input
+                type="file"
+                ref={inputFileRef}
+                onChange={onFileChange}
+                className="d-none"
+              />
+              <Dropdown.Item onClick={handleBtnClick}>Update Background Image</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <div className={bgImgageLoading ? "show-spinner" : "d-none"}>
+            <Spinner animation="border" />
+          </div>
+        </Jumbotron>
         <Row className="border-bottom">
           <Col md={{ span: 5, offset: 1 }} className="profile-info">
             <Info />
@@ -124,9 +180,11 @@ function ProfileResp({ logout, profilePicture }) {
 
 const mapStateToProps = (state) => {
   return {
-    profilePicture: state.profile.data.profilePicture
+    profilePicture: state.profile.data.profilePicture,
+    backgroundPicture: state.profile.data.backgroundPicture,
+    bgImgageLoading: state.profile.bgImgageLoading
   }
 }
 
 
-export default connect(mapStateToProps, actions)(ProfileResp);
+export default connect(mapStateToProps, { ...profileActions, ...actions })(ProfileResp);

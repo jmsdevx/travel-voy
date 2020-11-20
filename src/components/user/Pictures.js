@@ -22,12 +22,14 @@ function Pictures() {
     borderRadius: "50%",
   };
 
+
+
   return (
     <div className="pictures">
-      <img className="hero" style={coverStyle} alt="hero"/>
+      <img className="hero" style={coverStyle} alt="hero" />
       <Info />
       <img className="selfie" style={selfieStyle} alt="profile pic" />
-    </div>
+    </div >
   );
 }
 

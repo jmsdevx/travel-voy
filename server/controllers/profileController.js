@@ -26,11 +26,15 @@ exports.updateProfile = async (req, res, next) => {
   try {
     const {
       id,
+      firstName,
+      lastName,
       homeCity,
       travelerType
     } = req.body;
 
     const response = await updateProfile({
+      firstName,
+      lastName,
       homeCity,
       travelerType
     }, id);

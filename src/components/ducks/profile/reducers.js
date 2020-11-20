@@ -3,8 +3,9 @@ import {
   PROFILE_UPDATED,
   PROFILE_FORM_RESET,
   GET_PROFILE_SUCCESS,
-  PROFILE_PICTURE_UPDATED
-
+  PROFILE_PICTURE_UPDATED,
+  BACKGROUND_PICTURE_UPDATED,
+  BACKGROUND_PICTURE_UPDATE_PENDING
 } from './types';
 
 const initialState = {
@@ -24,7 +25,8 @@ const initialState = {
     travelerType: '',
     profilePicture: '',
     backgroundPicture: ''
-  }
+  },
+  bgImgageLoading: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -52,7 +54,7 @@ const profileReducer = (state = initialState, action) => {
         data: action.payload,
         profileFormData: {
           ...state.profileFormData, ...action.payload
-        }
+        },
       };
 
     case PROFILE_FORM_RESET:
@@ -67,8 +69,24 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         data: {
-          ...state.data, profilePicture: action.payload
+          ...state.data,
+          profilePicture: action.payload
         }
+      };
+
+    case BACKGROUND_PICTURE_UPDATE_PENDING:
+      return {
+        ...state,
+        bgImgageLoading: true
+      };
+
+    case BACKGROUND_PICTURE_UPDATED:
+      return {
+        ...state,
+        data: {
+          ...state.data, backgroundPicture: action.payload
+        },
+        bgImgageLoading: false
       };
 
     default:

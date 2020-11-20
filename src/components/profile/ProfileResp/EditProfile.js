@@ -90,7 +90,7 @@ function EditProfile({
                   <div className="row mt-3">
                     <div className="col-md-12">
                       <label className="labels">Email ID</label>
-                      <input type="text" className="form-control" placeholder="enter email id" name="email" value={profileFormData.email} onChange={changeHandler} />
+                      <input type="text" className="form-control" disabled="disabled" placeholder="enter email id" name="email" value={profileFormData.email} onChange={changeHandler} />
                     </div>
                   </div>
                   <div className="row mt-3">
