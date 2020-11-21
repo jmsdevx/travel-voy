@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Row, Col, Jumbotron, Image, Button } from 'react-bootstrap';
 import SideNav from '../../layout/sideNav/SideNav';
 import hero from '../../../assets/Amsterdam.jpg';
@@ -18,6 +18,9 @@ import silo from '../../../assets/silo.jpeg';
 import back from '../../../assets/back.jpeg';
 import beach from '../../../assets/beach.jpg';
 import mystery from '../../../assets/mystery.jpg';
+
+import AddTrip from './AddTrip';
+
 import {
   Dropdown,
   Spinner
@@ -66,6 +69,7 @@ function ProfileResp({
   const handleBtnClick = () => {
     inputFileRef.current.click();
   }
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -102,9 +106,12 @@ function ProfileResp({
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 3, offset: 2 }} className="new-trip">
-            <h2 className="display-4">New Trip</h2>
-            <i className="material-icons">add_circle_outline</i>
+          <Col md={{ span: 3, offset: 2 }}>
+            <div className="new-trip" onClick={() => setShowModal(!showModal)}>
+              <h2 className="display-4">New Trip</h2>
+              <i className="material-icons">add_circle_outline</i>
+            </div>
+            <AddTrip showModal={showModal} setShowModal={setShowModal} />
           </Col>
           <Col md={{ span: 5, offset: 1 }} className="map-outside p-0">
             <Map />
@@ -171,7 +178,6 @@ function ProfileResp({
               </div>
             </Col>
           </Row>
-
         </Row>
       </Container>
     </>
@@ -185,6 +191,5 @@ const mapStateToProps = (state) => {
     bgImgageLoading: state.profile.bgImgageLoading
   }
 }
-
 
 export default connect(mapStateToProps, { ...profileActions, ...actions })(ProfileResp);

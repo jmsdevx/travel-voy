@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import authReducer from "./auth/reducers";
 import quizReducer from "../ducks/quiz/quizReducer";
 import profileReducer from "../ducks/profile/reducers";
+import tripsReducer from "../ducks/trips/reducers";
 
 const logger = createLogger({
   duration: true,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   router: connectRouter(history),
   auth: authReducer,
   profile: profileReducer,
+  trips: tripsReducer,
   quizReducer,
 });
 

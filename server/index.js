@@ -88,9 +88,11 @@ app.use((req, res, next) => {
 
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
+const tripsRoute = require('./routes/trips');
 
 app.use('/api/auth', authRoute);
 app.use('/api/profile', profileRoute);
+app.use('/api/trip', tripsRoute);
 
 app.use((req, res, next) => {
   const error = new Error('route not found.');

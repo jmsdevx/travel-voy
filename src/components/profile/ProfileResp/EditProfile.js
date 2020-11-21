@@ -21,7 +21,7 @@ function EditProfile({
     });
   }
 
-  const submitLogin = () => {
+  const submitProfile = () => {
     profileUpdate();
   }
 
@@ -58,9 +58,9 @@ function EditProfile({
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
                   <img alt="" className="rounded-circle mt-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
-                  <span className="font-weight-bold">Amelly</span>
-                  <span className="text-black-50">amelly12@bbb.com</span><span> </span>
-                  <button class="btn btn-primary image-upload-btn mt-2" type="button" onClick={handleBtnClick}>
+                  {/* <span className="font-weight-bold">Amelly</span>
+                  <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
+                  <button class="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
                     <input
                       type="file"
                       ref={inputFileRef}
@@ -106,7 +106,7 @@ function EditProfile({
                     </div>
                   </div>
                   <div className="mt-5 text-center">
-                    <button className="btn btn-primary profile-button" type="button" onClick={submitLogin}>Save Profile</button>
+                    <button className="btn btn-primary profile-button" type="button" onClick={submitProfile}>Save Profile</button>
                   </div>
                 </div>
               </div>
@@ -125,4 +125,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, actions)(EditProfile);
+export default connect(
+  mapStateToProps,
+  actions
+)(EditProfile);
