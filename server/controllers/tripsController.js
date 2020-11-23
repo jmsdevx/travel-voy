@@ -26,9 +26,10 @@ exports.getTrip = async (req, res, next) => {
 exports.getTrips = async (req, res, next) => {
 
   try {
-    const id = req.params.id;
+    const userId = req.session.passport.user.id;
+    console.log('userId', userId);
 
-    const data = await getTrips(id, req.session.passport.user.id);
+    const data = await getTrips(userId);
     console.log(data);
 
     res.json({
@@ -50,7 +51,11 @@ exports.addTrip = async (req, res, next) => {
       dateEnd,
     } = req.body;
 
-    const picture = req.file.location;
+    let picture;
+    if (req.file) {
+      picture = req.file.location;
+    }
+
     console.log(req.file);
 
     const response = await createTrip({
@@ -89,11 +94,12 @@ exports.updateTrip = async (req, res, next) => {
     } = req.body;
 
     const response = await updateTrip({
+      id,
       firstName,
       lastName,
       homeCity,
       travelerType
-    }, id);
+    }, req.session.passport.user.id);
 
     if (!response) {
       const error = new Error('Unable to update profile.');
@@ -101,11 +107,11 @@ exports.updateTrip = async (req, res, next) => {
       throw error;
     }
 
-
     return res.json({
       'message': 'success',
       data: response
     });
+
   } catch (err) {
     return next(err);
   }

@@ -1,48 +1,75 @@
 import React from "react";
-import nashville from "../../../assets/nashville.jpg";
-import napa from "../../../assets/napa.jpeg";
-import newyork from "../../../assets/newyork.jpg";
-import lisbon from "../../../assets/lisbon.jpeg";
+// import nashville from "../../../assets/nashville.jpg";
+// import napa from "../../../assets/napa.jpeg";
+// import newyork from "../../../assets/newyork.jpg";
+// import lisbon from "../../../assets/lisbon.jpeg";
+import { connect } from 'react-redux';
+import Trip from './Trip';
+import * as tripsActions from '../../ducks/trips/actions';
+import { Row, Col, } from 'react-bootstrap';
 
-function Upcoming() {
-  const imageObject = {
-    Nashville: nashville,
-    Napa: napa,
-    "New York City": newyork,
-    Lisbon: lisbon,
-  };
 
-  const renderUpcoming = (imageObject) => {
-    const imagesArray = Object.keys(imageObject);
-    console.log(imagesArray);
+function Upcoming({
+  upcomingTrips,
+}) {
+  // const imageObject = {
+  //   Nashville: nashville,
+  //   Napa: napa,
+  //   "New York City": newyork,
+  //   Lisbon: lisbon,
+  // };
 
-    const renderImages = imagesArray.map((e, i) => {
-      const imageStyle = {
-        backgroundImage: `url(${imageObject[e]})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        border: ".5vh solid white",
-        borderRadius: "50%",
-        height: "100%",
-        width: "100%",
-      };
-      return (
-        <div className="pics" key={i}>
-          <img style={imageStyle} alt="upcoming trip" />
-          <p>{e}</p>
-        </div>
-      );
-    });
+  // const renderUpcoming = (imageObject) => {
+  //   const imagesArray = Object.keys(imageObject);
+  //   console.log(imagesArray);
 
-    return renderImages;
-  };
+  //   const renderImages = imagesArray.map((e, i) => {
+  //     const imageStyle = {
+  //       backgroundImage: `url(${imageObject[e]})`,
+  //       backgroundSize: "cover",
+  //       backgroundPosition: "center",
+  //       border: ".5vh solid white",
+  //       borderRadius: "50%",
+  //       height: "100%",
+  //       width: "100%",
+  //     };
+  //     return (
+  //       <div className="pics" key={i}>
+  //         <img style={imageStyle} alt="upcoming trip" />
+  //         <p>{e}</p>
+  //       </div>
+  //     );
+  //   });
+  //   return renderImages;
+  // };
 
   return (
-    <div className="past">
-      <h3>UPCOMING TRIPS</h3>
-      <div className="past-inner">{renderUpcoming(imageObject)}</div>
+    <div className="container-fluid">
+      <Row className="trip-container">
+        <Col md={6} className="trips-title mb-3">
+          <h2 className="display-4">Upcoming Trips</h2>
+        </Col>
+
+        <Row className="justify-content-md-center">
+          {
+            upcomingTrips.map((trip, i) => {
+              return (
+                <Col md={3} key={i} className="d-flex justify-content-center mb-4">
+                  <Trip image={trip.picture} location={trip.location} />
+                </Col>
+              );
+            })
+          }
+        </Row>
+      </Row>
     </div>
   );
 }
 
-export default Upcoming;
+const mapStateToProps = (state) => {
+  return {
+    upcomingTrips: state.trips.data.upcomingTrips,
+  }
+}
+
+export default connect(mapStateToProps, tripsActions)(Upcoming);

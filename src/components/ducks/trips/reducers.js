@@ -18,14 +18,15 @@ const initialState = {
     picturePreviewUrl: ''
   },
   data: {
-    id: '',
-    location: '',
-    picture: '',
-    dateStart: '',
-    dateEnd: '',
+    pastTrips: [],
+    upcomingTrips: []
   },
   addTripPending: false,
 };
+
+const isDatePast = (date) => {
+  return new Date(date).getTime() < Date.now()
+}
 
 const tripsReducer = (state = initialState, action) => {
 
@@ -64,10 +65,10 @@ const tripsReducer = (state = initialState, action) => {
       }
 
     case ADD_TRIP_SUCCESS:
-      return {
+      const newState = {
         ...state,
         data: {
-          ...state.data, ...action.payload
+          ...state.data
         },
         addTripFormData: {
           ...state.addTripFormData,
@@ -75,6 +76,20 @@ const tripsReducer = (state = initialState, action) => {
         },
         addTripPending: false
       };
+
+      if (isDatePast(action.payload.dateStart)) {
+        newState.data.pastTrips = [
+          ...newState.data.pastTrips,
+          action.payload
+        ]
+      } else {
+        newState.data.upcomingTrips = [
+          ...newState.data.upcomingTrips,
+          action.payload
+        ]
+      }
+
+      return newState;
 
     case ADD_TRIP_FAILED:
       return {

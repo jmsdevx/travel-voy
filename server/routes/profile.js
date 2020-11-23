@@ -11,9 +11,9 @@ const {
 
 // @TODO protect routes 
 
-router.get("/:id", getProfile);
+router.get("/:id", isAuth, getProfile);
 
-router.put("/", updateProfile);
+router.put("/", isAuth, updateProfile);
 
 router.put("/profile-picture", isAuth, imageUpload.single('file'), updateProfilePicture);
 

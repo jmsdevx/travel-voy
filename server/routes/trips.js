@@ -10,11 +10,11 @@ const {
 
 // @TODO protect routes
 
-router.get("/", getTrips);
+router.get("/", isAuth, getTrips);
 
-router.post("/", imageUpload.single('picture'), addTrip);
+router.post("/", isAuth, imageUpload.single('picture'), addTrip);
 
-router.put("/", updateTrip);
+router.put("/", isAuth, updateTrip);
 
 
 module.exports = router;

@@ -117,7 +117,7 @@ function AddTrip({
 
                   <div className="my-3 text-left">
                     <button className="btn btn-primary profile-button" type="button" onClick={handleSubmitClick}>Add Trip</button>
-                    <div style={{ height: "10px" }} class="text-danger pt-3">{addTripFormData.errorMsg}</div>
+                    <div style={{ height: "10px" }} className="text-danger pt-3">{addTripFormData.errorMsg}</div>
                   </div>
                 </div>
               </div>

@@ -7,6 +7,10 @@ body {
   background-color: $grey !important;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 // .header {
 
 //   position: fixed;

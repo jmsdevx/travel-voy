@@ -10,15 +10,24 @@ import {
   ADD_TRIP_IMG_PREVIEW,
 } from './types';
 
-export const getTrips = (id) => {
+export const getTrips = () => {
   return async (dispatch) => {
 
     axios.get(`/api/trip`)
       .then(response => {
         console.log(response);
+
+        const upcomingTrips = response.data.data.filter((trip) => new Date(trip.dateStart).getTime() > Date.now());
+
+        const pastTrips = response.data.data.filter((trip) => new Date(trip.dateStart).getTime() < Date.now());
+
         dispatch({
           type: GET_TRIPS_SUCCESS,
-          payload: response.data.data
+          payload: {
+            id: response.data.data.id,
+            upcomingTrips,
+            pastTrips
+          }
         });
         // dispatch(profileFormReset());
         // dispatch(push('/profile'));
@@ -82,8 +91,8 @@ export const addNewTrip = () => {
     if (picture)
       formData.append('picture', picture, picture.name);
 
-    formData.append('dateStart', dateStart);
-    formData.append('dateEnd', dateEnd);
+    formData.append('dateStart', dateStart.toISOString());
+    formData.append('dateEnd', dateEnd.toISOString());
 
     axios.post('/api/trip', formData, {
       headers: {

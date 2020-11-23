@@ -2,6 +2,7 @@ import React from "react";
 import New from "./New";
 import Upcoming from "./Upcoming";
 import Past from "./Past";
+import "./Trips.scss";
 
 function Trips() {
   return (

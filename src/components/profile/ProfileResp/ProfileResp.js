@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Jumbotron, Image, Button } from 'react-bootstrap';
 import SideNav from '../../layout/sideNav/SideNav';
 import hero from '../../../assets/Amsterdam.jpg';
@@ -19,6 +19,9 @@ import back from '../../../assets/back.jpeg';
 import beach from '../../../assets/beach.jpg';
 import mystery from '../../../assets/mystery.jpg';
 
+import Upcoming from '../trips/Upcoming';
+import Past from '../trips/Past';
+
 import AddTrip from './AddTrip';
 
 import {
@@ -29,14 +32,21 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../ducks/auth/actions';
 import * as profileActions from '../../ducks/profile/actions';
+import * as tripsActions from '../../ducks/trips/actions';
 
 function ProfileResp({
   logout,
   profilePicture,
   backgroundPicture,
   updateBackgroundPicture,
-  bgImgageLoading
+  bgImgageLoading,
+  getTrips,
 }) {
+
+  useEffect(() => {
+    getTrips();
+  }, []);
+
   const heroStyle = {
     backgroundImage: `url(${backgroundPicture ? backgroundPicture : beach})`,
     backgroundSize: "cover",
@@ -88,6 +98,7 @@ function ProfileResp({
                 className="d-none"
               />
               <Dropdown.Item onClick={handleBtnClick}>Update Background Image</Dropdown.Item>
+              <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <div className={bgImgageLoading ? "show-spinner" : "d-none"}>
@@ -100,9 +111,6 @@ function ProfileResp({
           </Col>
           <Col md={5} className="profile-pic">
             <Image src={profilePicture ? profilePicture : mystery} roundedCircle className="selfie" />
-          </Col>
-          <Col>
-            <Button className="logout-button" onClick={logout}>Logout</Button>
           </Col>
         </Row>
         <Row>
@@ -117,16 +125,18 @@ function ProfileResp({
             <Map />
           </Col>
         </Row>
-        <Row className="upcoming-container">
+
+        {/* TRIP */}
+        <Upcoming />
+        <Past />
+
+        {/* <Row className="upcoming-container">
           <Col md={{ span: 4, offset: 1 }} className="upcoming-title">
             <h2 className="display-4">Upcoming Trips</h2>
           </Col>
           <Row>
             <Col md={{ span: 1, offset: 1 }}>
-              <div className="pic-container">
-                <Image src={nashville} roundedCircle className="upcoming-pic" />
-                <p className="pic-text">Nashville</p>
-              </div>
+              <Trip image={newyork} location="New York City" />
             </Col>
             <Col md={{ span: 1, offset: 2 }}>
               <div className="pic-container">
@@ -147,17 +157,14 @@ function ProfileResp({
               </div>
             </Col>
           </Row>
-        </Row>
-        <Row className="upcoming-container">
+        </Row> */}
+        {/* <Row className="upcoming-container">
           <Col md={{ span: 3, offset: 1 }} className="upcoming-title">
             <h2 className="display-4">Past Trips</h2>
           </Col>
           <Row>
             <Col md={{ span: 1, offset: 1 }}>
-              <div className="pic-container">
-                <Image src={amsterdam} roundedCircle className="upcoming-pic" />
-                <p className="pic-text">Amsterdam</p>
-              </div>
+
             </Col>
             <Col md={{ span: 1, offset: 2 }}>
               <div className="pic-container">
@@ -178,7 +185,7 @@ function ProfileResp({
               </div>
             </Col>
           </Row>
-        </Row>
+        </Row> */}
       </Container>
     </>
   )
@@ -192,4 +199,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { ...profileActions, ...actions })(ProfileResp);
+export default connect(
+  mapStateToProps, {
+  ...profileActions,
+  ...tripsActions,
+  ...actions
+})(ProfileResp);
