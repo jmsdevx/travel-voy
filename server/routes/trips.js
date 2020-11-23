@@ -5,7 +5,8 @@ const imageUpload = require('../middlewares/imageUpload');
 const {
   getTrips,
   addTrip,
-  updateTrip
+  updateTrip,
+  deleteTrip
 } = require('../controllers/tripsController');
 
 // @TODO protect routes
@@ -14,7 +15,9 @@ router.get("/", isAuth, getTrips);
 
 router.post("/", isAuth, imageUpload.single('picture'), addTrip);
 
-router.put("/", isAuth, updateTrip);
+router.put("/", isAuth, imageUpload.single('picture'), updateTrip);
+
+router.delete("/:id", isAuth, deleteTrip);
 
 
 module.exports = router;

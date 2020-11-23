@@ -139,5 +139,13 @@ $screen-xl-min: 1200px;
     height: 65%;
   }
 
+
+
   .past-trips {}
+}
+
+.trip-btn-group {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
 }

@@ -55,7 +55,7 @@ function Upcoming({
             upcomingTrips.map((trip, i) => {
               return (
                 <Col md={3} key={i} className="d-flex justify-content-center mb-4">
-                  <Trip image={trip.picture} location={trip.location} />
+                  <Trip id={trip.id} image={trip.picture} location={trip.location} dateStart={trip.dateStart} dateEnd={trip.dateEnd} />
                 </Col>
               );
             })
@@ -64,7 +64,7 @@ function Upcoming({
       </Row>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {

@@ -6,10 +6,27 @@ import {
   ADD_TRIP_FAILED,
   ADD_TRIP_PENDING,
   ADD_TRIP_IMG_PREVIEW,
+  UPDATE_TRIP_FORM_INIT,
+  UPDATE_TRIP_CHANGE,
+  UPDATE_TRIP_PENDING,
+  UPDATE_TRIP_SUCCESS,
+  UPDATE_TRIP_FAILED,
+  UPDATE_TRIP_FORM_RESET,
+  UPDATE_TRIP_IMG_PREVIEW,
+  REMOVE_TRIP_FROM_STATE
 } from './types';
 
 const initialState = {
   addTripFormData: {
+    location: '',
+    picture: '',
+    dateStart: '',
+    dateEnd: '',
+    errorMsg: '',
+    picturePreviewUrl: ''
+  },
+  updateTripFormData: {
+    id: '',
     location: '',
     picture: '',
     dateStart: '',
@@ -22,6 +39,7 @@ const initialState = {
     upcomingTrips: []
   },
   addTripPending: false,
+  updateTripPending: false,
 };
 
 const isDatePast = (date) => {
@@ -109,14 +127,92 @@ const tripsReducer = (state = initialState, action) => {
         }
       };
 
-    // case PROFILE_PICTURE_UPDATED:
-    //   return {
-    //     ...state,
-    //     data: {
-    //       ...state.data,
-    //       profilePicture: action.payload
-    //     }
-    //   };
+    case UPDATE_TRIP_CHANGE:
+      return {
+        ...state,
+        updateTripFormData: {
+          ...state.updateTripFormData,
+          ...action.payload
+        }
+      };
+
+    case UPDATE_TRIP_FORM_INIT:
+      return {
+        ...state,
+        updateTripFormData: {
+          ...action.payload,
+          picturePreviewUrl: action.payload.picture
+        }
+      };
+
+    case UPDATE_TRIP_IMG_PREVIEW:
+      return {
+        ...state,
+        updateTripFormData: {
+          ...state.updateTripFormData,
+          picturePreviewUrl: action.payload
+        }
+      };
+
+    case UPDATE_TRIP_PENDING:
+      return {
+        ...state,
+        updateTripPending: true
+      }
+
+    case UPDATE_TRIP_SUCCESS:
+      const updatedState = {
+        ...state,
+        data: {
+          ...state.data
+        },
+        updateTripFormData: {
+          ...state.updateTripFormData,
+          errorMsg: ""
+        },
+        updateTripPending: false
+      };
+
+      if (isDatePast(action.payload.dateStart)) {
+        updatedState.data.pastTrips = [
+          ...updatedState.data.pastTrips,
+          action.payload
+        ]
+      } else {
+        updatedState.data.upcomingTrips = [
+          ...updatedState.data.upcomingTrips,
+          action.payload
+        ]
+      }
+
+      return updatedState;
+
+    case UPDATE_TRIP_FAILED:
+      return {
+        ...state,
+        updateTripFormData: {
+          ...state.updateTripFormData,
+          errorMsg: action.payload
+        },
+        updateTripPending: false
+      };
+
+    case UPDATE_TRIP_FORM_RESET:
+      return {
+        ...state,
+        updateTripFormData: {
+          ...initialState.updateTripFormData
+        }
+      };
+
+    case REMOVE_TRIP_FROM_STATE:
+      return {
+        ...state,
+        data: {
+          upcomingTrips: state.data.upcomingTrips.filter((trip) => trip.id !== action.payload),
+          pastTrips: state.data.pastTrips.filter((trip) => trip.id !== action.payload),
+        }
+      };
 
     default:
       return state;

@@ -3,6 +3,7 @@ const {
   getTrips,
   createTrip,
   updateTrip,
+  deleteTrip
 } = require('../db/trips');
 
 exports.getTrip = async (req, res, next) => {
@@ -86,23 +87,31 @@ exports.updateTrip = async (req, res, next) => {
 
   try {
     const {
-      id,
-      firstName,
-      lastName,
-      homeCity,
-      travelerType
+      tripId,
+      location,
+      dateStart,
+      dateEnd,
     } = req.body;
 
+    console.log(req.body)
+
+    let picture;
+    if (req.file) {
+      picture = req.file.location;
+    }
+
+    console.log(req.file);
+
     const response = await updateTrip({
-      id,
-      firstName,
-      lastName,
-      homeCity,
-      travelerType
+      tripId,
+      location,
+      dateStart,
+      dateEnd,
+      picture
     }, req.session.passport.user.id);
 
     if (!response) {
-      const error = new Error('Unable to update profile.');
+      const error = new Error('Unable to update trip.');
       error.statusCode = 422;
       throw error;
     }
@@ -115,4 +124,29 @@ exports.updateTrip = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-}
+};
+
+exports.deleteTrip = async (req, res, next) => {
+  try {
+
+    const tripId = req.params.id;
+    console.log('tripId', tripId);
+
+    const response = await deleteTrip(tripId, req.session.passport.user.id);
+
+
+    if (!response) {
+      const error = new Error('Unable to delete trip.');
+      error.statusCode = 422;
+      throw error;
+    }
+
+    return res.json({
+      'message': 'success',
+      data: response
+    });
+
+  } catch (err) {
+    return next(err);
+  }
+};

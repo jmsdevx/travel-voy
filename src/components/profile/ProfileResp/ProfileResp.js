@@ -63,7 +63,7 @@ function ProfileResp({
         onClick(e);
       }}
     >
-      <span style={{ 'cursor': 'pointer', width: '2rem', height: '2rem' }} class="material-icons">more_horiz</span>
+      <span style={{ 'cursor': 'pointer', width: '2rem', height: '2rem' }} className="material-icons">more_horiz</span>
       {children}
     </a>
   ));

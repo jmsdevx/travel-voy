@@ -6,7 +6,7 @@ module.exports = {
   getTrip: async (tripId, userId) => {
     try {
       // specify user_table.id to remove ambiguity
-      const query = `SELECT * FROM trips_table JOIN user_table ON user_table.id = trips_table.user_id where trips_table.id='${tripId}' and user_table.id='${userId}'`;
+      const query = `SELECT t.id, t.location, t.start_date, t.end_date, t.picture FROM trips_table t JOIN user_table u ON u.id = t.user_id where u.id='${userId}' and t.id='${tripId}'`;
 
       const response = await db.query(query);
 
@@ -31,11 +31,11 @@ module.exports = {
   getTrips: async (userId) => {
     try {
 
-      const query = `SELECT * FROM trips_table JOIN user_table ON user_table.id = trips_table.user_id where user_table.id='${userId}'`;
+      const query = `SELECT t.id, t.location, t.start_date, t.end_date, t.picture FROM trips_table t JOIN user_table u ON u.id = t.user_id where u.id='${userId}'`;
 
       const response = await db.query(query);
 
-      // console.log(response);
+      console.log(response);
       if (response.rows.length <= 0) {
         return [];
       }
@@ -92,15 +92,24 @@ module.exports = {
     try {
 
       const {
-        id,
+        tripId,
         location,
         dateStart,
         dateEnd,
         picture
       } = data;
 
-      const query = `
-      UPDATE trips_table SET location = '${location}', start_date = '${dateStart}', end_date = '${dateEnd}', picture = '${picture}' WHERE id = '${id}' and user_id = '${userId}' RETURNING *`;
+      let query = `
+      UPDATE trips_table SET location =
+       '${location}', start_date = '${dateStart}', end_date = '${dateEnd}' `;
+
+      if (picture) {
+        query += `, picture = '${picture}' `;
+      }
+
+      query += `WHERE id = '${tripId}' and user_id = '${userId}' RETURNING *`;
+
+      console.log(query);
 
       const response = await db.query(query);
 
@@ -115,5 +124,24 @@ module.exports = {
     } catch (err) {
       throw (err);
     }
-  }
+  },
+
+  deleteTrip: async (tripId, userId) => {
+    try {
+      // specify user_table.id to remove ambiguity
+      const query = `DELETE FROM trips_table where user_id='${userId}' and id='${tripId}'`;
+      console.log(query)
+      const response = await db.query(query);
+
+      console.log(response);
+      // if (response.rows.length <= 0) {
+      //   return null;
+      // }
+
+      return 200;
+    } catch (err) {
+      // console.log(err);
+      throw err;
+    }
+  },
 };

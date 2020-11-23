@@ -66,7 +66,7 @@ function Past({
               return (
                 // <Col md={{ span: 1, offset: 1 }}>
                 <Col key={i} md="3" className="d-flex justify-content-center mb-4">
-                  <Trip image={trip.picture} location={trip.location} />
+                  <Trip id={trip.id} image={trip.picture} location={trip.location} dateStart={trip.dateStart} dateEnd={trip.dateEnd} />
                 </Col>
               );
             })
@@ -76,7 +76,6 @@ function Past({
     </div>
   );
 }
-
 
 const mapStateToProps = (state) => {
   return {
