@@ -74,7 +74,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     width: 5rem;
   }
 
-  @include md {
+  @include sm {
     width: 4rem;
   }
 
@@ -85,7 +85,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
   6px 6px rgba(0, 98, 90, 0.2);
 
   .material-icons {
-    font-size: 3vw;
+    // font-size: 3vw;
+    font-size: 2.5rem;
     color: white;
 
     &:hover {
@@ -104,8 +105,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
   }
 
   .home {
-    height: 6vw;
-    width: 6vw;
+    // height: 6vw;
+    // width: 6vw;
+    height: 3.5rem;
+    width: 3.5rem;
     border-radius: 50%;
     background: $grey;
     border: 5px solid $grey;
@@ -119,7 +122,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
     }
 
     .material-icons {
-      font-size: 5vw;
+      // font-size: 5vw;
+      font-size: 3rem;
     }
   }
 }

@@ -5,7 +5,7 @@ import './NewQuiz.scss';
 
 class NewQuiz extends Component {
 
-  componentWillMount(){
+  componentWillMount() {
     const script = document.createElement("script");
 
     script.src = "https://www.riddle.com/files/js/embed.js";
@@ -14,7 +14,7 @@ class NewQuiz extends Component {
     document.body.appendChild(script);
   }
 
-  render(){
+  render() {
     const divStyle = {
       margin: "0 auto",
       maxWidth: "100%",
@@ -25,7 +25,7 @@ class NewQuiz extends Component {
       margin: "0 auto",
       maxWidth: "100%",
       width: "100%",
-      height: "600px",
+      height: "100%",
       border: "1px solid #cfcfcf"
     };
 
@@ -33,11 +33,11 @@ class NewQuiz extends Component {
     const riddleUrl = "//www.riddle.com/a/" + riddleID + "?wide=1";
 
     return (
-    <Container fluid className="new-quiz-container p-0">
-      <SideNav />
+      <Container fluid className="new-quiz-container p-0">
+        <SideNav />
         <Row>
-          <Col md={12}>
-            <h1 className="display-1 quiz-title">
+          <Col md={12} pt-2 p-md-0>
+            <h1 className="quiz-title pt-3">
               Traveler Persona Quiz
             </h1>
             <div className="embed-container">
@@ -47,7 +47,7 @@ class NewQuiz extends Component {
             </div>
           </Col>
         </Row>
-    </Container>
+      </Container>
     );
   }
 }

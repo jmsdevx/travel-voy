@@ -11,7 +11,7 @@ import SignUp from '../signUp/SignUp';
 function Home() {
   return (
     <>
-      <Container fluid className="home-container p-0">
+      <div className="home-container">
         <SideNav />
         <Container fluid className="hero">
           <Row>
@@ -25,11 +25,11 @@ function Home() {
           </Row>
           <Row>
             <Col md={12} className="text-center">
-              <h1 className="display-4 display-sm-1">WELCOME</h1>
+              <h1 className="main-header-text">WELCOME</h1>
             </Col>
           </Row>
           <Row>
-            <Col md={{ span: 3, offset: 5 }} className="text-center align-bottom">
+            <Col md={{ span: 6, offset: 3 }} lg={{ span: 5, offset: 5 }} xl={{ span: 4, offset: 5 }} className="text-center align-bottom">
               <Button variant="primary" className="quiz-button" size="lg">
                 <Link to="/quiz">
                   <i className="material-icons">school</i>
@@ -41,7 +41,7 @@ function Home() {
         </Container>
         <Container fluid className="photos">
           <Row>
-            <Col md={{ span: 3, offset: 4 }}>
+            <Col md={{ span: 4, offset: 4 }} lg={{ span: 3, offset: 4 }}>
               <Button variant="primary" className="sign-button" size="lg">
                 <Link to="/login">
                   Sign Up
@@ -50,8 +50,8 @@ function Home() {
               </Button>
             </Col>
           </Row>
-          <Row>
-            <Col md={{ span: 5, offset: 1 }}>
+          <Row className="justify-content-around">
+            <Col md={{ span: 5 }}>
               <div className="photo-container">
                 <img src={heroLarge} alt="hero-large" />
               </div>
@@ -59,7 +59,7 @@ function Home() {
                 <h2>Save Trips</h2>
               </div>
             </Col>
-            <Col md={{ span: 5, offset: 1 }}>
+            <Col md={{ span: 5 }}>
               <div className="photo-container" style={{ marginTop: "6rem" }}>
                 <img src={heroSmall} alt="hero-small" />
               </div>
@@ -83,7 +83,7 @@ function Home() {
               <h1 className="display-2">Discover</h1>
             </Col>
           </Row>
-          <Row>
+          <Row className="display: flex; justify-content-center">
             <Col md={{ span: 10, offset: 1 }} className="vid-container">
               <ResponsiveEmbed aspectRatio='16by9'>
                 <iframe width="560" height="315" title="marketing video" src="https://www.youtube.com/embed/H9NTn9B_fBg" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -91,7 +91,7 @@ function Home() {
             </Col>
           </Row>
         </Container>
-      </Container>
+      </div>
       <SignUp />
       {/* <Container>
         <Row>

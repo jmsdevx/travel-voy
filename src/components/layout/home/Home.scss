@@ -66,6 +66,19 @@ only screen and (min-device-pixel-ratio: 1.5) {
   font-family: raisonne;
   color: $grey;
   text-shadow: -3px 3px 0px $light-blue, -5px 5px 0px $dark-blue;
+  padding: 0;
+
+  @include md {
+    padding-left: 4rem;
+  }
+
+  .main-header-text {
+    font-size: 3.5rem;
+
+    @include md {
+      font-size: 5rem;
+    }
+  }
 
   .hero {
     padding: 0;
@@ -75,7 +88,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     flex-direction: column;
     justify-content: space-between;
 
-    @include sm {
+    @include md {
       height: 60vh;
     }
 
@@ -139,11 +152,11 @@ only screen and (min-device-pixel-ratio: 1.5) {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      font-size: 2rem;
+      font-size: 1.5rem;
       align-items: center;
 
       @include sm {
-        font-size: 2vw;
+        font-size: 2rem;
       }
 
       &:hover {
@@ -169,12 +182,12 @@ only screen and (min-device-pixel-ratio: 1.5) {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        font-size: 2rem;
+        font-size: 1.5rem;
         align-items: center;
         width: 80%;
 
         @include sm {
-          font-size: 2vw;
+          font-size: 2rem;
         }
 
       }
@@ -186,9 +199,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
       .material-icons {
         font-size: 2rem;
 
-        @include sm {
-          font-size: 3vw;
-        }
+        // @include sm {
+        //   font-size: 3vw;
+        // }
       }
 
     }
@@ -215,7 +228,11 @@ only screen and (min-device-pixel-ratio: 1.5) {
     height: 100vh;
 
     @include sm {
-      height: 95vh;
+      height: 70rem;
+    }
+
+    @include md {
+      height: 40rem;
     }
 
     background: $grey;
@@ -252,7 +269,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
         font-size: 2rem;
 
         @include sm {
-          font-size: 2vw;
+          font-size: 2rem;
         }
 
         align-items: center;
@@ -266,7 +283,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
         font-size: 2rem;
 
         @include sm {
-          font-size: 3vw;
+          font-size: 2.5rem;
         }
       }
     }
@@ -297,8 +314,12 @@ only screen and (min-device-pixel-ratio: 1.5) {
       box-shadow: inset 5px 5px 50px #555b6e;
 
       @include sm {
-        height: 60vh;
-        margin-top: 0 !important;
+        height: 25rem;
+      }
+
+      @include md {
+        height: 22rem;
+        margin-top: 5rem !important;
       }
 
       img {
@@ -306,7 +327,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
         width: 100%;
         margin-left: 0;
 
-        @include sm {
+        @include md {
           margin-left: 2vw;
           width: 35vw;
         }
@@ -332,40 +353,50 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
   .discover {
     background-color: $orange;
-    height: 30rem;
+    min-height: 30rem;
     text-align: center;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    @include sm {
-      height: 70vh;
+    @include md {
+      min-height: 35rem;
+      display: block;
+    }
+
+    @include md {
+      height: 40rem;
       display: block;
     }
 
     @include lg {
-      height: 80vh;
+      height: 40rem;
+
     }
 
     @include xl {
-      height: 120vh;
+      height: 40rem;
+
     }
 
     .vid-container {
       background-color: $dark-blue;
-      height: 16.6rem;
-      padding-top: 3vh;
+      // height: 16.6rem;
+      height: 100%;
+      padding: 3rem;
       margin-top: 0;
       margin: 1rem;
       -moz-box-shadow: inset 3px 3px 15px $grey;
       -webkit-box-shadow: inset 3px 3px 15px $grey;
       box-shadow: inset 3px 3px 15px $grey;
+      justify-content: center;
 
-      @include sm {
-        height: 50vw;
+      @include md {
+        // height: 50vw;
         margin: 0;
-        margin-top: 5vh;
+        // margin-top: 5vh;
+        max-width: 50rem;
       }
 
     }

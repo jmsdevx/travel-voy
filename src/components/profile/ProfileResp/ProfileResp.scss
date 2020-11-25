@@ -64,7 +64,7 @@ $screen-xl-min: 1200px;
     height: 100%;
     padding-bottom: 1.5rem;
 
-    @include sm {
+    @include md {
       height: 20vh;
       padding-bottom: 0;
     }
@@ -88,7 +88,7 @@ $screen-xl-min: 1200px;
   .hero-image {
     height: 25vh;
 
-    @include sm {
+    @include md {
       height: 30vh;
     }
 
@@ -111,7 +111,7 @@ $screen-xl-min: 1200px;
     margin-left: -1.5rem;
     height: 100%;
 
-    @include sm {
+    @include md {
       height: 45vh;
       margin-top: -30vh;
       margin-left: 0;
@@ -131,7 +131,7 @@ $screen-xl-min: 1200px;
     padding: 1.5rem !important;
     margin-top: 2rem;
 
-    @include sm {
+    @include md {
       width: 50vw;
       padding: 0 !important;
       margin-top: 0;
@@ -145,7 +145,7 @@ $screen-xl-min: 1200px;
     border: 5px solid $light-blue;
     margin-top: 0;
 
-    @include sm {
+    @include md {
       margin-top: 15vh;
 
     }
@@ -178,5 +178,10 @@ $screen-xl-min: 1200px;
 .trip-btn-group {
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 60%;
+
+  @include md {
+    width: 40%;
+  }
+
 }

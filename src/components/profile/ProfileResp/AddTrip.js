@@ -106,7 +106,7 @@ function AddTrip({
 
                   <div className="row mt-3">
                     <div className="col-md-12">
-                      <label className="labels">Date Range *</label>
+                      <label className="labels d-block">Date Range *</label>
                       <DateRange
                         editableDateInputs={true}
                         onChange={item => setDateRange([item.selection])}

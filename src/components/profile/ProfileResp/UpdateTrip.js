@@ -96,8 +96,8 @@ function UpdateTrip({
           <div className="container rounded bg-white mt-2 mb-2">
             <div className="row">
               <div className="col-md-4 border-right">
-                <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : lisbon} />
+                <div className="d-flex flex-column align-items-center text-center px-sm-3 py-sm-3">
+                  <img alt="" className="rounded-circle mt-sm-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : lisbon} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
@@ -113,8 +113,8 @@ function UpdateTrip({
                 </div>
               </div>
 
-              <div className="col-md-8 border-right">
-                <div className="px-3 py-3">
+              <div className="col-md-8 border-right pl-0 pl-sm-2">
+                <div className="px-sm-3 py-sm-3">
                   {/* <div className="d-flex justify-content-between align-items-center mb-3">
                     <h4 className="text-right">Update Trip</h4>
                   </div> */}
@@ -127,6 +127,8 @@ function UpdateTrip({
 
                   <div className="row mt-3">
                     <div className="col-md-12">
+                      <label className="labels d-block">Date Range *</label>
+
                       <DateRange
                         editableDateInputs={true}
                         onChange={item => setDateRange([item.selection])}

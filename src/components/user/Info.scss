@@ -24,6 +24,12 @@ $screen-xl-min: 1200px;
   }
 }
 
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
 .info-container {
   display: flex;
   flex-direction: row;
@@ -32,7 +38,7 @@ $screen-xl-min: 1200px;
   border-right: none;
   color: $white;
 
-  @include sm {
+  @include md {
     border-right: 5px solid $white;
   }
 
