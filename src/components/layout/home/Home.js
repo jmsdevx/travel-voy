@@ -25,7 +25,7 @@ function Home() {
           </Row>
           <Row>
             <Col md={12} className="text-center">
-              <h1 className="display-1">WELCOME</h1>
+              <h1 className="display-4 display-sm-1">WELCOME</h1>
             </Col>
           </Row>
           <Row>
@@ -55,21 +55,27 @@ function Home() {
               <div className="photo-container">
                 <img src={heroLarge} alt="hero-large" />
               </div>
+              <div className="photo-label">
+                <h2>Save Trips</h2>
+              </div>
             </Col>
             <Col md={{ span: 5, offset: 1 }}>
-              <div className="photo-container">
+              <div className="photo-container" style={{ marginTop: "6rem" }}>
                 <img src={heroSmall} alt="hero-small" />
+              </div>
+              <div className="photo-label">
+                <h2>Plan Ahead</h2>
               </div>
             </Col>
           </Row>
-          <Row className="photo-labels">
-            <Col md={{ span: 5, offset: 1 }}>
+          {/* <Row className="photo-labels">
+            <div md={{ span: 5, offset: 1 }}>
               <h2>Save Trips</h2>
-            </Col>
-            <Col md={{ span: 5, offset: 1 }}>
+            </div>
+            <div md={{ span: 5, offset: 1 }}>
               <h2>Plan Ahead</h2>
-            </Col>
-          </Row>
+            </div>
+          </Row> */}
         </Container>
         <Container fluid className="discover">
           <Row>
@@ -87,6 +93,11 @@ function Home() {
         </Container>
       </Container>
       <SignUp />
+      {/* <Container>
+        <Row>
+          <Col>Travel Voy</Col>
+        </Row>
+      </Container> */}
     </>
   )
 }

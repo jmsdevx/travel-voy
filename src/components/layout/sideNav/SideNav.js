@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function SideNav() {
   return (
-    <div className="side-nav">
+    <div className="side-nav d-none d-sm-block">
       <div className="logo-container">
         <i className="material-icons">question_answer</i>
         <i className="material-icons">calendar_today</i>

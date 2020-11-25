@@ -33,7 +33,7 @@ function Trip({
     <>
       <div className="trip-image-container" onClick={clickHandler}>
         { /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-        <Image src={image} roundedCircle className="trip-image" />
+        <Image src={image} className="trip-image" />
         <div className="w-100">
           <p className="trip-text">{location}</p>
         </div>

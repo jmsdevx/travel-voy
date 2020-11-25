@@ -61,7 +61,13 @@ $screen-xl-min: 1200px;
   .border-bottom {
     border-bottom: 5px solid $white !important;
     margin-bottom: 3vh;
-    height: 20vh;
+    height: 100%;
+    padding-bottom: 1.5rem;
+
+    @include sm {
+      height: 20vh;
+      padding-bottom: 0;
+    }
   }
 
   .logout-button {
@@ -80,7 +86,11 @@ $screen-xl-min: 1200px;
   }
 
   .hero-image {
-    height: 30vh;
+    height: 25vh;
+
+    @include sm {
+      height: 30vh;
+    }
 
     @include lg {
       height: 35vh;
@@ -92,12 +102,20 @@ $screen-xl-min: 1200px;
   }
 
   .profile-info {
-    height: 30vh;
+    // height: 30vh;
+    height: 100%;
   }
 
   .profile-pic {
-    margin-top: -30vh;
-    height: 45vh;
+    margin-top: -10vh;
+    margin-left: -1.5rem;
+    height: 100%;
+
+    @include sm {
+      height: 45vh;
+      margin-top: -30vh;
+      margin-left: 0;
+    }
 
     .selfie {
       height: 30vw;
@@ -109,7 +127,15 @@ $screen-xl-min: 1200px;
   .map-outside {
     border: 5px solid $dark-blue;
     height: 40vh;
-    width: 50vw;
+    width: 100%;
+    padding: 1.5rem !important;
+    margin-top: 2rem;
+
+    @include sm {
+      width: 50vw;
+      padding: 0 !important;
+      margin-top: 0;
+    }
   }
 
   .new-trip {
@@ -117,7 +143,12 @@ $screen-xl-min: 1200px;
     flex-direction: row;
     height: 9vh;
     border: 5px solid $light-blue;
-    margin-top: 15vh;
+    margin-top: 0;
+
+    @include sm {
+      margin-top: 15vh;
+
+    }
 
     &:hover {
       transform: scale(1.05);

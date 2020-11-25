@@ -57,7 +57,7 @@ function EditProfile({
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
+                  <img alt="" className="rounded-circle mt-sm-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
@@ -73,7 +73,7 @@ function EditProfile({
                 </div>
               </div>
               <div className="col-md-8 border-right">
-                <div className="p-3 py-5">
+                <div className="p-sm-3 py-3 py-sm-5">
                   <div className="d-flex justify-content-between align-items-center mb-3">
                     <h4 className="text-right">Profile Settings</h4>
                   </div>
@@ -105,7 +105,7 @@ function EditProfile({
                       <input type="text" className="form-control" placeholder="traveler type" name="travelerType" value={profileFormData.travelerType} onChange={changeHandler} />
                     </div>
                   </div>
-                  <div className="mt-5 text-center">
+                  <div className="mt-4 mt-sm-5 text-center">
                     <button className="btn btn-primary profile-button" type="button" onClick={submitProfile}>Save Profile</button>
                   </div>
                 </div>

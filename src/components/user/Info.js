@@ -33,13 +33,13 @@ function Info({ profileData, getProfile, userId }) {
             <h4 className="info-blurb">{profileData.homeCity}</h4>
           </div>
         </div>
-        <div className="edit">
+        {/* <div className="edit">
           <Button className="edit-button" onClick={() => setShowModal(!showModal)}>
             <i className="material-icons">edit</i>
             <p>Edit</p>
           </Button>
-        </div>
-        <EditProfile showModal={showModal} setShowModal={setShowModal} />
+        </div> */}
+        {/* <EditProfile showModal={showModal} setShowModal={setShowModal} /> */}
       </div>
     </>
   );

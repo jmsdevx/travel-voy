@@ -67,16 +67,16 @@ function AddTrip({
         aria-labelledby="modal-styling-title"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-styling-title">
+          {/* <Modal.Title id="modal-styling-title">
             Add Profile
-          </Modal.Title>
+          </Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
           <div className="container rounded bg-white mt-2 mb-2">
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-5 edit-profile-image" src={addTripFormData.picturePreviewUrl ? addTripFormData.picturePreviewUrl : lisbon} />
+                  <img alt="" className="rounded-circle mt-0 mt-sm-5 edit-profile-image" src={addTripFormData.picturePreviewUrl ? addTripFormData.picturePreviewUrl : lisbon} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
@@ -92,9 +92,9 @@ function AddTrip({
                 </div>
               </div>
 
-              <div className="col-md-8 border-right">
-                <div className="px-3 py-3">
-                  <div className="d-flex justify-content-between align-items-center mb-3">
+              <div className="col-md-8 px-0 px-sm-2 border-right">
+                <div className="px-1 px-sm-3 py-3">
+                  <div className="d-flex justify-content-between align-items-center mb-2 mb-sm-3">
                     <h4 className="text-right">Add Trip</h4>
                   </div>
                   <div className="row mt-3">
@@ -106,6 +106,7 @@ function AddTrip({
 
                   <div className="row mt-3">
                     <div className="col-md-12">
+                      <label className="labels">Date Range *</label>
                       <DateRange
                         editableDateInputs={true}
                         onChange={item => setDateRange([item.selection])}
@@ -115,8 +116,8 @@ function AddTrip({
                     </div>
                   </div>
 
-                  <div className="my-3 text-left">
-                    <button className="btn btn-primary profile-button" type="button" onClick={handleSubmitClick}>Add Trip</button>
+                  <div className="px-2 my-3 text-left">
+                    <button className=" btn btn-primary profile-button" type="button" onClick={handleSubmitClick}>Add Trip</button>
                     <div style={{ height: "10px" }} className="text-danger pt-3">{addTripFormData.errorMsg}</div>
                   </div>
                 </div>

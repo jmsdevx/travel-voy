@@ -23,6 +23,7 @@ import Upcoming from '../trips/Upcoming';
 import Past from '../trips/Past';
 
 import AddTrip from './AddTrip';
+import EditProfile from './EditProfile';
 
 import {
   Dropdown,
@@ -80,6 +81,7 @@ function ProfileResp({
     inputFileRef.current.click();
   }
   const [showModal, setShowModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   return (
     <>
@@ -98,18 +100,24 @@ function ProfileResp({
                 className="d-none"
               />
               <Dropdown.Item onClick={handleBtnClick}>Update Background Image</Dropdown.Item>
+              <Dropdown.Item onClick={() => setShowUpdateModal(!showUpdateModal)}>Update Profile</Dropdown.Item>
+
               <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+
+          <EditProfile showModal={showUpdateModal} setShowModal={setShowUpdateModal} />
+
           <div className={bgImgageLoading ? "show-spinner" : "d-none"}>
             <Spinner animation="border" />
           </div>
+
         </Jumbotron>
         <Row className="border-bottom">
-          <Col md={{ span: 5, offset: 1 }} className="profile-info">
+          <Col xs={8} md={{ span: 5, offset: 1 }} className="profile-info">
             <Info />
           </Col>
-          <Col md={5} className="profile-pic">
+          <Col xs={4} md={5} className="profile-pic">
             <Image src={profilePicture ? profilePicture : mystery} roundedCircle className="selfie" />
           </Col>
         </Row>
