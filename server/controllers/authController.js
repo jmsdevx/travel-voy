@@ -3,23 +3,25 @@ const passport = require('passport')
 exports.register = async (req, res, next) => {
 
   passport.authenticate('sign-up', (err, user, info) => {
-    if (err) {
-      console.log('err', err);
-      return res.status(422).json({
-        "message": err.message
-      })
+
+    if (!err) {
+      console.log('signup route: ', err);
+      return req.logIn(user, (err) => {
+        console.log(req.user, req.sessionID);
+
+        if (err) {
+          return next(err);
+        }
+
+        return res.json({
+          "message": "User registered successfully...",
+          data: req.user
+        });
+      });
     }
 
-    if (!user) {
-      console.log(err);
-      return res.status(422).json({
-        "message": err.message
-      })
-    }
-
-    return res.json({
-      "message": "User registered successfully...",
-      "data": user
+    return res.status(422).json({
+      "message": err.message
     })
 
   })(req, res, next);
