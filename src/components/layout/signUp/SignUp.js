@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import './SignUp.scss';
 import pic1 from '../../../assets/video/cost.png';
 import pic2 from '../../../assets/video/notifications.png';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import actions from '../../ducks/actions';
 
-function SignUp() {
-  //get session
-  const defaultUserObject = { firstName: '', lastName: '', email: '', id: '' }
-  const [userData, setUserData] = useState({ defaultUserObject })
-  const [gotSession, setSession] = useState(false)
-  // useEffect(() => {
-  //   axios.get('/api/session')
-  //     .then(response => {
-  //       setUserData(response.data);
-  //       setSession(true)
-  //     })
-  // }, [gotSession]);
+function SignUp({
+  signupUser,
+  isSignupPending,
+  signupErrorMsg
+}) {
 
   //change text handler
   const [firstName, setFirstname] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const changeHandler = (e) => {
     switch (e.target.id) {
       case 'firstName':
@@ -42,15 +36,8 @@ function SignUp() {
     }
   }
 
-  //submit to register
-  const [redirect, setRedirect] = useState(false);
   const submitHandler = () => {
-    axios.post('/api/register', { firstName, lastName, email, password })
-      .then(response => {
-        setUserData(response.data);
-        setRedirect(true);
-      })
-      .catch(err => console.log(err))
+    signupUser({ firstName, lastName, email, password });
   }
 
   return (
@@ -61,23 +48,35 @@ function SignUp() {
           <Form className="sign-form">
             <Form.Group>
               <Form.Label>First Name</Form.Label>
-              <Form.Control type="name" placeholder="First Name" onChange={changeHandler} id="firstName" />
+              <Form.Control type="name" placeholder="First Name" onChange={changeHandler} id="firstName" value={firstName} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Last Name</Form.Label>
-              <Form.Control type="name" placeholder="Last Name" onChange={changeHandler} id="lastName" />
+              <Form.Control type="name" placeholder="Last Name" onChange={changeHandler} id="lastName" value={lastName} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" onChange={changeHandler} id="email" />
+              <Form.Control type="email" placeholder="Enter email" onChange={changeHandler} id="email" value={email} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" onChange={changeHandler} id="password" />
+              <Form.Control type="password" placeholder="Password" onChange={changeHandler} id="password" value={password} />
             </Form.Group>
-            <Button onClick={submitHandler}>
-              Sign Up
+            <Button variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
+              <span className="pr-1">Signup</span>
+              {
+                isSignupPending ?
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  /> : ""
+              }
+
             </Button>
+            <div style={{ height: "10px" }} className="text-danger pt-3">{signupErrorMsg}</div>
           </Form>
         </Col>
         <Col md={6} className="info-box">
@@ -94,19 +93,19 @@ function SignUp() {
           </Row>
         </Col>
       </Row>
-      {
-        redirect &&
-        <Redirect
-          push
-          to={{
-            pathname: "/profile",
-            search: `${userData.email}`,
-            state: { userData }
-          }}
-        />
-      }
     </Container>
   )
 }
 
-export default SignUp;
+const mapStateToProps = state => {
+  return {
+    // signupFormData: state.signup.signupFormData,
+    isSignupPending: state.auth.isSignupPending,
+    signupErrorMsg: state.auth.signupErrorMsg
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  actions
+)(SignUp);

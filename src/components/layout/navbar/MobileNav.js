@@ -1,12 +1,17 @@
 import React from 'react';
 
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import actions from '../../ducks/actions';
 
-export default function MobileNav() {
+function MobileNav({
+  isAuth,
+  logout,
+}) {
   return (
     <div>
-      <Navbar bg="light" expand="md" className="d-md-none">
+      <Navbar bg="dark" variant="dark" expand="md" className="d-md-none">
 
         <Link className="navbar-brand" to="/">Travel Voy</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -14,8 +19,15 @@ export default function MobileNav() {
           <Nav className="mr-auto">
             <Link className="nav-link" to="/">Home</Link>
             <Link className="nav-link" to="/quiz">Quiz</Link>
-            <Link className="nav-link" to="/login">Login</Link>
-            <Link className="nav-link" to="/profile">Profile</Link>
+            {isAuth ?
+              (<>
+                <Link className="nav-link" to="/profile">Profile</Link>
+                <Link className="nav-link" onClick={logout}>Logout</Link>
+              </>)
+              :
+              <Link className="nav-link" to="/login">Login</Link>
+            }
+
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -33,3 +45,11 @@ export default function MobileNav() {
     </div>
   )
 }
+
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
+
+export default connect(mapStateToProps, actions)(MobileNav);

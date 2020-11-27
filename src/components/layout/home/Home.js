@@ -21,7 +21,7 @@ function Home() {
               <Link to="/login">
                 <button>
                   Login
-              </button>
+                </button>
               </Link>
             </Col>
           </Row>

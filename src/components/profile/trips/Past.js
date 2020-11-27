@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import Trip from './Trip';
 import { Row, Col, } from 'react-bootstrap';
-import * as tripsActions from '../../ducks/trips/actions';
+import actions from '../../ducks/actions';
 
 function Past({
   pastTrips
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, tripsActions)(Past);
+export default connect(mapStateToProps, actions)(Past);

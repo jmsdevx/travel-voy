@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import { Modal, Spinner } from 'react-bootstrap';
 import './EditProfile.scss';
 import { connect } from 'react-redux';
-import * as actions from '../../ducks/profile/actions';
+import actions from '../../ducks/actions';
+
 import mystery from '../../../assets/mystery.jpg';
 
 function EditProfile({
@@ -12,7 +13,8 @@ function EditProfile({
   profileChange,
   profileUpdate,
   updateProfilePicture,
-  profilePicture
+  profilePicture,
+  profileUpdatePending
 }) {
 
   const changeHandler = (e) => {
@@ -57,7 +59,7 @@ function EditProfile({
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-sm-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
+                  <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
@@ -106,7 +108,21 @@ function EditProfile({
                     </div>
                   </div>
                   <div className="mt-4 mt-sm-5 text-center">
-                    <button className="btn btn-primary profile-button" type="button" onClick={submitProfile}>Save Profile</button>
+                    <button className="btn btn-primary profile-button" type="button" onClick={submitProfile}>
+
+                      <span className="pr-1">Save Profile</span>
+                      {
+                        profileUpdatePending ?
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          /> : ""
+                      }
+                    </button>
+                    <div style={{ height: "10px" }} className="text-danger pt-3">{profileFormData.errorMsg}</div>
                   </div>
                 </div>
               </div>
@@ -121,7 +137,8 @@ function EditProfile({
 const mapStateToProps = state => {
   return {
     profileFormData: state.profile.profileFormData,
-    profilePicture: state.profile.data.profilePicture
+    profilePicture: state.profile.data.profilePicture,
+    profileUpdatePending: state.profile.profileUpdatePending,
   }
 }
 

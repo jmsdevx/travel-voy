@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import { Modal, Spinner } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import * as actions from '../../ducks/trips/actions';
+import actions from '../../ducks/actions';
+
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
@@ -17,6 +18,9 @@ function UpdateTrip({
   picture,
   updateTripImgPreview,
   deleteTrip,
+  updateTripPending,
+  deleteTripPending,
+  deleteTripErrorMsg
 }) {
 
   const [dateRange, setDateRange] = useState([
@@ -97,7 +101,7 @@ function UpdateTrip({
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center px-sm-3 py-sm-3">
-                  <img alt="" className="rounded-circle mt-sm-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : lisbon} />
+                  <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : lisbon} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
@@ -140,10 +144,36 @@ function UpdateTrip({
 
                   <div className="my-3 text-left">
                     <div className="trip-btn-group">
-                      <button className="btn-sm btn-danger profile-button" type="button" onClick={handleDeleteClick}>Delete Trip</button>
-                      <button className="btn-sm btn-primary profile-button" type="button" onClick={handleSubmitClick}>Update Trip</button>
+                      <button className="btn-sm btn-danger profile-button" type="button" onClick={handleDeleteClick}>
+                        <span className="pr-1">Delete Trip</span>
+                        {
+                          deleteTripPending ?
+                            <Spinner
+                              as="span"
+                              animation="border"
+                              size="sm"
+                              role="status"
+                              aria-hidden="true"
+                            /> : ""
+                        }
+
+                      </button>
+                      <button className="btn-sm btn-primary profile-button" type="button" onClick={handleSubmitClick}>
+
+                        <span className="pr-1">Update Trip</span>
+                        {
+                          updateTripPending ?
+                            <Spinner
+                              as="span"
+                              animation="border"
+                              size="sm"
+                              role="status"
+                              aria-hidden="true"
+                            /> : ""
+                        }
+                      </button>
                     </div>
-                    <div style={{ height: "10px" }} className="text-danger pt-3">{updateTripFormData.errorMsg}</div>
+                    <div style={{ height: "10px" }} className="text-danger pt-3">{updateTripFormData.errorMsg || deleteTripErrorMsg}</div>
                   </div>
                 </div>
               </div>
@@ -159,6 +189,9 @@ const mapStateToProps = state => {
   return {
     updateTripFormData: state.trips.updateTripFormData,
     picture: state.trips.data.picture,
+    updateTripPending: state.trips.updateTripPending,
+    deleteTripPending: state.trips.deleteTripPending,
+    deleteTripErrorMsg: state.trips.deleteTripErrorMsg,
   }
 }
 

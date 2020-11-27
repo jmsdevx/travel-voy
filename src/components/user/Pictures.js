@@ -23,7 +23,6 @@ function Pictures() {
   };
 
 
-
   return (
     <div className="pictures">
       <img className="hero" style={coverStyle} alt="hero" />

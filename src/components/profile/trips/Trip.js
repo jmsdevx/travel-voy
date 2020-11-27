@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Image } from 'react-bootstrap';
 import { format } from "date-fns";
 import UpdateTrip from "../ProfileResp/UpdateTrip";
-import * as tripsActions from "../../ducks/trips/actions";
+import actions from '../../ducks/actions';
 import { connect } from "react-redux";
 
 function Trip({
@@ -46,4 +46,4 @@ function Trip({
   );
 }
 
-export default connect(null, tripsActions)(Trip);
+export default connect(null, actions)(Trip);

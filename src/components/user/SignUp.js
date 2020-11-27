@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import Button from '../general/Button'
+// import Button from '../general/Button';
+import { Button, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './SignUp.scss';
 import { connect } from 'react-redux';
-import * as actions from '../ducks/auth/actions';
+import actions from '../ducks/actions';
 
 function SignUp(props) {
 
-  const { signupUser } = props;
-
-
-  //get session
-  const defaultUserObject = { firstName: '', lastName: '', email: '', id: '' }
-  const [userData, setUserData] = useState({ defaultUserObject })
-  const [gotSession, setSession] = useState(false)
-
-  // useEffect(() => {
-  //   axios.get('/api/session')
-  //     .then(response => {
-  //       setUserData(response.data);
-  //       setSession(true)
-  //     })
-  // }, [gotSession]);
+  const { signupUser, isSignupPending, signupErrorMsg } = props;
 
   //change text handler
   const [firstName, setFirstname] = useState('');
@@ -48,9 +35,6 @@ function SignUp(props) {
     }
   }
 
-
-  //submit to register
-  const [redirect, setRedirect] = useState(false);
   const submitHandler = () => {
     signupUser({ firstName, lastName, email, password });
   }
@@ -62,7 +46,22 @@ function SignUp(props) {
       <input type="text" className="input" placeholder="last name" id="lastName" onChange={changeHandler} value={lastName} />
       <input type="text" className="input" placeholder="email" id="email" onChange={changeHandler} value={email} />
       <input type="password" className="input" placeholder="password" id="password" onChange={changeHandler} value={password} />
-      <Button title="Sign Up" className="sign-up-button" onClick={submitHandler} />
+      <Button variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
+        <span className="pr-1">Signup</span>
+        {
+          isSignupPending ?
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            /> : ""
+        }
+
+      </Button>
+      <div style={{ height: "10px" }} className="text-danger pt-3">{signupErrorMsg}</div>
+
       {/* {
         redirect &&
         <Redirect
@@ -80,7 +79,9 @@ function SignUp(props) {
 
 const mapStateToProps = state => {
   return {
-    // signupFormData: state.signup.signupFormData
+    // signupFormData: state.signup.signupFormData,
+    isSignupPending: state.auth.isSignupPending,
+    signupErrorMsg: state.auth.signupErrorMsg
   }
 }
 

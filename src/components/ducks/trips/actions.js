@@ -20,6 +20,7 @@ import {
   DELETE_TRIP_SUCCESS,
   DELETE_TRIP_FAILED,
   REMOVE_TRIP_FROM_STATE,
+  ADD_TRIP_PENDING,
 } from './types';
 
 export const getTrips = () => {
@@ -46,8 +47,6 @@ export const getTrips = () => {
       })
       .catch(err => console.log(err));
     // toast(response.message, { type: 'success' });
-
-
   }
 }
 
@@ -73,7 +72,6 @@ export const addNewTrip = () => {
   return async (dispatch, getState) => {
 
     const data = getState().trips.addTripFormData;
-
     console.log(data);
 
     const {
@@ -106,6 +104,10 @@ export const addNewTrip = () => {
     formData.append('dateStart', dateStart.toISOString());
     formData.append('dateEnd', dateEnd.toISOString());
 
+    dispatch({
+      type: ADD_TRIP_PENDING,
+    });
+
     axios.post('/api/trip', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -121,14 +123,13 @@ export const addNewTrip = () => {
         dispatch(addTripFormReset());
         // dispatch(push('/profile'));
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         dispatch({
           type: ADD_TRIP_FAILED,
-          payload: err.message
+          payload: err.response.data.message || "Add New Trip Failed"
         });
-        // toast(response.message, { type: 'success' });
-      })
+      });
   }
 }
 
@@ -139,7 +140,6 @@ export const addTripFormReset = () => {
     })
   }
 }
-
 
 export const updateTripChange = (data) => {
   return async (dispatch) => {
@@ -199,6 +199,10 @@ export const updateTrip = () => {
     formData.append('dateEnd', new Date(dateEnd).toISOString());
     formData.append('tripId', id);
 
+    dispatch({
+      type: UPDATE_TRIP_PENDING,
+    });
+
     // update trip
     axios.put('/api/trip', formData, {
       headers: {
@@ -217,14 +221,14 @@ export const updateTrip = () => {
         dispatch(addTripFormReset());
         // dispatch(push('/profile'));
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         dispatch({
           type: UPDATE_TRIP_FAILED,
-          payload: err.message
+          payload: err.response.data.message || "Update Trip Failed"
         });
-        // toast(response.message, { type: 'success' });
       });
+    // toast(response.message, { type: 'success' });
   }
 }
 
@@ -284,14 +288,14 @@ export const deleteTrip = (tripId) => {
         dispatch(removeTripFromState(tripId));
         dispatch({
           type: DELETE_TRIP_SUCCESS,
-          payload: response.data.data
+          // payload: response.data.data
         });
       })
       .catch(err => {
         console.log(err);
         dispatch({
           type: DELETE_TRIP_FAILED,
-          payload: err.message
+          payload: err.response.data.message
         });
         // toast(response.message, { type: 'success' });
       })

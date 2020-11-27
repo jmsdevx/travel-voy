@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { push } from 'connected-react-router';
 
 import {
   PROFILE_CHANGE,
   PROFILE_UPDATED,
   PROFILE_FORM_RESET,
   GET_PROFILE_SUCCESS,
+  PROFILE_UPDATE_PENDING,
+  PROFILE_UPDATE_FAILED,
   PROFILE_PICTURE_UPDATED,
   BACKGROUND_PICTURE_UPDATED,
   BACKGROUND_PICTURE_UPDATE_PENDING
@@ -55,6 +56,10 @@ export const profileUpdate = () => {
       travelerType
     } = data;
 
+    dispatch({
+      type: PROFILE_UPDATE_PENDING
+    });
+
     axios.put('/api/profile', { id: userId, firstName, lastName, homeCity, travelerType })
       .then(response => {
         console.log(response);
@@ -66,7 +71,12 @@ export const profileUpdate = () => {
         // dispatch(profileFormReset());
         // dispatch(push('/profile'));
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        dispatch({
+          type: PROFILE_UPDATE_FAILED,
+          payload: err.response.data.message || "Profile update failed"
+        });
+      });
     // toast(response.message, { type: 'success' });
   }
 }

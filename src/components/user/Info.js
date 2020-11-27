@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './Info.scss';
 import { Button } from 'react-bootstrap';
 import EditProfile from '../profile/ProfileResp/EditProfile';
-import * as actions from '../ducks/profile/actions';
+import actions from '../ducks/actions';
 import { connect } from 'react-redux';
 
 function Info({ profileData, getProfile, userId }) {

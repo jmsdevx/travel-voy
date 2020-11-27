@@ -27,13 +27,12 @@ import EditProfile from './EditProfile';
 
 import {
   Dropdown,
-  Spinner
+  Spinner,
 } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import * as actions from '../../ducks/auth/actions';
-import * as profileActions from '../../ducks/profile/actions';
-import * as tripsActions from '../../ducks/trips/actions';
+import actions from '../../ducks/actions';
+
 
 function ProfileResp({
   logout,
@@ -101,7 +100,6 @@ function ProfileResp({
               />
               <Dropdown.Item onClick={handleBtnClick}>Update Background Image</Dropdown.Item>
               <Dropdown.Item onClick={() => setShowUpdateModal(!showUpdateModal)}>Update Profile</Dropdown.Item>
-
               <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -122,11 +120,18 @@ function ProfileResp({
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 3, offset: 2 }}>
+          {/* <Col md={{ span: 3, offset: 2 }}>
             <div className="new-trip" onClick={() => setShowModal(!showModal)}>
               <h2 className="display-4">New Trip</h2>
               <i className="material-icons">add_circle_outline</i>
             </div>
+            <AddTrip showModal={showModal} setShowModal={setShowModal} />
+          </Col> */}
+          <Col md={{ span: 3, offset: 2 }} className="d-flex justify-content-center align-items-center">
+            <Button className="new-trip-btn" size="lg" variant="info" onClick={() => setShowModal(!showModal)}>
+              <span>New Trip</span>
+              <i className="material-icons pl-1">add_circle_outline</i>
+            </Button>
             <AddTrip showModal={showModal} setShowModal={setShowModal} />
           </Col>
           <Col md={{ span: 5, offset: 1 }} className="map-outside p-0">
@@ -208,8 +213,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-  mapStateToProps, {
-  ...profileActions,
-  ...tripsActions,
-  ...actions
-})(ProfileResp);
+  mapStateToProps,
+  actions
+)(ProfileResp);

@@ -1,25 +1,41 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { Container, Row, Col, ResponsiveEmbed } from 'react-bootstrap';
-import Button from '../general/Button';
-import SideNav from '../layout/sideNav/SideNav';
+import React, { useState } from "react";
+// import axios from 'axios';
+// import { Redirect } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
+// import Button from '../general/Button';
+// import SideNav from '../layout/sideNav/SideNav';
 // import Header from "../layout/header/Header";
 // import Button from "../general/Button";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SignUp from './SignUp';
 import Overlay from '../general/Overlay';
 import './Login.scss';
 import { connect } from 'react-redux';
-import * as actions from '../ducks/auth/actions';
+import actions from '../ducks/actions';
+import { Redirect } from 'react-router-dom';
 
-function Login({ loginChange, loginUser, loginFormData }) {
-  console.log(loginFormData);
+function Login({
+  isAuth,
+  loginChange,
+  loginUser,
+  loginFormData,
+  isLoginPending,
+  loginErrorMsg
+}) {
+
+  // useEffect(() => {
+  //   if (isAuth) {
+  //     goTo('/profile');
+  //   }
+  // }, [])
+
+  // console.log(loginFormData);
 
   //get session
-  const defaultUserObject = { firstName: '', lastName: '', email: '', id: '' }
-  const [userData, setUserData] = useState({ defaultUserObject })
-  const [gotSession, setSession] = useState(false);
+  // const defaultUserObject = { firstName: '', lastName: '', email: '', id: '' }
+  // const [userData, setUserData] = useState({ defaultUserObject })
+  // const [gotSession, setSession] = useState(false);
   // useEffect(() => {
   //   axios.get('/api/session')
   //     .then(response => {
@@ -37,8 +53,8 @@ function Login({ loginChange, loginUser, loginFormData }) {
   }
 
   //login text handler
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
   const changeHandler = (e) => {
     loginChange({
@@ -52,7 +68,7 @@ function Login({ loginChange, loginUser, loginFormData }) {
     // }
   }
 
-  const [redirect, setRedirect] = useState(false);
+  // const [redirect, setRedirect] = useState(false);
 
   const submitLogin = () => {
 
@@ -76,6 +92,10 @@ function Login({ loginChange, loginUser, loginFormData }) {
     //   })
   }
 
+  if (isAuth) {
+    return <Redirect to="/profile" />
+  }
+
   return (
     <Container fluid className="login-container p-0">
       {/* <SideNav /> */}
@@ -87,7 +107,22 @@ function Login({ loginChange, loginUser, loginFormData }) {
             <input type="text" className="input" placeholder="email" id="email" name="email" onChange={changeHandler} value={loginFormData.email} />
             <input type="password" className="input" placeholder="password" id="password" name="password" onChange={changeHandler} value={loginFormData.password} />
             <p className="forgot">Forgot Password?</p>
-            <Button title="Login" className="log-button" onClick={submitLogin} />
+            {/* <Button title="Login" className="log-button" onClick={submitLogin} /> */}
+            <Button variant="primary" disabled={isLoginPending ? true : false} onClick={submitLogin}>
+              <span className="pr-1">Login</span>
+              {
+                isLoginPending ?
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  /> : ""
+              }
+
+            </Button>
+            <div style={{ height: "10px" }} className="text-danger pt-3">{loginErrorMsg}</div>
           </div>
         </Col>
       </Row>
@@ -107,7 +142,7 @@ function Login({ loginChange, loginUser, loginFormData }) {
         </Col>
         <Col sm={6} className="hero-right" />
       </Row>
-      {
+      {/* {
         redirect &&
         <Redirect
           push
@@ -117,14 +152,17 @@ function Login({ loginChange, loginUser, loginFormData }) {
             state: { userData }
           }}
         />
-      }
+      } */}
     </Container>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    loginFormData: state.auth.loginFormData
+    isAuth: state.auth.isAuth,
+    loginFormData: state.auth.loginFormData,
+    isLoginPending: state.auth.isLoginPending,
+    loginErrorMsg: state.auth.loginFormData.errorMsg
   }
 }
 

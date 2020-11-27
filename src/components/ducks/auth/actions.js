@@ -4,7 +4,7 @@ import { push } from 'connected-react-router';
 import {
   SIGN_UP_FULFILLED,
   SIGN_UP_REJECTED,
-  SET_AUTH,
+  SIGN_UP_PENDING,
   GET_AUTH_SUCCESS,
   LOGIN_FULFILLED,
   LOGIN_PENDING,
@@ -57,6 +57,10 @@ export const signupUser = (data) => {
 
     const { firstName, lastName, email, password } = data;
 
+    dispatch({
+      type: SIGN_UP_PENDING
+    });
+
     axios.post('/api/auth/register', { firstName, lastName, email, password })
       .then(response => {
         console.log('Signed In');
@@ -69,7 +73,13 @@ export const signupUser = (data) => {
         // dispatch(signupReset());
         dispatch(push('/profile'));
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err.response);
+        dispatch({
+          type: SIGN_UP_REJECTED,
+          payload: err.response.data.message || "Signup Failed"
+        });
+      });
     // toast(response.message, { type: 'success' });
   }
 }
@@ -89,6 +99,10 @@ export const loginUser = () => {
     const data = getState().auth.loginFormData;
     console.log(data);
 
+    dispatch({
+      type: LOGIN_PENDING
+    });
+
     // api request
     axios.post('/api/auth/login', { email: data.email, password: data.password })
       .then(response => {
@@ -101,6 +115,12 @@ export const loginUser = () => {
         });
         dispatch(loginReset());
         dispatch(push('/profile'));
+      })
+      .catch((err) => {
+        dispatch({
+          type: LOGIN_REJECTED,
+          payload: err.response.data.message || "Login Failed"
+        });
       });
   }
 }

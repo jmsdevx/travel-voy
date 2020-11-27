@@ -5,7 +5,7 @@ import React from "react";
 // import lisbon from "../../../assets/lisbon.jpeg";
 import { connect } from 'react-redux';
 import Trip from './Trip';
-import * as tripsActions from '../../ducks/trips/actions';
+import actions from '../../ducks/actions';
 import { Row, Col, } from 'react-bootstrap';
 
 
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, tripsActions)(Upcoming);
+export default connect(mapStateToProps, actions)(Upcoming);

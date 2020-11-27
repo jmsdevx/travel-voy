@@ -14,7 +14,10 @@ import {
   UPDATE_TRIP_FAILED,
   UPDATE_TRIP_FORM_RESET,
   UPDATE_TRIP_IMG_PREVIEW,
-  REMOVE_TRIP_FROM_STATE
+  REMOVE_TRIP_FROM_STATE,
+  DELETE_TRIP_PENDING,
+  DELETE_TRIP_SUCCESS,
+  DELETE_TRIP_FAILED,
 } from './types';
 
 const initialState = {
@@ -41,6 +44,8 @@ const initialState = {
   },
   addTripPending: false,
   updateTripPending: false,
+  deleteTripPending: false,
+  deleteTripErrorMsg: ''
 };
 
 const isDatePast = (date) => {
@@ -185,7 +190,6 @@ const tripsReducer = (state = initialState, action) => {
           action.payload
         ]
       }
-
       return updatedState;
 
     case UPDATE_TRIP_FAILED:
@@ -205,6 +209,25 @@ const tripsReducer = (state = initialState, action) => {
           ...initialState.updateTripFormData
         }
       };
+
+    case DELETE_TRIP_PENDING:
+      return {
+        ...state,
+        deleteTripPending: true
+      }
+
+    case DELETE_TRIP_SUCCESS:
+      return {
+        ...state,
+        deleteTripPending: false
+      }
+
+    case DELETE_TRIP_FAILED:
+      return {
+        ...state,
+        deleteTripPending: false,
+        deleteTripErrorMsg: action.payload
+      }
 
     case REMOVE_TRIP_FROM_STATE:
       return {

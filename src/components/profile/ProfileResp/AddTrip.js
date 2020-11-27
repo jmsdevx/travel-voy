@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import { Modal, Button, Spinner } from 'react-bootstrap';
 import './AddTrip.scss';
 import { connect } from 'react-redux';
-import * as actions from '../../ducks/trips/actions';
+import actions from '../../ducks/actions';
+
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
@@ -16,6 +17,7 @@ function AddTrip({
   addNewTrip,
   picture,
   addTripImgPreview,
+  addTripPending,
 }) {
 
   const [dateRange, setDateRange] = useState([
@@ -76,7 +78,7 @@ function AddTrip({
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-0 mt-sm-5 edit-profile-image" src={addTripFormData.picturePreviewUrl ? addTripFormData.picturePreviewUrl : lisbon} />
+                  <img alt="" className="rounded-circle mt-0 mt-md-5 edit-profile-image" src={addTripFormData.picturePreviewUrl ? addTripFormData.picturePreviewUrl : lisbon} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
@@ -117,7 +119,19 @@ function AddTrip({
                   </div>
 
                   <div className="px-2 my-3 text-left">
-                    <button className=" btn btn-primary profile-button" type="button" onClick={handleSubmitClick}>Add Trip</button>
+                    <button className=" btn btn-primary profile-button" type="button" disabled={addTripPending ? true : false} onClick={handleSubmitClick}>
+                      <span className="pr-1">    Add Trip</span>
+                      {
+                        addTripPending ?
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          /> : ""
+                      }
+                    </button>
                     <div style={{ height: "10px" }} className="text-danger pt-3">{addTripFormData.errorMsg}</div>
                   </div>
                 </div>
@@ -134,6 +148,7 @@ const mapStateToProps = state => {
   return {
     addTripFormData: state.trips.addTripFormData,
     picture: state.trips.data.picture,
+    addTripPending: state.trips.addTripPending,
   }
 }
 

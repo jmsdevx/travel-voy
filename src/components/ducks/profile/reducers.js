@@ -2,7 +2,9 @@ import {
   PROFILE_CHANGE,
   PROFILE_UPDATED,
   PROFILE_FORM_RESET,
+  PROFILE_UPDATE_FAILED,
   GET_PROFILE_SUCCESS,
+  PROFILE_UPDATE_PENDING,
   PROFILE_PICTURE_UPDATED,
   BACKGROUND_PICTURE_UPDATED,
   BACKGROUND_PICTURE_UPDATE_PENDING
@@ -14,7 +16,8 @@ const initialState = {
     lastName: '',
     email: '',
     homeCity: '',
-    travelerType: ''
+    travelerType: '',
+    errorMsg: ''
   },
   data: {
     id: '',
@@ -26,7 +29,8 @@ const initialState = {
     profilePicture: '',
     backgroundPicture: ''
   },
-  bgImgageLoading: false
+  bgImgageLoading: false,
+  profileUpdatePending: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -48,6 +52,22 @@ const profileReducer = (state = initialState, action) => {
         }
       };
 
+    case PROFILE_UPDATE_PENDING:
+      return {
+        ...state,
+        profileUpdatePending: true
+      };
+
+    case PROFILE_UPDATE_FAILED:
+      return {
+        ...state,
+        profileFormData: {
+          ...state.profileFormData,
+          errorMsg: action.payload
+        },
+        profileUpdatePending: false
+      }
+
     case PROFILE_UPDATED:
       return {
         ...state,
@@ -55,6 +75,7 @@ const profileReducer = (state = initialState, action) => {
         profileFormData: {
           ...state.profileFormData, ...action.payload
         },
+        profileUpdatePending: false
       };
 
     case PROFILE_FORM_RESET:
