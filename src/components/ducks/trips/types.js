@@ -1,3 +1,4 @@
+export const INIT_STATE = "INIT_STATE";
 export const ADD_TRIP_CHANGE = "ADD_TRIP_CHANGE";
 export const ADD_TRIP_SUCCESS = "ADD_TRIP_SUCCESS";
 export const ADD_TRIP_FAILED = "ADD_TRIP_FAILED";

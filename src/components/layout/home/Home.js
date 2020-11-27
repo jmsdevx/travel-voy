@@ -8,11 +8,13 @@ import heroSmall from '../../../assets/video/calendar.png';
 import SideNav from '../sideNav/SideNav';
 import SignUp from '../signUp/SignUp';
 
+import MobileNav from '../navbar/MobileNav';
+
 function Home() {
   return (
     <>
       <div className="home-container">
-        <SideNav />
+        {/* <SideNav /> */}
         <Container fluid className="hero">
           <Row>
             <Col md={11} className="text-right login-home">

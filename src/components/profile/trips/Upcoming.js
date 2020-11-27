@@ -54,7 +54,7 @@ function Upcoming({
           {
             upcomingTrips.map((trip, i) => {
               return (
-                <Col md={3} key={i} className="d-flex justify-content-center mb-4">
+                <Col sm={6} md={3} key={i} className="d-flex justify-content-center mb-4">
                   <Trip id={trip.id} image={trip.picture} location={trip.location} dateStart={trip.dateStart} dateEnd={trip.dateEnd} />
                 </Col>
               );

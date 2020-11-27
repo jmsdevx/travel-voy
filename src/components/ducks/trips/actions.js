@@ -2,6 +2,7 @@ import axios from 'axios';
 import { push } from 'connected-react-router';
 
 import {
+  INIT_STATE,
   GET_TRIPS_SUCCESS,
   ADD_TRIP_CHANGE,
   ADD_TRIP_SUCCESS,
@@ -302,6 +303,15 @@ export const removeTripFromState = (tripId) => {
     dispatch({
       type: REMOVE_TRIP_FROM_STATE,
       payload: tripId
+    });
+  }
+}
+
+
+export const initTripState = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: INIT_STATE
     });
   }
 }

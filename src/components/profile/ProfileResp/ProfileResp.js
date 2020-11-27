@@ -85,7 +85,7 @@ function ProfileResp({
 
   return (
     <>
-      <SideNav />
+      {/* <SideNav /> */}
       <Container fluid className="profile-container">
         <Jumbotron fluid style={heroStyle} className="hero-image p-0 text-right pr-4 pt-2">
           <Dropdown>
@@ -111,8 +111,8 @@ function ProfileResp({
           <div className={bgImgageLoading ? "show-spinner" : "d-none"}>
             <Spinner animation="border" />
           </div>
-
         </Jumbotron>
+
         <Row className="border-bottom">
           <Col xs={8} md={{ span: 5, offset: 1 }} className="profile-info">
             <Info />

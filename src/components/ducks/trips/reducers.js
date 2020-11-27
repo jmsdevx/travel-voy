@@ -1,4 +1,5 @@
 import {
+  INIT_STATE,
   GET_TRIPS_SUCCESS,
   ADD_TRIP_CHANGE,
   ADD_TRIP_SUCCESS,
@@ -213,6 +214,9 @@ const tripsReducer = (state = initialState, action) => {
           pastTrips: state.data.pastTrips.filter((trip) => trip.id !== action.payload),
         }
       };
+
+    case INIT_STATE:
+      return initialState;
 
     default:
       return state;

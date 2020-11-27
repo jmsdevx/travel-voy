@@ -34,7 +34,7 @@ class NewQuiz extends Component {
 
     return (
       <Container fluid className="new-quiz-container p-0">
-        <SideNav />
+        {/* <SideNav /> */}
         <Row>
           <Col md={12} pt-2 p-md-0>
             <h1 className="quiz-title pt-3">

@@ -10,6 +10,18 @@ import quizReducer from "../ducks/quiz/quizReducer";
 import profileReducer from "../ducks/profile/reducers";
 import tripsReducer from "../ducks/trips/reducers";
 
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+// redux-persist is used to persist redux state on page refresh 
+
+// whitelist the reducers which you want to persist
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['auth'],
+}
+
 const logger = createLogger({
   duration: true,
   timestamp: true,
@@ -26,8 +38,12 @@ const rootReducer = combineReducers({
   quizReducer,
 });
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const middlewares = composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history), logger));
 
-const store = createStore(rootReducer, middlewares);
+const store = createStore(persistedReducer, middlewares);
+
+export const persistor = persistStore(store);
 
 export default store;

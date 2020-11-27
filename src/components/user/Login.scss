@@ -30,6 +30,12 @@ $screen-xl-min: 1200px;
   }
 }
 
+@mixin md {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
 .login-container {
   font-family: raisonne;
   color: black;

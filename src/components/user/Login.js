@@ -78,10 +78,10 @@ function Login({ loginChange, loginUser, loginFormData }) {
 
   return (
     <Container fluid className="login-container p-0">
-      <SideNav />
+      {/* <SideNav /> */}
       <Row className="top-row">
-        <Col md={6} className="hero-left" />
-        <Col md={6} className="login-right p-0">
+        <Col sm={6} className="hero-left" />
+        <Col sm={6} className="login-right p-0">
           <div className="input-container">
             <h1 className="heading">Welcome Back</h1>
             <input type="text" className="input" placeholder="email" id="email" name="email" onChange={changeHandler} value={loginFormData.email} />
@@ -92,7 +92,7 @@ function Login({ loginChange, loginUser, loginFormData }) {
         </Col>
       </Row>
       <Row className="bottom-row">
-        <Col md={6} className="login-left p-0">
+        <Col sm={6} className="login-left p-0">
 
           {signUp ?
             <>
@@ -105,7 +105,7 @@ function Login({ loginChange, loginUser, loginFormData }) {
             </div>
           }
         </Col>
-        <Col md={6} className="hero-right" />
+        <Col sm={6} className="hero-right" />
       </Row>
       {
         redirect &&

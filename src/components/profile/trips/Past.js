@@ -65,7 +65,7 @@ function Past({
             pastTrips.map((trip, i) => {
               return (
                 // <Col md={{ span: 1, offset: 1 }}>
-                <Col key={i} md="3" className="d-flex justify-content-center mb-4">
+                <Col key={i} sm={6} md={3} className="d-flex justify-content-center mb-4">
                   <Trip id={trip.id} image={trip.picture} location={trip.location} dateStart={trip.dateStart} dateEnd={trip.dateEnd} />
                 </Col>
               );
