@@ -49,6 +49,8 @@ $screen-xl-min: 1200px;
 ///////////////////
 .modal-90w {
   max-width: 100vw !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 
   @include sm {
     max-width: 80vw !important;
@@ -158,7 +160,7 @@ $screen-xl-min: 1200px;
   }
 
   .map-outside {
-    border: 5px solid $dark-blue;
+    // border: 5px solid $dark-blue;
     height: 40vh;
     width: 100%;
     padding: 1.5rem !important;
@@ -212,15 +214,4 @@ $screen-xl-min: 1200px;
 
 
   .past-trips {}
-}
-
-.trip-btn-group {
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-
-  @include md {
-    width: 40%;
-  }
-
 }

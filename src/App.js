@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
-import store, { history, persistor } from "./components/ducks/store";
+import store, { history, persistor } from "./ducks/store";
 import routes from "./routes/routes";
 import "./App.scss";
 import { ConnectedRouter } from 'connected-react-router';

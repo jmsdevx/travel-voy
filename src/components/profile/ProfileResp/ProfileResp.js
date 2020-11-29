@@ -1,23 +1,26 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Jumbotron, Image, Button } from 'react-bootstrap';
-import SideNav from '../../layout/sideNav/SideNav';
-import hero from '../../../assets/Amsterdam.jpg';
+// import SideNav from '../../layout/sideNav/SideNav';
+// import hero from '../../../assets/Amsterdam.jpg';
 import './ProfileResp.scss';
 import Info from '../../user/Info';
-import selfie from "../../../assets/Helsinki.PNG";
-import nashville from '../../../assets/nashville.jpg';
-import napa from '../../../assets/napa.jpeg';
-import newyork from '../../../assets/newyork.jpg';
-import lisbon from '../../../assets/lisbon.jpeg';
-import amsterdam from '../../../assets/Amsterdam.jpg';
-import dubai from '../../../assets/Dubai.jpg';
-import morocco from '../../../assets/Morocco.jpg';
-import gothenburg from '../../../assets/Gothenburg.jpg';
+// import selfie from "../../../assets/Helsinki.PNG";
+// import nashville from '../../../assets/nashville.jpg';
+// import napa from '../../../assets/napa.jpeg';
+// import newyork from '../../../assets/newyork.jpg';
+// import lisbon from '../../../assets/lisbon.jpeg';
+// import amsterdam from '../../../assets/Amsterdam.jpg';
+// import dubai from '../../../assets/Dubai.jpg';
+// import morocco from '../../../assets/Morocco.jpg';
+// import gothenburg from '../../../assets/Gothenburg.jpg';
+// import back from '../../../assets/back.jpeg';
+// import silo from '../../../assets/silo.jpeg';
+// import mystery from '../../../assets/mystery.jpg';
+
+import defaultImg from '../../../assets/default.jpg';
+
 import Map from '../../map/Map';
-import silo from '../../../assets/silo.jpeg';
-import back from '../../../assets/back.jpeg';
 import beach from '../../../assets/beach.jpg';
-import mystery from '../../../assets/mystery.jpg';
 
 import Upcoming from '../trips/Upcoming';
 import Past from '../trips/Past';
@@ -31,7 +34,7 @@ import {
 } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
 
 
 function ProfileResp({
@@ -116,7 +119,7 @@ function ProfileResp({
             <Info />
           </Col>
           <Col xs={4} md={5} className="profile-pic">
-            <Image src={profilePicture ? profilePicture : mystery} roundedCircle className="selfie" />
+            <Image src={profilePicture ? profilePicture : defaultImg} roundedCircle className="selfie" />
           </Col>
         </Row>
         <Row>

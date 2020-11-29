@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
-import * as auth from '../ducks/auth/actions';
-import * as profile from '../ducks/profile/actions';
-import * as trips from '../ducks/trips/actions';
+import * as auth from './auth/actions';
+import * as profile from './profile/actions';
+import * as trips from './trips/actions';
 import {
   push
 } from 'connected-react-router';

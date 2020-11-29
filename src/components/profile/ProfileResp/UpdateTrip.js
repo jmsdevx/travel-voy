@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Modal, Spinner } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
-import lisbon from '../../../assets/lisbon.jpeg';
+// import lisbon from '../../../assets/lisbon.jpeg';
+import defaultImg from '../../../assets/default.jpg';
 
 function UpdateTrip({
   tripId,
@@ -101,7 +102,7 @@ function UpdateTrip({
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center px-sm-3 py-sm-3">
-                  <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : lisbon} />
+                  <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : defaultImg} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>

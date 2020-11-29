@@ -160,3 +160,31 @@ $screen-xl-min: 1200px;
   //   transform: scale(1.05);
   // }
 }
+
+// trip calander
+.rdrCalendarWrapper {
+  // font-size: 10px;
+  font-size: .75rem;
+
+  @include sm {
+    font-size: 12px;
+  }
+}
+
+.trip-btn-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include sm {
+    width: 80%;
+  }
+
+  @include md {
+    width: 60%;
+  }
+
+  @include lg {
+    width: 40%;
+  }
+}

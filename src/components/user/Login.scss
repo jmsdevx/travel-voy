@@ -95,10 +95,10 @@ $screen-xl-min: 1200px;
       }
 
       .log-button {
-        height: 5vh;
-        width: 5rem;
+        height: 2.5rem;
+        // width: 5rem;
         margin-top: 2vh;
-
+        min-width: 4.5rem;
         background-color: $grey;
 
         border: 3px solid $white;
@@ -106,10 +106,10 @@ $screen-xl-min: 1200px;
 
         color: $white;
         font-family: raisonne;
-        font-size: 1.5em;
+        // font-size: 1.5em;
 
         @include sm {
-          width: 10vw;
+          // width: 10vw;
         }
 
       }
@@ -148,17 +148,18 @@ $screen-xl-min: 1200px;
       button {
         margin-top: 1rem;
         margin-bottom: 2rem;
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
+        min-width: 4.5rem;
         background: $grey;
         color: $white;
         height: 5vh;
-        width: 6rem;
+        // width: 6rem;
         border-radius: 15px;
         font-family: raisonne;
         border: 3px solid $white;
 
         @include sm {
-          width: 10vw;
+          // width: 10vw;
           margin-top: 5vh;
           margin-bottom: 0;
         }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Image } from 'react-bootstrap';
 import { format } from "date-fns";
 import UpdateTrip from "../ProfileResp/UpdateTrip";
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
 import { connect } from "react-redux";
 
 function Trip({

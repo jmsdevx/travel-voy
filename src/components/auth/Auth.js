@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import actions from '../ducks/actions';
+import actions from '../../ducks/actions';
 
 function Auth(props) {
   const { getAuth } = props;

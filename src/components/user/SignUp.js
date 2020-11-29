@@ -5,7 +5,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './SignUp.scss';
 import { connect } from 'react-redux';
-import actions from '../ducks/actions';
+import actions from '../../ducks/actions';
 
 function SignUp(props) {
 
@@ -46,8 +46,8 @@ function SignUp(props) {
       <input type="text" className="input" placeholder="last name" id="lastName" onChange={changeHandler} value={lastName} />
       <input type="text" className="input" placeholder="email" id="email" onChange={changeHandler} value={email} />
       <input type="password" className="input" placeholder="password" id="password" onChange={changeHandler} value={password} />
-      <Button variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
-        <span className="pr-1">Signup</span>
+      <button className="mt-2 px-2 sign-up-button" variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
+        <span className="">Signup</span>
         {
           isSignupPending ?
             <Spinner
@@ -59,8 +59,8 @@ function SignUp(props) {
             /> : ""
         }
 
-      </Button>
-      <div style={{ height: "10px" }} className="text-danger pt-3">{signupErrorMsg}</div>
+      </button>
+      <div style={{ height: "10px", marginTop: "2rem" }} className="text-danger pt-3">{signupErrorMsg}</div>
 
       {/* {
         redirect &&

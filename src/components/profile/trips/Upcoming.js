@@ -5,7 +5,7 @@ import React from "react";
 // import lisbon from "../../../assets/lisbon.jpeg";
 import { connect } from 'react-redux';
 import Trip from './Trip';
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
 import { Row, Col, } from 'react-bootstrap';
 
 

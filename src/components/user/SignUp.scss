@@ -47,8 +47,9 @@ $screen-md-min: 768px;
   }
 
   .sign-up-button {
-    height: 6vh;
-    width: 5rem;
+    height: 2.5rem;
+    // width: 5rem;
+    min-width: 4.5rem;
     margin-top: 3vh;
     background: $grey;
     color: $white;
@@ -58,7 +59,7 @@ $screen-md-min: 768px;
     margin-bottom: 2rem;
 
     @include md {
-      width: 10vw;
+      // width: 10vw;
       margin-bottom: 0;
     }
 

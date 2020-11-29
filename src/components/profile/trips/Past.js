@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import Trip from './Trip';
 import { Row, Col, } from 'react-bootstrap';
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
 
 function Past({
   pastTrips

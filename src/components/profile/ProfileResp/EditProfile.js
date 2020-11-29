@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import { Modal, Spinner } from 'react-bootstrap';
 import './EditProfile.scss';
 import { connect } from 'react-redux';
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
+import defaultImg from '../../../assets/default.jpg';
 
-import mystery from '../../../assets/mystery.jpg';
 
 function EditProfile({
   showModal,
@@ -59,7 +59,7 @@ function EditProfile({
             <div className="row">
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
-                  <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={profilePicture ? profilePicture : mystery} />
+                  <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={profilePicture ? profilePicture : defaultImg} />
                   {/* <span className="font-weight-bold">Amelly</span>
                   <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>

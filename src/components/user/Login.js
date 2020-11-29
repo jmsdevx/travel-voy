@@ -12,7 +12,7 @@ import SignUp from './SignUp';
 import Overlay from '../general/Overlay';
 import './Login.scss';
 import { connect } from 'react-redux';
-import actions from '../ducks/actions';
+import actions from '../../ducks/actions';
 import { Redirect } from 'react-router-dom';
 
 function Login({
@@ -108,8 +108,8 @@ function Login({
             <input type="password" className="input" placeholder="password" id="password" name="password" onChange={changeHandler} value={loginFormData.password} />
             <p className="forgot">Forgot Password?</p>
             {/* <Button title="Login" className="log-button" onClick={submitLogin} /> */}
-            <Button variant="primary" disabled={isLoginPending ? true : false} onClick={submitLogin}>
-              <span className="pr-1">Login</span>
+            <button className="mt-2 mx-2 log-button" variant="primary" disabled={isLoginPending ? true : false} onClick={submitLogin}>
+              <span className="">Login</span>
               {
                 isLoginPending ?
                   <Spinner
@@ -121,8 +121,8 @@ function Login({
                   /> : ""
               }
 
-            </Button>
-            <div style={{ height: "10px" }} className="text-danger pt-3">{loginErrorMsg}</div>
+            </button>
+            <div style={{ height: "10px", marginTop: "2rem" }} className="text-danger pt-3">{loginErrorMsg}</div>
           </div>
         </Col>
       </Row>

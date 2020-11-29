@@ -4,7 +4,7 @@ import './SignUp.scss';
 import pic1 from '../../../assets/video/cost.png';
 import pic2 from '../../../assets/video/notifications.png';
 import { connect } from 'react-redux';
-import actions from '../../ducks/actions';
+import actions from '../../../ducks/actions';
 
 function SignUp({
   signupUser,
