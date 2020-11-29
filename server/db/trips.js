@@ -76,7 +76,7 @@ module.exports = {
       }
 
       return {
-        id: response.rows[0].user_id,
+        id: response.rows[0].id,
         location: response.rows[0].location,
         dateStart: response.rows[0].start_date,
         dateEnd: response.rows[0].end_date,
@@ -112,7 +112,7 @@ module.exports = {
       console.log(query);
 
       const response = await db.query(query);
-
+      console.log(response);
       return {
         id: response.rows[0].id,
         location: response.rows[0].location,

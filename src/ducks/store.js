@@ -6,6 +6,8 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import authReducer from "./auth/reducers";
+import signupReducer from "./signup/reducers";
+import loginReducer from "./login/reducers";
 import quizReducer from "./quiz/quizReducer";
 import profileReducer from "./profile/reducers";
 import tripsReducer from "./trips/reducers";
@@ -34,6 +36,8 @@ export const history = createBrowserHistory();
 const rootReducer = combineReducers({
   router: connectRouter(history),
   auth: authReducer,
+  signup: signupReducer,
+  login: loginReducer,
   profile: profileReducer,
   trips: tripsReducer,
   quizReducer,

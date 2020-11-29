@@ -77,13 +77,13 @@ $screen-xl-min: 1200px;
   }
 }
 
-
 .profile-container {
   padding: 0 !important;
   text-align: center;
   font-family: raisonne;
   color: $white;
   background: $grey;
+  background-color: #363945;
 
   @include lg {
     padding-left: 5rem !important;

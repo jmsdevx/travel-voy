@@ -2,27 +2,37 @@ import React from 'react';
 import './Home.scss';
 import { Container, Row, Col, Button, ResponsiveEmbed } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Logo from '../../../assets/logo_grey.svg';
+// import Logo from '../../../assets/logo_grey.svg';
 import heroLarge from '../../../assets/video/trips.png';
 import heroSmall from '../../../assets/video/calendar.png';
-import SideNav from '../sideNav/SideNav';
+// import SideNav from '../sideNav/SideNav';
 import SignUp from '../signUp/SignUp';
+// import MobileNav from '../navbar/MobileNav';
+import { connect } from 'react-redux';
+import actions from '../../../ducks/actions';
 
-import MobileNav from '../navbar/MobileNav';
-
-function Home() {
+function Home({
+  isAuth,
+  logout
+}) {
   return (
     <>
       <div className="home-container">
         {/* <SideNav /> */}
         <Container fluid className="hero">
           <Row>
-            <Col md={11} className="text-right login-home">
-              <Link to="/login">
-                <button>
-                  Login
-                </button>
-              </Link>
+            <Col md={12} className="text-right login-home">
+              {
+                isAuth
+                  ?
+                  <button onClick={logout}>Logout</button>
+                  // ""
+                  : (<Link to="/login">
+                    <button>
+                      Login
+                    </button>
+                  </Link>)
+              }
             </Col>
           </Row>
           <Row>
@@ -104,4 +114,10 @@ function Home() {
   )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    'isAuth': state.auth.isAuth
+  }
+}
+
+export default connect(mapStateToProps, actions)(Home);

@@ -62,11 +62,12 @@ function SignUp({
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" onChange={changeHandler} id="password" value={password} />
             </Form.Group>
-            <Button variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
-              <span className="pr-1">Signup</span>
+            <button className="sign-up-button" variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
+              <span className="">Signup</span>
               {
                 isSignupPending ?
                   <Spinner
+                    className="ml-1"
                     as="span"
                     animation="border"
                     size="sm"
@@ -74,8 +75,7 @@ function SignUp({
                     aria-hidden="true"
                   /> : ""
               }
-
-            </Button>
+            </button>
             <div style={{ height: "10px" }} className="text-danger pt-3">{signupErrorMsg}</div>
           </Form>
         </Col>
@@ -100,8 +100,8 @@ function SignUp({
 const mapStateToProps = state => {
   return {
     // signupFormData: state.signup.signupFormData,
-    isSignupPending: state.auth.isSignupPending,
-    signupErrorMsg: state.auth.signupErrorMsg
+    isSignupPending: state.signup.isSignupPending,
+    signupErrorMsg: state.signup.signupErrorMsg
   }
 }
 

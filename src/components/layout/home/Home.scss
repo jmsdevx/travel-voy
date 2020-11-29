@@ -93,6 +93,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
     flex-direction: column;
     justify-content: space-between;
 
+    @include sm {
+      height: 40vh;
+    }
+
     @include md {
       height: 60vh;
     }
@@ -100,16 +104,20 @@ only screen and (min-device-pixel-ratio: 1.5) {
     .login-home {
       height: 0vh;
       font-size: 1.5rem;
+      display: none;
+      padding-right: 2.5rem;
+
+      @include md {
+        display: block;
+      }
 
       button {
         background-color: transparent;
-        border: 3px solid $dark-blue;
+        border: 3px solid #89b0ae;
         border-radius: 9999em;
-        margin-top: 1vh;
-        padding: 0vw 1vw;
-        color: $grey;
-        z-index: 10;
-        position: absolute;
+        margin-top: 1rem;
+        padding: 0 .6rem;
+        color: #555b6e;
       }
     }
 

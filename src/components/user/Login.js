@@ -97,7 +97,7 @@ function Login({
   }
 
   return (
-    <Container fluid className="login-container p-0">
+    <Container fluid className="login-container ">
       {/* <SideNav /> */}
       <Row className="top-row">
         <Col sm={6} className="hero-left" />
@@ -113,6 +113,7 @@ function Login({
               {
                 isLoginPending ?
                   <Spinner
+                    className="ml-1"
                     as="span"
                     animation="border"
                     size="sm"
@@ -160,9 +161,9 @@ function Login({
 const mapStateToProps = state => {
   return {
     isAuth: state.auth.isAuth,
-    loginFormData: state.auth.loginFormData,
-    isLoginPending: state.auth.isLoginPending,
-    loginErrorMsg: state.auth.loginFormData.errorMsg
+    loginFormData: state.login.loginFormData,
+    isLoginPending: state.login.isLoginPending,
+    loginErrorMsg: state.login.loginFormData.errorMsg
   }
 }
 

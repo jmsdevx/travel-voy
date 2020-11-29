@@ -42,6 +42,10 @@ $screen-xl-min: 1200px;
   height: 100vh;
   background-color: #bee3db;
 
+  @include md {
+    padding-left: 4rem !important;
+  }
+
   .top-row {
     height: 70vh;
 

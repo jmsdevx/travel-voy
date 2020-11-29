@@ -77,6 +77,17 @@ $screen-xl-min: 1200px;
     @include sm {
       height: 100%;
     }
+
+    .sign-up-button {
+      height: 2.5rem;
+      // width: 5rem;
+      min-width: 4.5rem;
+      background: $grey;
+      color: $white;
+      border: 3px solid $white;
+      border-radius: 15px;
+      font-family: raisonne;
+    }
   }
 
   .sign-form {

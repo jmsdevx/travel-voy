@@ -51,6 +51,7 @@ function SignUp(props) {
         {
           isSignupPending ?
             <Spinner
+              className="ml-1"
               as="span"
               animation="border"
               size="sm"
@@ -80,8 +81,8 @@ function SignUp(props) {
 const mapStateToProps = state => {
   return {
     // signupFormData: state.signup.signupFormData,
-    isSignupPending: state.auth.isSignupPending,
-    signupErrorMsg: state.auth.signupErrorMsg
+    isSignupPending: state.signup.isSignupPending,
+    signupErrorMsg: state.signup.signupErrorMsg
   }
 }
 
