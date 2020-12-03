@@ -61,25 +61,12 @@ function SignUp(props) {
 
       </button>
       <div style={{ height: "10px", marginTop: "2rem" }} className="text-danger pt-3">{signupErrorMsg}</div>
-
-      {/* {
-        redirect &&
-        <Redirect
-          push
-          to={{
-            pathname: "/profile",
-            search: `${userData.email}`,
-            state: { userData }
-          }}
-        />
-      } */}
     </div>
   )
 }
 
 const mapStateToProps = state => {
   return {
-    // signupFormData: state.signup.signupFormData,
     isSignupPending: state.auth.isSignupPending,
     signupErrorMsg: state.auth.signupErrorMsg
   }

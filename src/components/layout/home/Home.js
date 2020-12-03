@@ -2,19 +2,14 @@ import React from 'react';
 import './Home.scss';
 import { Container, Row, Col, Button, ResponsiveEmbed } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Logo from '../../../assets/logo_grey.svg';
 import heroLarge from '../../../assets/video/trips.png';
 import heroSmall from '../../../assets/video/calendar.png';
-import SideNav from '../sideNav/SideNav';
 import SignUp from '../signUp/SignUp';
-
-import MobileNav from '../navbar/MobileNav';
 
 function Home() {
   return (
     <>
       <div className="home-container">
-        {/* <SideNav /> */}
         <Container fluid className="hero">
           <Row>
             <Col md={11} className="text-right login-home">
@@ -55,7 +50,7 @@ function Home() {
           <Row className="justify-content-around">
             <Col md={{ span: 5 }}>
               <div className="photo-container">
-                <img src={heroLarge} alt="hero-large" />
+                <img src={heroLarge} alt="screenshot" />
               </div>
               <div className="photo-label">
                 <h2>Save Trips</h2>
@@ -63,21 +58,13 @@ function Home() {
             </Col>
             <Col md={{ span: 5 }}>
               <div className="photo-container" style={{ marginTop: "6rem" }}>
-                <img src={heroSmall} alt="hero-small" />
+                <img src={heroSmall} alt="screenshot" />
               </div>
               <div className="photo-label">
                 <h2>Plan Ahead</h2>
               </div>
             </Col>
           </Row>
-          {/* <Row className="photo-labels">
-            <div md={{ span: 5, offset: 1 }}>
-              <h2>Save Trips</h2>
-            </div>
-            <div md={{ span: 5, offset: 1 }}>
-              <h2>Plan Ahead</h2>
-            </div>
-          </Row> */}
         </Container>
         <Container fluid className="discover">
           <Row>
@@ -95,11 +82,6 @@ function Home() {
         </Container>
       </div>
       <SignUp />
-      {/* <Container>
-        <Row>
-          <Col>Travel Voy</Col>
-        </Row>
-      </Container> */}
     </>
   )
 }
