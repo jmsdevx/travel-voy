@@ -9,18 +9,18 @@ $orange: #ffd6ba;
   color: $grey;
   text-align: center;
   background-color: $grey;
-  text-shadow: -3px 3px 0px #bee3db, -5px 5px 0px #89b0ae;
+  text-shadow: -3px 3px 0px #555b6e;
 
 
   .quiz-title {
-    color: $grey;
-    background-color: $light-blue;
+    color: $orange;
     height: 5rem;
-    box-shadow: 0 10px 10px $light-blue;
+    box-shadow: 0 10px 10px $grey;
+    text-decoration: underline;
   }
 
   .embed-container {
-    height: 65vh;
+    height: 80vh;
     border-radius: 10px;
     border: 20px solid $orange;
     padding-top: 5vh;

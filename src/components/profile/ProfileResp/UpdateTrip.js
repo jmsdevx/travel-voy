@@ -136,7 +136,7 @@ function UpdateTrip({
 
                   <div className="my-3 text-left">
                     <div className="trip-btn-group">
-                      <button className="btn-sm btn-danger profile-button" type="button" onClick={handleDeleteClick}>
+                      <button className="btn-sm btn-danger profile-button" type="button" onClick={handleDeleteClick} style={{backgroundColor: "red !important"}}>
                         <span className="pr-1">Delete Trip</span>
                         {
                           deleteTripPending ?

@@ -103,21 +103,21 @@ function ProfileResp({
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 5, offset: 1 }} className="map-outside p-0">
-            <Map />
-          </Col>
           <Col md={{ span: 3, offset: 1 }} className="d-flex justify-content-center align-items-center">
-            <Button className="new-trip-btn" size="lg" variant="info" onClick={() => setShowModal(!showModal)}>
+            {/* <Button className="new-trip-btn" size="lg" variant="info" onClick={() => setShowModal(!showModal)}>
               <span>New Trip</span>
-              <i className="material-icons pl-1">add_circle_outline</i>
-            </Button>
+              <i className="material-icons pl-1" onClick={() => setShowModal(!showModal)}>add_circle_outline</i>
+            </Button> */}
             <AddTrip showModal={showModal} setShowModal={setShowModal} />
           </Col>
         </Row>
 
         {/* TRIP */}
-        <Upcoming />
+        <Upcoming newTrip={<i className="material-icons pl-1" onClick={() => setShowModal(!showModal)}>add_circle_outline</i>} />
         <Past />
+            <Col md={{ span: 8, offset: 3 }} className="map-outside p-0">
+              <Map />
+            </Col>
       </Container>
     </>
   )

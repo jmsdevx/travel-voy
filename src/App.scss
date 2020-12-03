@@ -98,12 +98,16 @@ body {
 }
 
 .mobile-nav-bar {
-  background-color: $orange;
-  color: $grey !important;
+  background-color: $dark-blue;
+  color: $white !important;
   font-family: raisonne;
+  box-shadow: 2px 2px rgba(0, 98, 90, 0.4),
+  4px 4px rgba(0, 98, 90, 0.3),
+  6px 6px rgba(0, 98, 90, 0.2);
+  position: sticky;
 
   a {
-    color: $grey !important;
+    color: $white !important;
     font-size: 2rem;
   }
 }

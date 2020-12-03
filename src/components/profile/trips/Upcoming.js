@@ -7,13 +7,14 @@ import { Row, Col, } from 'react-bootstrap';
 
 function Upcoming({
   upcomingTrips,
+  newTrip
 }) {
 
   return (
     <div className="container-fluid">
       <Row className="trip-container">
         <Col md={6} className="trips-title mb-3">
-          <h2 className="display-4">Upcoming Trips</h2>
+          <h2 className="display-4">Upcoming Trips {newTrip}</h2>
         </Col>
 
         <Row className="justify-content-md-center">
