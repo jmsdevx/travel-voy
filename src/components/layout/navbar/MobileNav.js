@@ -19,6 +19,7 @@ function MobileNav({
           <Nav className="mr-auto">
             <Link className="nav-link" to="/">Home</Link>
             <Link className="nav-link" to="/quiz">Quiz</Link>
+            <Link className="nav-link" to="/video">Itinerary Builder</Link>
             {isAuth ?
               (<>
                 <Link className="nav-link" to="/profile">Profile</Link>

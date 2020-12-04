@@ -4,6 +4,14 @@ $light-blue: #bee3db;
 $white: #faf9f9;
 $orange: #ffd6ba;
 
+$screen-mobile-video: 768px;
+
+@mixin mobile-video {
+  @media (max-width: #{$screen-mobile-video}) {
+    @content;
+  }
+}
+
 .new-quiz-container {
   font-family: raisonne;
   color: $grey;
@@ -29,6 +37,30 @@ $orange: #ffd6ba;
     margin-top: 10vh;
     margin-bottom: 10vh;
     box-shadow: inset 3px 3px 20px #ffd6ba;
+  }
+
+  .video-container {
+    margin-top: 5vh;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5vh;
+    border: 5px solid $white;
+
+    @include mobile-video {
+      margin-top: 10vh;
+      width: 95%;
+      margin-left: 1.5%;
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+      background: $light-blue;
+    }
+  }
+
+  .video-title {
+    color: $orange;
+    height: 5rem;
+    box-shadow: 0 10px 10px $grey;
+    text-decoration: underline;
   }
 
   @media only screen and (max-width: 768px) {

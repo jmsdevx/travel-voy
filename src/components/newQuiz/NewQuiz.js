@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
-import SideNav from '../layout/sideNav/SideNav';
 import './NewQuiz.scss';
 
 class NewQuiz extends Component {
@@ -34,7 +33,6 @@ class NewQuiz extends Component {
 
     return (
       <Container fluid className="new-quiz-container p-0">
-        {/* <SideNav /> */}
         <Row>
           <Col md={12} pt-2 p-md-0>
             <h1 className="quiz-title pt-3">

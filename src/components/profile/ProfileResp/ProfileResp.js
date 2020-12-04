@@ -9,6 +9,7 @@ import Upcoming from '../trips/Upcoming';
 import Past from '../trips/Past';
 import AddTrip from './AddTrip';
 import EditProfile from './EditProfile';
+import '../trips/Trips.scss'
 
 import {
   Dropdown,

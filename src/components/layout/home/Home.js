@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import heroLarge from '../../../assets/video/trips.png';
 import heroSmall from '../../../assets/video/calendar.png';
 import SignUp from '../signUp/SignUp';
+import video from '../../../assets/video/buildervideo.mp4';
 
 function Home() {
   return (
@@ -75,7 +76,10 @@ function Home() {
           <Row className="display: flex; justify-content-center">
             <Col md={{ span: 10, offset: 1 }} className="vid-container">
               <ResponsiveEmbed aspectRatio='16by9'>
-                <iframe width="560" height="315" title="marketing video" src="https://www.youtube.com/embed/H9NTn9B_fBg" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <video width="560" height="315" controls >
+                  <source src={video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
               </ResponsiveEmbed>
             </Col>
           </Row>

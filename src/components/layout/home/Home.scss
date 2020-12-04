@@ -396,6 +396,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
       -webkit-box-shadow: inset 3px 3px 15px $grey;
       box-shadow: inset 3px 3px 15px $grey;
       justify-content: center;
+      text-decoration: none;
+      text-shadow: none;
 
       @include md {
         // height: 50vw;
