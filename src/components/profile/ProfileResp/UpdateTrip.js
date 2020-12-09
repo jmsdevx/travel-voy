@@ -6,7 +6,6 @@ import actions from '../../../ducks/actions';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
-// import lisbon from '../../../assets/lisbon.jpeg';
 import defaultImg from '../../../assets/default.jpg';
 
 function UpdateTrip({
@@ -93,9 +92,6 @@ function UpdateTrip({
         aria-labelledby="modal-styling-title"
       >
         <Modal.Header closeButton>
-          {/* <Modal.Title id="modal-styling-title">
-            Add Profile
-          </Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
           <div className="container rounded bg-white mt-2 mb-2">
@@ -103,8 +99,6 @@ function UpdateTrip({
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center px-sm-3 py-sm-3">
                   <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={updateTripFormData.picturePreviewUrl ? updateTripFormData.picturePreviewUrl : defaultImg} />
-                  {/* <span className="font-weight-bold">Amelly</span>
-                  <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
                     <input
                       type="file"
@@ -120,9 +114,6 @@ function UpdateTrip({
 
               <div className="col-md-8 border-right pl-0 pl-sm-2">
                 <div className="px-sm-3 py-sm-3">
-                  {/* <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="text-right">Update Trip</h4>
-                  </div> */}
                   <div className="row mt-3">
                     <div className="col-md-12">
                       <label className="labels">Location *</label>
@@ -145,7 +136,7 @@ function UpdateTrip({
 
                   <div className="my-3 text-left">
                     <div className="trip-btn-group">
-                      <button className="btn-sm btn-danger profile-button" type="button" onClick={handleDeleteClick}>
+                      <button className="btn-sm btn-danger profile-button" type="button" onClick={handleDeleteClick} style={{backgroundColor: "red !important"}}>
                         <span className="pr-1">Delete Trip</span>
                         {
                           deleteTripPending ?

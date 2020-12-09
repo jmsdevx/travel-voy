@@ -19,27 +19,17 @@ function Info({ profileData, getProfile, userId }) {
         <div className="info">
           <div className="info-pair">
             <i className="material-icons">face</i>
-            {/* <h4 className="info-blurb">Mystery Guest</h4> */}
             <h4 className="info-blurb">{profileData.firstName} {profileData.lastName}</h4>
           </div>
           <div className="info-pair">
             <i className="material-icons">language</i>
-            {/* <h4 className="info-blurb">Secret Traveler</h4> */}
             <h4 className="info-blurb">{profileData.travelerType}</h4>
           </div>
           <div className="info-pair">
             <i className="material-icons">home</i>
-            {/* <h4 className="info-blurb">Madagascar</h4> */}
             <h4 className="info-blurb">{profileData.homeCity}</h4>
           </div>
         </div>
-        {/* <div className="edit">
-          <Button className="edit-button" onClick={() => setShowModal(!showModal)}>
-            <i className="material-icons">edit</i>
-            <p>Edit</p>
-          </Button>
-        </div> */}
-        {/* <EditProfile showModal={showModal} setShowModal={setShowModal} /> */}
       </div>
     </>
   );

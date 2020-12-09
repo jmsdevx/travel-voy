@@ -62,8 +62,8 @@ function SignUp({
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" onChange={changeHandler} id="password" value={password} />
             </Form.Group>
-            <button className="sign-up-button" variant="primary" disabled={isSignupPending ? true : false} onClick={submitHandler}>
-              <span className="">Signup</span>
+            <Button variant="primary" style={{ backgroundColor: '#ffd6ba', border: '3px solid white', color: 'grey' }} disabled={isSignupPending ? true : false} onClick={submitHandler}>
+              <span className="pr-1">Sign Up</span>
               {
                 isSignupPending ?
                   <Spinner
@@ -75,7 +75,7 @@ function SignUp({
                     aria-hidden="true"
                   /> : ""
               }
-            </button>
+            </Button>
             <div style={{ height: "10px" }} className="text-danger pt-3">{signupErrorMsg}</div>
           </Form>
         </Col>

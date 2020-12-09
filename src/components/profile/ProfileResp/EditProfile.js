@@ -50,9 +50,6 @@ function EditProfile({
         aria-labelledby="modal-styling-title"
       >
         <Modal.Header closeButton>
-          {/* <Modal.Title id="modal-styling-title">
-            Edit Profile
-        </Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
           <div className="container rounded bg-white mt-2 mb-2">
@@ -60,8 +57,7 @@ function EditProfile({
               <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-3">
                   <img alt="" className="rounded-circle mt-md-5 edit-profile-image" src={profilePicture ? profilePicture : defaultImg} />
-                  {/* <span className="font-weight-bold">Amelly</span>
-                  <span className="text-black-50">amelly12@bbb.com</span><span> </span> */}
+
                   <button className="btn btn-primary image-upload-btn mt-4" type="button" onClick={handleBtnClick}>
                     <input
                       type="file"

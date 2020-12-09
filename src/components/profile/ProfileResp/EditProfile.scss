@@ -1,3 +1,9 @@
+$grey: #555b6e;
+$dark-blue: #89b0ae;
+$light-blue: #bee3db;
+$white: #faf9f9;
+$orange: #ffd6ba;
+
 .form-control:focus {
   box-shadow: none;
   border-color: #BA68C8
@@ -6,7 +12,10 @@
 .profile-button {
   background: rgb(99, 39, 120);
   box-shadow: none;
-  border: none
+  background-color: $orange !important;
+  color: $grey !important;
+  font-family: raisonne !important;
+  border: 2px solid $grey !important;
 }
 
 .profile-button:hover {
@@ -48,4 +57,8 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
+  background-color: $orange !important;
+  color: $grey !important;
+  font-family: raisonne;
+  border: 2px solid $grey !important;
 }

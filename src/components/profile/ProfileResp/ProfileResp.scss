@@ -93,8 +93,7 @@ $screen-xl-min: 1200px;
     padding-left: 4rem !important;
   }
 
-  .border-bottom {
-    border-bottom: 5px solid $white !important;
+  .border-bottom-prof {
     margin-bottom: 3vh;
     height: 100%;
     padding-bottom: 1.5rem;
@@ -161,10 +160,11 @@ $screen-xl-min: 1200px;
 
   .map-outside {
     // border: 5px solid $dark-blue;
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     padding: 1.5rem !important;
-    margin-top: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
 
     @include md {
       width: 50vw;
@@ -177,6 +177,10 @@ $screen-xl-min: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: $orange;
+    color: $grey;
+    border: 3px solid $orange;
+    margin-top: 3vh;
   }
 
   .new-trip {
@@ -210,8 +214,4 @@ $screen-xl-min: 1200px;
     margin-left: 2rem;
     height: 65%;
   }
-
-
-
-  .past-trips {}
 }

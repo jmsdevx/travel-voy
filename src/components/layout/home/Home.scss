@@ -254,13 +254,14 @@ only screen and (min-device-pixel-ratio: 1.5) {
       border-radius: 0px;
       border: 0px;
       width: 100%;
-      height: 8vh;
+      height: 9vh;
       background-color: $dark-blue;
       color: white;
       text-shadow: -2px 2px 0px $grey;
       border-bottom: 3px solid $white;
       border-left: 3px solid $white;
       border-right: 3px solid $white;
+      padding-top: 0px;
 
       &:hover {
         transform: scale(1.02)
@@ -336,13 +337,13 @@ only screen and (min-device-pixel-ratio: 1.5) {
       }
 
       img {
-        height: 100%;
-        width: 100%;
+        height: 70%;
+        width: 70%;
         margin-left: 0;
 
         @include md {
           margin-left: 2vw;
-          width: 35vw;
+          width: 30vw;
         }
 
         margin-top: 5vh;
@@ -351,13 +352,12 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
     .photo-label {
       height: 0px;
-      margin-top: .6rem;
       text-align: center;
+      transform: translateY(-30px);
 
       h2 {
         font-size: 3rem;
         color: $orange;
-        // color: #26863e;
         text-shadow: -2px 2px 0px $dark-blue, -2px 2px 0px $light-blue;
       }
     }
@@ -404,6 +404,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
       -webkit-box-shadow: inset 3px 3px 15px $grey;
       box-shadow: inset 3px 3px 15px $grey;
       justify-content: center;
+      text-decoration: none;
+      text-shadow: none;
 
       @include md {
         // height: 50vw;

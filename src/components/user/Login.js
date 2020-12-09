@@ -24,28 +24,6 @@ function Login({
   loginErrorMsg
 }) {
 
-  // useEffect(() => {
-  //   if (isAuth) {
-  //     goTo('/profile');
-  //   }
-  // }, [])
-
-  // console.log(loginFormData);
-
-  //get session
-  // const defaultUserObject = { firstName: '', lastName: '', email: '', id: '' }
-  // const [userData, setUserData] = useState({ defaultUserObject })
-  // const [gotSession, setSession] = useState(false);
-  // useEffect(() => {
-  //   axios.get('/api/session')
-  //     .then(response => {
-  //       console.log('got session');
-  //       console.log(response.data);
-  //       setUserData(response.data);
-  //       setSession(true);
-  //     })
-  // }, [gotSession]);
-
   //show sign up state
   const [signUp, setSignUp] = useState(false);
   const signUpHandler = () => {
@@ -60,36 +38,11 @@ function Login({
     loginChange({
       [e.target.name]: e.target.value
     });
-    // if (e.target.id === 'email') {
-    //   setEmail(e.target.value)
-    // }
-    // if (e.target.id === 'password') {
-    //   setPassword(e.target.value)
-    // }
   }
-
-  // const [redirect, setRedirect] = useState(false);
 
   const submitLogin = () => {
 
     loginUser();
-
-    // axios.post('/api/login', { email, password })
-    //   .then(response => {
-    //     console.log('success')
-    //     console.log(response.data);
-    //     if (typeof response.data === 'string') {
-    //       if (response.data.includes('password')) {
-    //         window.alert(response.data)
-    //       } else if (response.data.includes('email')) {
-    //         window.alert(response.data)
-    //       }
-    //     } else {
-    //       setUserData(response.data);
-    //       setSession(true);
-    //       setRedirect(true);
-    //     }
-    //   })
   }
 
   if (isAuth) {
@@ -97,8 +50,7 @@ function Login({
   }
 
   return (
-    <Container fluid className="login-container ">
-      {/* <SideNav /> */}
+    <Container fluid className="login-container p-0">
       <Row className="top-row">
         <Col sm={6} className="hero-left" />
         <Col sm={6} className="login-right p-0">
@@ -107,7 +59,6 @@ function Login({
             <input type="text" className="input" placeholder="email" id="email" name="email" onChange={changeHandler} value={loginFormData.email} />
             <input type="password" className="input" placeholder="password" id="password" name="password" onChange={changeHandler} value={loginFormData.password} />
             <p className="forgot">Forgot Password?</p>
-            {/* <Button title="Login" className="log-button" onClick={submitLogin} /> */}
             <button className="mt-2 mx-2 log-button" variant="primary" disabled={isLoginPending ? true : false} onClick={submitLogin}>
               <span className="">Login</span>
               {
@@ -143,17 +94,6 @@ function Login({
         </Col>
         <Col sm={6} className="hero-right" />
       </Row>
-      {/* {
-        redirect &&
-        <Redirect
-          push
-          to={{
-            pathname: "/profile",
-            search: `${userData.email}`,
-            state: { userData }
-          }}
-        />
-      } */}
     </Container>
   );
 }
