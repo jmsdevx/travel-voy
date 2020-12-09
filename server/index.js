@@ -89,12 +89,24 @@ app.use((req, res, next) => {
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
 const tripsRoute = require('./routes/trips');
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.json({
+    hello: "hi!"
+  });
+});
+
+app.get('/api', (req, res) => {
+  res.send('working...');
+});
 
 app.use('/api/auth', authRoute);
 app.use('/api/profile', profileRoute);
 app.use('/api/trip', tripsRoute);
 
 app.use((req, res, next) => {
+  console.log(req.url);
   const error = new Error('route not found.');
   error.statusCode = 404;
   next(error);
@@ -119,7 +131,12 @@ app.use((err, req, res, next) => {
   next()
 });
 
-const port = 3001;
+// const port = 3001;
 
-//server
-app.listen(port, () => console.log(`Listening on ${port}`));
+// //server
+// app.listen(port, () => console.log(`Listening on ${port}`));
+
+// app.use(`/.netlify/functions/api`, router);
+
+
+module.exports = app;
