@@ -101,9 +101,15 @@ app.get('/api', (req, res) => {
   res.send('working...');
 });
 
-app.use('/api/auth', authRoute);
-app.use('/api/profile', profileRoute);
-app.use('/api/trip', tripsRoute);
+// added /.netlify/functions/ before route for lembda functions to get it
+
+app.get('/.netlify/functions/api', (req, res) => {
+  res.send('Travel Voy Api server...');
+});
+
+app.use('/.netlify/functions/api/auth', authRoute);
+app.use('/.netlify/functions/api/profile', profileRoute);
+app.use('/.netlify/functions/api/trip', tripsRoute);
 
 app.use((req, res, next) => {
   console.log(req.url);
