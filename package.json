@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.2",
+    "connect-pg-simple": "^6.2.1",
     "connected-react-router": "^6.8.0",
     "cors": "^2.8.5",
     "date-fns": "^2.16.1",

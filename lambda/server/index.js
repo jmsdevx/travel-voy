@@ -9,17 +9,38 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-//session
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-    },
-  })
-);
+// //session
+// app.use(
+//   session({
+//     resave: false,
+//     saveUninitialized: true,
+//     secret: process.env.SESSION_SECRET,
+//     cookie: {
+//       maxAge: 1000 * 60 * 60 * 24 * 7,
+//     },
+//   })
+// );
+
+// changes for saving express session in postgres db
+
+const pgSession = require('connect-pg-simple')(session);
+
+const {
+  pool
+} = require('./db/index');
+
+app.use(session({
+  store: new pgSession({
+    pool: pool,
+    tableName: 'session'
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000
+  } // 30 days
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -29,52 +50,6 @@ require('./config/passport');
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
 
-
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   },
-// });
-
-// client.connect();
-
-// const userData = {
-//   firstname: 'test',
-//   lastname: 'tester',
-//   email: 'test@gmail.com',
-//   password: 'testpass',
-//   id: 12,
-// }
-
-// testMethod(client);
-// getUser(client, 'jmsdevx@gmail.com');
-// createUser(client, userData);
-// deleteUser(client, userData.email);
-// updateUser(client, userData, userData.id)
-
-//************AUTH & USER CONTROLS************//
-
-//GET SESSION
-// app.get("/api/session", (req, res) => {
-//   console.log(req.session);
-//   if (req.session.user) {
-//     res.status(200).send(req.session.user)
-//   } else {
-//     res.status(403).send('User is not logged in.')
-//   }
-// });
-
-// //REGISTER
-// app.post("/api/register", async (req, res) => {
-//   await createUser(client, req.body, req, res);
-//   await getUser(client, req.body.email, req, res);
-// });
-
-// //LOGIN
-// app.post("/api/login", (req, res) => {
-//   getLogin(client, req.body.email, req.body.password, req, res);
-// });
 
 app.use((req, res, next) => {
   let _end = res.end;

@@ -1,6 +1,6 @@
 const {
   Pool
-} = require('pg')
+} = require('pg');
 
 const {
   db_con_string
@@ -14,4 +14,5 @@ module.exports = {
   query: (text, params, callback) => {
     return pool.query(text, params, callback)
   },
+  pool: pool,
 }
