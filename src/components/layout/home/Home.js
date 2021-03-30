@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import { Container, Row, Col, Button, ResponsiveEmbed } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -15,6 +15,10 @@ function Home({
   isAuth,
   logout
 }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    setOpen(true)
+  })
   return (
     <>
       <div className="home-container">
@@ -41,7 +45,7 @@ function Home({
           </Row>
           <Row>
             <Col md={{ span: 6, offset: 3 }} lg={{ span: 5, offset: 5 }} xl={{ span: 4, offset: 5 }} className="text-center align-bottom">
-              <Button variant="primary" className="quiz-button" size="lg">
+              <Button variant="primary" className={`quiz-button ${open ? '' : 'closed'}`} size="lg">
                 <Link to="/quiz">
                   <i className="material-icons">school</i>
                   <p>Take The Quiz</p>

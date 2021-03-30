@@ -12,6 +12,16 @@ $screen-mobile-video: 768px;
   }
 }
 
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slide-up {
+  from {height: 0vh; opacity: 0;}
+  to {height: 8vh; opacity: 1;}
+}
+
 .new-quiz-container {
   font-family: raisonne;
   color: $grey;
@@ -24,6 +34,9 @@ $screen-mobile-video: 768px;
     color: $grey;
     height: 5rem;
     font-size: 3rem;
+
+    animation-name: slide-up;
+    animation-duration: 1s;
   }
 
   .embed-container {
@@ -52,6 +65,9 @@ $screen-mobile-video: 768px;
   .video-title {
     color: $grey;
     height: 5rem;
+
+    animation-name: slide-up;
+    animation-duration: 1s;
   }
 
   @media only screen and (max-width: 768px) {

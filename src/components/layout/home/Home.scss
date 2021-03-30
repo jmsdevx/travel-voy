@@ -62,6 +62,21 @@ only screen and (min-device-pixel-ratio: 1.5) {
   }
 }
 
+@keyframes slide-up {
+  from {height: 0vh; opacity: 0;}
+  to {height: 8vh; opacity: 1;}
+}
+
+@keyframes slide-down {
+  from {height: 0vh;}
+  to {height: 8vh}
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 .home-container {
   font-family: raisonne;
   color: $grey;
@@ -73,6 +88,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
   .main-header-text {
     font-size: 3.5rem;
+    animation-name: fade-in;
+    animation-duration: 1s;
 
     @include md {
       font-size: 5rem;
@@ -158,7 +175,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     .quiz-button {
       border-radius: 0px;
       border: 0px;
-      width: 100%;
+      width: 80%;
       color: white;
       height: 8vh;
       display: flex;
@@ -166,6 +183,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
       justify-content: space-evenly;
       font-size: 1.5rem;
       align-items: center;
+
+      animation-name: slide-up;
+      animation-duration: 1s;
 
       @include sm {
         font-size: 2rem;
@@ -251,13 +271,16 @@ only screen and (min-device-pixel-ratio: 1.5) {
       border-radius: 0px;
       border: 0px;
       width: 100%;
-      height: 9vh;
+      height: 8vh;
       background-color: $dark-blue;
       color: white;
       border-bottom: 3px solid $white;
       border-left: 3px solid $white;
       border-right: 3px solid $white;
       padding-top: 0px;
+
+      animation-name: slide-up;
+      animation-duration: 1s;
 
       &:hover {
         transform: scale(1.02)
@@ -319,6 +342,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
       background: $dark-blue;
       height: 15rem;
       margin-top: 5vh;
+
+      animation-name: fade-in;
+      animation-duration: 2s;
 
       @include sm {
         height: 25rem;

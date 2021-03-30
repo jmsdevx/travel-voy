@@ -96,10 +96,10 @@ function ProfileResp({
         </Jumbotron>
 
         <Row className="border-bottom-prof">
-          <Col xs={8} md={6} className="profile-info">
+          <Col xs={8} md={7} className="profile-info">
             <Info />
           </Col>
-          <Col xs={4} md={4} className="profile-pic">
+          <Col xs={4} md={3} className="profile-pic">
             <Image src={profilePicture ? profilePicture : defaultImg} roundedCircle className="selfie" />
           </Col>
         </Row>
