@@ -10,7 +10,7 @@ class VideoPage extends Component {
         <Row>
           <Col md={12} pt-2 p-md-0>
             <h1 className="video-title pt-3">
-              Itinerary Builder
+              GET STARTED
             </h1>
             <ResponsiveEmbed aspectRatio='16by9' className="video-container">
                 <video width="560" height="315" controls >

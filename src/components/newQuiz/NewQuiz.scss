@@ -16,27 +16,20 @@ $screen-mobile-video: 768px;
   font-family: raisonne;
   color: $grey;
   text-align: center;
-  background-color: $grey;
-  text-shadow: -3px 3px 0px #555b6e;
+  background-color: $white;
+  height: 100vh;
 
 
   .quiz-title {
-    color: $orange;
+    color: $grey;
     height: 5rem;
-    box-shadow: 0 10px 10px $grey;
-    text-decoration: underline;
+    font-size: 3rem;
   }
 
   .embed-container {
-    height: 80vh;
-    border-radius: 10px;
-    border: 20px solid $orange;
-    padding-top: 5vh;
-    width: 70%;
     margin: 0 auto;
     margin-top: 10vh;
     margin-bottom: 10vh;
-    box-shadow: inset 3px 3px 20px #ffd6ba;
   }
 
   .video-container {
@@ -57,10 +50,8 @@ $screen-mobile-video: 768px;
   }
 
   .video-title {
-    color: $orange;
+    color: $grey;
     height: 5rem;
-    box-shadow: 0 10px 10px $grey;
-    text-decoration: underline;
   }
 
   @media only screen and (max-width: 768px) {

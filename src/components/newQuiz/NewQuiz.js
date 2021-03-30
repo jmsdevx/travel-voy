@@ -35,8 +35,8 @@ class NewQuiz extends Component {
       <Container fluid className="new-quiz-container p-0">
         <Row>
           <Col md={12} pt-2 p-md-0>
-            <h1 className="quiz-title pt-3">
-              Traveler Persona Quiz
+          <h1 className="quiz-title pt-3">
+              WHAT TYPE OF TRAVELER ARE YOU?
             </h1>
             <div className="embed-container">
               <div className="riddle_target" data-rid-id={riddleID} data-fg="#252525" data-bg="#EDEDED" style={divStyle} data-auto-scroll="true">

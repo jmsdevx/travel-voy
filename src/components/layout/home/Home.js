@@ -3,8 +3,8 @@ import './Home.scss';
 import { Container, Row, Col, Button, ResponsiveEmbed } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import heroLarge from '../../../assets/video/trips.png';
-import heroSmall from '../../../assets/video/calendar.png';
+import heroLarge from '../../../assets/world.jpg';
+import heroSmall from '../../../assets/plan.jpg';
 import SignUp from '../signUp/SignUp';
 import video from '../../../assets/video/buildervideo.mp4';
 

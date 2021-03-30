@@ -81,9 +81,9 @@ $screen-xl-min: 1200px;
   padding: 0 !important;
   text-align: center;
   font-family: raisonne;
-  color: $white;
-  background: $grey;
-  background-color: #363945;
+  color: $grey;
+  background: $white;
+  background-color: $white;
 
   @include lg {
     padding-left: 5rem !important;
@@ -97,9 +97,10 @@ $screen-xl-min: 1200px;
     margin-bottom: 3vh;
     height: 100%;
     padding-bottom: 1.5rem;
+    border-bottom: 3px solid $grey;
 
     @include md {
-      height: 20vh;
+      height: 13vh;
       padding-bottom: 0;
     }
   }
@@ -147,14 +148,19 @@ $screen-xl-min: 1200px;
 
     @include md {
       height: 45vh;
-      margin-top: -30vh;
-      margin-left: 0;
+      margin-top: -25vh;
+      margin-left: 8rem;
     }
 
     .selfie {
       height: 30vw;
       width: 30vw;
-      border: 5px solid $white;
+
+      @include md {
+        height: 20vw;
+        width: 20vw;
+        border: 5px solid $white;
+      }
     }
   }
 
@@ -189,6 +195,7 @@ $screen-xl-min: 1200px;
     height: 9vh;
     border: 5px solid $light-blue;
     margin-top: 0;
+    cursor: pointer;
 
     @include md {
       margin-top: 15vh;

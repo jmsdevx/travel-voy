@@ -96,10 +96,10 @@ function ProfileResp({
         </Jumbotron>
 
         <Row className="border-bottom-prof">
-          <Col xs={8} md={{ span: 5, offset: 1 }} className="profile-info">
+          <Col xs={8} md={6} className="profile-info">
             <Info />
           </Col>
-          <Col xs={4} md={5} className="profile-pic">
+          <Col xs={4} md={4} className="profile-pic">
             <Image src={profilePicture ? profilePicture : defaultImg} roundedCircle className="selfie" />
           </Col>
         </Row>
@@ -114,11 +114,11 @@ function ProfileResp({
         </Row>
 
         {/* TRIP */}
-        <Upcoming newTrip={<i className="material-icons pl-1" onClick={() => setShowModal(!showModal)}>add_circle_outline</i>} />
+        <Upcoming newTrip={<i className="material-icons pl-1" style={{cursor: 'pointer', fontSize: '2rem'}} onClick={() => setShowModal(!showModal)}>add_circle_outline</i>} />
         <Past />
-            <Col md={{ span: 8, offset: 3 }} className="map-outside p-0">
+            {/* <Col md={{ span: 8, offset: 3 }} className="map-outside p-0">
               <Map />
-            </Col>
+            </Col> */}
       </Container>
     </>
   )

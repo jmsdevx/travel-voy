@@ -73,8 +73,8 @@ passport.use('sign-up', new localStrategy({
     delete user.password;
 
     const profileRes = await addProfile({
-      homeCity: 'Madagascar',
-      travelerType: 'Secret Traveler'
+      homeCity: 'Home City',
+      travelerType: 'Traveler Type'
     }, user.id);
 
     console.log('profileRes', profileRes);

@@ -4,7 +4,7 @@
 
 
 body {
-  background-color: $grey !important;
+  background-color: $white !important;
 }
 
 * {
@@ -98,12 +98,9 @@ body {
 }
 
 .mobile-nav-bar {
-  background-color: $dark-blue;
+  background-color: $grey;
   color: $white !important;
   font-family: raisonne;
-  box-shadow: 2px 2px rgba(0, 98, 90, 0.4),
-  4px 4px rgba(0, 98, 90, 0.3),
-  6px 6px rgba(0, 98, 90, 0.2);
   position: sticky;
 
   a {
