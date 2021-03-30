@@ -91,7 +91,7 @@ function Home({
         <Container fluid className="discover">
           <Row>
             <Col>
-              <h1 className="display-2">Discover</h1>
+              <h1 className="display-3">GROUP TRAVEL, SIMPLIFIED.</h1>
             </Col>
           </Row>
           <Row className="display: flex; justify-content-center">

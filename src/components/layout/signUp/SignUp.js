@@ -44,7 +44,7 @@ function SignUp({
     <Container fluid className="signup-container">
       <Row>
         <Col md={6} className="signup-box">
-          <h5 className="display-4">Join The Club</h5>
+          <h5 className="display-4">Sign Up Here</h5>
           <Form className="sign-form">
             <Form.Group>
               <Form.Label>First Name</Form.Label>
