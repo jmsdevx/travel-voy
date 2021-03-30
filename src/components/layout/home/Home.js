@@ -67,20 +67,24 @@ function Home({
           </Row>
           <Row className="justify-content-around">
             <Col md={{ span: 5 }}>
+              <a href="https://www.travelvoy.com/blog" style={{textDecoration: 'none'}}>
               <div className="photo-container">
                 <img src={heroLarge} alt="screenshot" />
               </div>
               <div className="photo-label">
                 <h2>Save Trips</h2>
               </div>
+              </a>
             </Col>
             <Col md={{ span: 5 }}>
+            <a href="https://www.travelvoy.com/blog" style={{textDecoration: 'none'}}>
               <div className="photo-container" style={{ marginTop: "6rem" }}>
                 <img src={heroSmall} alt="screenshot" />
               </div>
               <div className="photo-label">
                 <h2>Plan Ahead</h2>
               </div>
+            </a>
             </Col>
           </Row>
         </Container>
