@@ -36,11 +36,17 @@ $screen-xl-min: 1200px;
   }
 }
 
+@keyframes slide-up {
+  from {height: 0vh; opacity: 0;}
+  to {height: 8vh; opacity: 1;}
+}
+
 .login-container {
   font-family: raisonne;
   color: black;
   height: 100vh;
   background-color: $white;
+  margin-left: 2vw;
 
   @include md {
     padding-left: 4rem !important;
@@ -79,6 +85,7 @@ $screen-xl-min: 1200px;
       border: 10px solid $dark-blue;
       background: $light-blue;
       padding: 5vw 5vw 0 5vw;
+
 
       .forgot {
         font-style: italic;
@@ -173,7 +180,7 @@ $screen-xl-min: 1200px;
   }
 
   .hero-right {
-    background-image: url('../../assets/hero-small.jpg');
+    background-image: url('../../assets/meditate.jpg');
     // background-color: $orange;
     background-size: cover;
     height: 100%;
